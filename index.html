@@ -194,6 +194,7 @@
   }
   .nav-cta:hover{background:var(--sage-deep);}
   .nav-toggle{display:none;}
+  .nav-mobile{display:none;}
 
   @media (max-width:1080px){
     nav.links{display:none;}
@@ -204,7 +205,6 @@
     }
     .nav-toggle span{width:22px; height:2px; background:var(--navy); display:block;}
     .nav-mobile{
-      display:none;
       flex-direction:column;
       background:var(--paper);
       border-bottom:1px solid var(--beige-line);
@@ -940,26 +940,34 @@
   }
   .why-matters-item p{ font-size:0.9rem; color:var(--ink-soft); }
 
-  .recognition-note{
-    margin-top:40px;
-    background:var(--beige);
-    border-left:3px solid var(--sage-deep);
-    border-radius:var(--radius-sm);
-    padding:22px 26px;
-    max-width:640px;
-  }
-  .recognition-note .label{
+  .testimonials{ margin-top:40px; }
+  .testimonials-label{
     font-family:var(--font-mono);
     font-size:0.75rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
     color:var(--sage-deep);
-    margin-bottom:10px;
+    margin-bottom:18px;
   }
-  .recognition-note p{
+  .testimonial-item{
+    background:var(--beige);
+    border-left:3px solid var(--sage-deep);
+    border-radius:var(--radius-sm);
+    padding:20px 24px;
+    margin-bottom:14px;
+  }
+  .testimonial-item:last-child{ margin-bottom:0; }
+  .testimonial-quote{
     font-size:0.98rem;
     color:var(--navy);
     line-height:1.55;
+    font-style:italic;
+  }
+  .testimonial-source{
+    margin-top:10px;
+    font-family:var(--font-mono);
+    font-size:0.76rem;
+    color:var(--sage-deep);
   }
 
   /* ---------- PHILOSOPHY ---------- */
@@ -1725,9 +1733,20 @@
         </div>
       </div>
 
-      <div class="recognition-note reveal">
-        <div class="label">Recognized For</div>
-        <p>Noted by my supervisor at Resident Eye Care Associates for being proactive about solving problems as they came up, and for consistently looking for ways to improve how the clinic's workflows ran, rather than just following the process as-is.</p>
+      <div class="testimonials reveal">
+        <div class="testimonials-label">What Colleagues Say</div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">"Attentive to detail and finishes the task very fast and accurate."</p>
+          <div class="testimonial-source">Onshore Team, Resident Eye Care Associates</div>
+        </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">"Easy going and not hard to approach as an assistant team leader / subject matter expert, very proactive and tidy when it comes to assigned tasks."</p>
+          <div class="testimonial-source">Supervisor, Optum</div>
+        </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">Noted for being proactive about solving problems as they came up, and for consistently looking for ways to improve how the clinic's workflows ran, rather than just following the process as-is.</p>
+          <div class="testimonial-source">Supervisor, Resident Eye Care Associates</div>
+        </div>
       </div>
     </div>
   </section>
