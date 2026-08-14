@@ -505,18 +505,24 @@
   .services-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:38px 44px;
+    gap:24px;
   }
-  @media (max-width:900px){ .services-grid{grid-template-columns:repeat(2,1fr); gap:32px 36px;} }
-  @media (max-width:620px){ .services-grid{grid-template-columns:1fr; gap:28px;} }
+  @media (max-width:900px){ .services-grid{grid-template-columns:repeat(2,1fr); gap:22px;} }
+  @media (max-width:620px){ .services-grid{grid-template-columns:1fr; gap:20px;} }
   .service-card{
-    padding:26px 0 0;
-    border-top:1px solid var(--beige-line);
+    background:var(--paper);
+    border:1px solid var(--beige-line);
+    border-radius:var(--radius-card);
+    padding:26px 24px;
+    transition:border-color .2s ease, transform .2s ease;
   }
+  .service-card:hover{border-color:var(--sage); transform:translateY(-3px);}
   .service-card h3{
-    font-size:1.28rem;
-    font-weight:600;
-    margin-bottom:12px;
+    font-size:1.24rem;
+    font-weight:700;
+    margin-bottom:14px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--ivory-dim);
     letter-spacing:-0.01em;
   }
   .service-desc{
@@ -530,21 +536,9 @@
     gap:8px;
     margin-top:16px;
   }
-  .service-tags{ gap:0 14px; }
   .service-tags .chip{
-    font-size:0.72rem;
-    padding:0;
-    background:none;
-    border:none;
-    border-radius:0;
-    color:var(--sage-deep);
-    position:relative;
-  }
-  .service-tags .chip:not(:last-child)::after{
-    content:'/';
-    position:absolute;
-    right:-9px;
-    color:var(--beige-line);
+    font-size:0.7rem;
+    padding:5px 11px;
   }
   .service-note{
     margin-top:26px;
@@ -603,13 +597,15 @@
   .systems-cards{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:26px 32px;
+    gap:18px;
   }
   @media (max-width:900px){ .systems-cards{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .systems-cards{grid-template-columns:1fr;} }
   .sys-card{
-    padding:16px 0 0;
-    border-top:1px solid var(--beige-line);
+    background:var(--paper);
+    border:1px solid var(--beige-line);
+    border-radius:var(--radius-sm);
+    padding:18px;
     position:relative;
   }
   .sys-head{
@@ -1225,8 +1221,10 @@
   @media (max-width:900px){ .cred-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .cred-grid{grid-template-columns:1fr;} }
   .cred-card{
-    padding:16px 0 0;
-    border-top:1px solid var(--beige-line);
+    background:var(--paper);
+    border:1px solid var(--beige-line);
+    border-radius:var(--radius-sm);
+    padding:18px;
   }
   .cred-card .name{ font-weight:700; color:var(--navy); font-size:0.96rem; margin-bottom:6px;}
   .cred-card .org{
