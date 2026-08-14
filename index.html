@@ -900,6 +900,23 @@
   }
 
   .case-flow{ margin:14px 0; }
+  .case-subitems{ display:flex; flex-direction:column; gap:14px; }
+  .case-subitem{
+    padding-left:14px;
+    border-left:2px solid var(--sage);
+  }
+  .sub-title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:0.88rem;
+    color:var(--ivory);
+    margin-bottom:4px;
+  }
+  .sub-desc{
+    font-size:0.84rem;
+    color:rgba(246,241,231,0.8);
+    line-height:1.5;
+  }
   .case-flow .flow-label{
     font-family:var(--font-mono);
     font-size:0.68rem;
@@ -1216,8 +1233,8 @@
       <div>
         <div class="full-name">Kem Oyl Nooky Alutaya</div>
         <h1>Kem Alutaya</h1>
-        <div class="role">Back-Office Healthcare Support · Insurance Verification · EMR &amp; Documentation · Chart Preparation</div>
-        <div class="headline">Healthcare back-office support built for high-volume workflows.</div>
+        <div class="role">Healthcare Back-Office Support · Remote</div>
+        <div class="headline">Built for high-volume healthcare workflows.</div>
         <p class="support">Insurance verification, EMR support, chart preparation, documentation, and facility coordination for healthcare teams where accuracy and volume both matter.</p>
         <div class="credibility-row">
           <span class="chip">5+ Years Healthcare Experience</span>
@@ -1300,7 +1317,7 @@
         </div>
         <div class="why-matters-item reveal">
           <h3>Workflow Improvement</h3>
-          <p>Built an automated draft-generation workflow that saves roughly 2 hours per doctor, per day (see Case 03 further down).</p>
+          <p>Built an automated draft-generation workflow that saves roughly 2 hours per day (see Case 03 further down).</p>
         </div>
       </div>
     </div>
@@ -1573,12 +1590,12 @@
             </ul>
           </details>
           <div class="stat-row">
-            <span class="stat-chip">~50 charts pre-charted / day</span>
-            <span class="stat-chip">~50 insurance verifications / day</span>
-            <span class="stat-chip">~100 patient records reviewed / shift</span>
+            <span class="stat-chip">50+ charts pre-charted / day</span>
+            <span class="stat-chip">50+ insurance verifications / day</span>
+            <span class="stat-chip">100+ patient records reviewed / shift</span>
             <span class="stat-chip">15–25 facilities supported</span>
           </div>
-          <div class="stat-footnote">Typical workload based on current workflow; exact daily volume may vary.</div>
+          <div class="stat-footnote">Typical workload in that role; exact daily volume varied.</div>
         </div>
 
         <div class="tl-item reveal">
@@ -1709,18 +1726,18 @@
           <h3>Streamlining PCC Facility Updates</h3>
           <div class="case-block">
             <div class="k">Problem</div>
-            <div class="v">Facility information was being entered piecemeal.</div>
+            <div class="v">New patients are entered daily per facility, and each facility needs a "heading" — a label doctors see on their schedule so they know what to expect on arrival. Some facilities were missing one entirely.</div>
           </div>
           <div class="case-flow">
             <div class="flow-label">Before → After</div>
             <div class="flow-chain">
-              <span class="flow-step">Facility fields entered one at a time, no grouping</span>
-              <span class="flow-step flow-after">Facility "headings" grouped and entered as one block</span>
+              <span class="flow-step">Facility missing its heading, no context on the doctor's schedule</span>
+              <span class="flow-step flow-after">Heading added, unprompted, for consistency across every facility</span>
             </div>
           </div>
           <div class="case-block">
             <div class="k">Result</div>
-            <div class="v">A more streamlined and consistent facility-update workflow.</div>
+            <div class="v">My supervisor noticed the change before I'd mentioned doing it, and flagged it unprompted as proactive — it cut down on extra work for the clinic's staff.</div>
           </div>
           <div class="case-highlight">Noticed and fixed independently</div>
         </div>
@@ -1730,18 +1747,18 @@
           <h3>Redesigning Facility Communication</h3>
           <div class="case-block">
             <div class="k">Problem</div>
-            <div class="v">The existing facility flyer was outdated.</div>
+            <div class="v">The facility flyer template I'd been sending out hadn't changed in years — outdated compared to current design standards.</div>
           </div>
           <div class="case-flow">
             <div class="flow-label">Before → After</div>
             <div class="flow-chain">
-              <span class="flow-step">Outdated flyer template, dated look and layout</span>
-              <span class="flow-step flow-after">Redesigned, cleaner template, adopted for ongoing use</span>
+              <span class="flow-step">Same template used for years, dated look and layout</span>
+              <span class="flow-step flow-after">Redesigned to be readable for older patients, direct, and professional</span>
             </div>
           </div>
           <div class="case-block">
             <div class="k">Result</div>
-            <div class="v">The redesigned flyer was adopted for ongoing use across the practice.</div>
+            <div class="v">Approached my client directly with the redesign, unprompted — she approved it for ongoing use and thanked me for developing that design skill.</div>
           </div>
           <div class="case-highlight">Adopted for ongoing use</div>
         </div>
@@ -1751,10 +1768,10 @@
           <h3>Automating Administrative Draft Generation</h3>
           <div class="case-block">
             <div class="k">Problem</div>
-            <div class="v">Sending physician schedules required checking patient count, status, and insurance across every building a doctor was visiting that day (often 5+ buildings per doctor) before the schedule could go out.</div>
+            <div class="v">Three recurring daily tasks — sending physician schedules, notifying facilities, and preparing doctor-visit flyers — were all manual, repetitive, and error-prone: wrong doctor, wrong CC, wrong date, wrong attachment, typos.</div>
           </div>
           <div class="case-flow">
-            <div class="flow-label">Before → After</div>
+            <div class="flow-label">Schedules: Before → After</div>
             <div class="flow-chain">
               <span class="flow-step">Check patient count, per building</span>
               <span class="flow-step">Check status, per building</span>
@@ -1764,14 +1781,31 @@
             </div>
           </div>
           <div class="case-block">
+            <div class="k">Three Automations Built</div>
+            <div class="case-subitems">
+              <div class="case-subitem">
+                <div class="sub-title">Physician Schedules</div>
+                <div class="sub-desc">13 doctors, each assigned 1–10 facilities daily. Macro auto-matches the highlighted facility to the correct doctor's email, CCs the right RECA staff, and attaches the right files — eliminating wrong-doctor, wrong-CC, and wrong-attachment errors. Cut daily task time from 3 hours to 1.</div>
+              </div>
+              <div class="case-subitem">
+                <div class="sub-title">Facility Notifications</div>
+                <div class="sub-desc">50+ facilities, each with its own contact details. Macro auto-drafts each notification with the correct facility email, date, template, and attachments. Now sends 25+ notifications a day with zero mistakes.</div>
+              </div>
+              <div class="case-subitem">
+                <div class="sub-title">Doctor-Visit Flyers</div>
+                <div class="sub-desc">Same drafting logic, plus auto-renaming the facility name and visit date per doctor. Took the longest to build — some facility names run long, and the flyer layout had to be adjusted to handle that without breaking.</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-block">
             <div class="k">My Contribution</div>
-            <div class="v">Designed and built this myself using Excel, Outlook, and Word macros: the tools already available on the remote desktop, since installing anything new required IT department approval. Collapses a multi-step manual process into a few clicks. I still review and send it myself each time.</div>
+            <div class="v">Designed and built all three myself using Excel, Outlook, and Word macros: the tools already available on the remote desktop, since installing anything new required IT department approval. Each one collapses a multi-step manual process into a few clicks. I still review and send the output myself each time.</div>
           </div>
           <div class="case-block">
             <div class="k">Result</div>
             <div class="v">Presented the workflow and it was approved for operational use.</div>
           </div>
-          <div class="case-highlight">~2 hrs saved per doctor, per day on schedule prep alone</div>
+          <div class="case-highlight">~2 hrs saved per day on schedule prep alone</div>
           <div class="case-footnote">Estimated, based on the previous manual schedule-prep process.</div>
         </div>
       </div>
@@ -1820,7 +1854,7 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">What You Can Expect</div>
-        <h2>Three more things worth knowing</h2>
+        <h2>How I work</h2>
       </div>
 
       <div class="why-grid">
