@@ -689,32 +689,35 @@
     border-bottom:1px solid var(--ivory-dim);
   }
   .additional-exp-row:last-child{ border-bottom:none; }
-  .ae-details{
-    padding:0 0 12px 0;
+  .ae-row-details{
     border-bottom:1px solid var(--ivory-dim);
-    margin-top:-6px;
   }
-  .ae-details summary{
+  .ae-row-details:last-child{ border-bottom:none; }
+  .ae-row-details summary{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:6px 14px;
+    padding-block:10px;
     cursor:pointer;
-    font-family:var(--font-mono);
-    font-size:0.75rem;
-    color:var(--sage-deep);
     list-style:none;
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:4px 0;
+    transition:color .15s ease;
   }
-  .ae-details summary::-webkit-details-marker{ display:none; }
-  .ae-details summary::before{
-    content:'+';
+  .ae-row-details summary::-webkit-details-marker{ display:none; }
+  .ae-row-details summary:hover .ae-title{ color:var(--sage-deep); }
+  .ae-toggle{
+    margin-left:auto;
     font-family:var(--font-body);
-    font-size:0.95rem;
+    font-size:1rem;
     line-height:1;
+    color:var(--sage-deep);
+    flex-shrink:0;
   }
-  .ae-details[open] summary::before{ content:'\2212'; }
-  .ae-details ul{ margin-top:8px; }
-  .ae-details ul li{
+  .ae-toggle::before{ content:'+'; }
+  .ae-row-details[open] .ae-toggle::before,
+  .intern-details[open] .ae-toggle::before{ content:'\2212'; }
+  .ae-row-details ul{ margin:2px 0 14px; }
+  .ae-row-details ul li{
     position:relative;
     padding-left:16px;
     margin-bottom:7px;
@@ -722,8 +725,8 @@
     color:var(--ink-soft);
     line-height:1.5;
   }
-  .ae-details ul li:last-child{ margin-bottom:0; }
-  .ae-details ul li::before{
+  .ae-row-details ul li:last-child{ margin-bottom:0; }
+  .ae-row-details ul li::before{
     content:'';
     position:absolute;
     left:0; top:8px;
@@ -1037,11 +1040,52 @@
     font-size:0.75rem;
     color:var(--ink-soft);
   }
+  .internship-card{
+    background:var(--paper);
+    border:1px solid var(--beige-line);
+    border-radius:var(--radius-card);
+    padding:22px 24px;
+    margin-top:16px;
+  }
+  .internship-card .name{ font-weight:700; color:var(--navy); font-size:1.02rem; margin-bottom:4px; transition:color .15s ease;}
+  .internship-card .org{ font-family:var(--font-mono); font-size:0.78rem; color:var(--ink-soft); }
+
+  .intern-details summary{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px 14px;
+    cursor:pointer;
+    list-style:none;
+  }
+  .intern-details summary::-webkit-details-marker{ display:none; }
+  .intern-summary-text{ flex:1; min-width:200px; }
+  .intern-details summary:hover .name{ color:var(--sage-deep); }
+  .intern-details ul{ margin-top:14px; }
+  .intern-details ul li{
+    position:relative;
+    padding-left:16px;
+    margin-bottom:7px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .intern-details ul li:last-child{ margin-bottom:0; }
+  .intern-details ul li::before{
+    content:'';
+    position:absolute;
+    left:0; top:8px;
+    width:5px; height:5px;
+    border-radius:50%;
+    background:var(--sage);
+  }
+
   .edu-card{
     background:var(--beige);
     border:1px solid var(--beige-line);
     border-radius:var(--radius-card);
     padding:26px;
+    margin-top:32px;
   }
   .edu-card .name{ font-weight:700; color:var(--navy); font-size:1.05rem; margin-bottom:4px;}
   .edu-card .org{ font-family:var(--font-mono); font-size:0.8rem; color:var(--navy); opacity:0.75; margin-bottom:16px;}
@@ -1651,17 +1695,17 @@
           <h3>Subject Matter Expert / Data Entry</h3>
           <div class="org">Optum</div>
           <ul>
-            <li>Served as a go-to resource for workflow questions.</li>
-            <li>Supported documentation accuracy.</li>
-            <li>Trained and coached 10+ agents.</li>
-            <li>Created performance trackers.</li>
-            <li>Handled backend escalations.</li>
-            <li>Supported new tool rollouts.</li>
-            <li>Assisted with new-hire training.</li>
-            <li>Helped improve consistency in operational workflows.</li>
+            <li>Trained on live phone handling as part of the SME transition, applying the same prior authorization decision logic on calls that I had been applying on the back-office side.</li>
+            <li>Served as the go-to resource for process and workflow questions for new agents.</li>
+            <li>Coached agents on mistakes and supported documentation accuracy.</li>
+            <li>Monitored team KPIs: adherence, average handling time, QA scores, and attendance.</li>
+            <li>Ran daily and weekly stat meetings with leadership, presenting team performance.</li>
+            <li>Built trend charts to track team performance over time.</li>
+            <li>Handled backend escalations and supported new tool rollouts.</li>
           </ul>
           <div class="stat-row">
             <span class="stat-chip">10+ agents coached</span>
+            <span class="stat-chip">Up to 3 teams supported at once</span>
           </div>
         </div>
 
@@ -1670,13 +1714,18 @@
           <h3>Customer Service Representative, Prior Authorization</h3>
           <div class="org">Optum</div>
           <ul>
-            <li>Processed inbound prior authorization requests from providers by phone and fax.</li>
-            <li>Verified eligibility.</li>
-            <li>Entered CPT codes into internal authorization systems.</li>
+            <li>Processed inbound prior authorization requests received by fax from providers and clinics, on the back-office side of the account.</li>
+            <li>Verified patient coverage and plan network status, and validated requesting and servicing provider details (NPI, TIN).</li>
+            <li>Entered CPT codes into internal authorization systems across medical, surgical, DME, Part B, and transplant categories.</li>
             <li>Identified whether requests required no authorization, self-approved processing, or RN review.</li>
             <li>Supported urgent, out-of-network, peer-to-peer, and out-of-state requests.</li>
             <li>Escalated complex clinical cases requiring nurse review.</li>
+            <li>Attached incoming medical documentation to the correct patient profile and case ID.</li>
           </ul>
+          <div class="stat-row">
+            <span class="stat-chip">30–50 requests processed / day</span>
+            <span class="stat-chip">8 states supported</span>
+          </div>
           <div class="tl-note">Administrative and operational side of prior authorization workflows. Clinical decisions and complex-case approvals remained with licensed clinical personnel.</div>
         </div>
 
@@ -1695,26 +1744,26 @@
           <span class="ae-title">AI Data Contributor: Training &amp; Transcription</span>
           <span class="ae-org">TELUS Digital AI · Part-time</span>
         </div>
-        <div class="additional-exp-row">
-          <span class="ae-date">Nov 2019–Jun 2020</span>
-          <span class="ae-title">Customer Sales Representative</span>
-          <span class="ae-org">Teleperformance</span>
-        </div>
-        <details class="ae-details">
-          <summary>What this involved</summary>
+        <details class="ae-row-details">
+          <summary>
+            <span class="ae-date">Nov 2019–Jun 2020</span>
+            <span class="ae-title">Customer Sales Representative</span>
+            <span class="ae-org">Teleperformance</span>
+            <span class="ae-toggle" aria-hidden="true"></span>
+          </summary>
           <ul>
             <li>Inbound booking calls for Hotels.com from customers across the US: searching hotels, confirming dates, party size, and accommodation needs, then reviewing the booking back before finalizing.</li>
             <li>Upsold where appropriate; team placed 1st out of 5 teams on the floor in multiple months, and I placed 1st on my own team.</li>
             <li>Reassigned to back-office work on a United Airlines account as call volume dropped during COVID lockdowns, using Amadeus to verify and correct booking details and clear a backlog.</li>
           </ul>
         </details>
-        <div class="additional-exp-row">
-          <span class="ae-date">Nov 2018–Oct 2019</span>
-          <span class="ae-title">Product Researcher, Freelance</span>
-          <span class="ae-org">Amazon</span>
-        </div>
-        <details class="ae-details">
-          <summary>What this involved</summary>
+        <details class="ae-row-details">
+          <summary>
+            <span class="ae-date">Nov 2018–Oct 2019</span>
+            <span class="ae-title">Product Researcher, Freelance</span>
+            <span class="ae-org">Amazon</span>
+            <span class="ae-toggle" aria-hidden="true"></span>
+          </summary>
           <ul>
             <li>Cross-platform price research between Amazon and eBay: finding items with a workable margin between the two, then re-listing on the other platform to capture the difference.</li>
             <li>Pulled product photos and full listing details for each item; listed 20+ items per day.</li>
@@ -1890,7 +1939,7 @@
       <div class="cred-grid">
         <div class="cred-card reveal">
           <div class="name">HIPAA Certified</div>
-          <div class="org">Biologix · 2024</div>
+          <div class="org">Biologix · 2026</div>
         </div>
         <div class="cred-card reveal">
           <div class="name">Virtual Assistant Training</div>
@@ -1904,6 +1953,25 @@
           <div class="name">Virtual Assistant Training</div>
           <div class="org">VA Of The Future · 2024</div>
         </div>
+      </div>
+
+      <div class="internship-card reveal">
+        <details class="intern-details">
+          <summary>
+            <div class="intern-summary-text">
+              <div class="name">General SEO Internship</div>
+              <div class="org">Kherk Roldan Advanced Digital Solutions · 240 hours · 2026</div>
+            </div>
+            <span class="badge badge-mid">Completed Jul 2026</span>
+            <span class="ae-toggle" aria-hidden="true"></span>
+          </summary>
+          <ul>
+            <li>Link building and directory submissions as the core daily work, plus guest posting and social bookmarking: 20+ directory and guest post submissions per day.</li>
+            <li>Optimized and maintained Google Business Profile listings, roughly 5 per day, including posting updates and citation building.</li>
+            <li>Content support: keyword research, plus publishing and uploading articles.</li>
+            <li>Worked in Ahrefs, Google Search Console, and Google Business Profile.</li>
+          </ul>
+        </details>
       </div>
 
       <div class="edu-card reveal">
