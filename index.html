@@ -123,6 +123,7 @@
     max-width:640px;
     margin-bottom:48px;
   }
+  .section-head h2{ letter-spacing:-0.015em; }
   .section-head h2{
     font-size:clamp(1.7rem,3vw,2.5rem);
     font-weight:700;
@@ -504,24 +505,19 @@
   .services-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:38px 44px;
   }
-  @media (max-width:900px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:620px){ .services-grid{grid-template-columns:1fr;} }
+  @media (max-width:900px){ .services-grid{grid-template-columns:repeat(2,1fr); gap:32px 36px;} }
+  @media (max-width:620px){ .services-grid{grid-template-columns:1fr; gap:28px;} }
   .service-card{
-    background:var(--paper);
-    border:1px solid var(--beige-line);
-    border-radius:var(--radius-card);
-    padding:26px 24px;
-    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    padding:26px 0 0;
+    border-top:1px solid var(--beige-line);
   }
-  .service-card:hover{border-color:var(--sage); transform:translateY(-3px);}
   .service-card h3{
-    font-size:1.2rem;
-    font-weight:700;
-    margin-bottom:14px;
-    padding-bottom:14px;
-    border-bottom:1px solid var(--ivory-dim);
+    font-size:1.28rem;
+    font-weight:600;
+    margin-bottom:12px;
+    letter-spacing:-0.01em;
   }
   .service-desc{
     font-size:0.94rem;
@@ -534,9 +530,21 @@
     gap:8px;
     margin-top:16px;
   }
+  .service-tags{ gap:0 14px; }
   .service-tags .chip{
-    font-size:0.7rem;
-    padding:5px 11px;
+    font-size:0.72rem;
+    padding:0;
+    background:none;
+    border:none;
+    border-radius:0;
+    color:var(--sage-deep);
+    position:relative;
+  }
+  .service-tags .chip:not(:last-child)::after{
+    content:'/';
+    position:absolute;
+    right:-9px;
+    color:var(--beige-line);
   }
   .service-note{
     margin-top:26px;
@@ -595,15 +603,13 @@
   .systems-cards{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:16px;
+    gap:26px 32px;
   }
   @media (max-width:900px){ .systems-cards{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .systems-cards{grid-template-columns:1fr;} }
   .sys-card{
-    background:var(--paper);
-    border:1px solid var(--beige-line);
-    border-radius:var(--radius-sm);
-    padding:18px;
+    padding:16px 0 0;
+    border-top:1px solid var(--beige-line);
     position:relative;
   }
   .sys-head{
@@ -1033,6 +1039,92 @@
     font-style:italic;
   }
 
+  .headline-accent{ color:var(--sage); display:block; }
+  .hl-line-1{ display:block; }
+  .hl-word{ display:inline-block; }
+  .hl-morph{ position:relative; display:inline-block; }
+  .hl-connector{
+    display:block;
+    width:190px;
+    max-width:60%;
+    height:14px;
+    margin:10px 0 8px;
+  }
+  .hl-connector svg{ width:100%; height:100%; overflow:visible; }
+  .hl-wire{
+    stroke:var(--sage);
+    stroke-width:1.5;
+    stroke-dasharray:200;
+    stroke-dashoffset:200;
+  }
+  .hl-node{ fill:var(--sage); opacity:0; }
+  @media (prefers-reduced-motion: reduce){
+    .hl-wire{ stroke-dashoffset:0; }
+    .hl-node{ opacity:1; }
+  }
+
+  .impact-lead{
+    margin-top:14px !important;
+    padding-top:0 !important;
+    border-top:none !important;
+    flex-wrap:wrap;
+    margin-bottom:22px;
+    padding-bottom:20px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .impact-label-inline{
+    display:flex;
+    flex-direction:column;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:rgba(245,247,246,0.6);
+    margin-left:8px;
+    line-height:1.5;
+  }
+  .impact-label-inline em{
+    font-style:italic;
+    font-size:0.68rem;
+    color:rgba(245,247,246,0.42);
+  }
+
+  .footer-brand{ max-width:420px; }
+  .footer-name{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--ivory);
+    letter-spacing:0.01em;
+    margin-bottom:6px;
+  }
+  .footer-disciplines{
+    font-family:var(--font-mono);
+    font-size:0.74rem;
+    color:rgba(245,247,246,0.5);
+    line-height:1.6;
+  }
+  .footer-meta{ text-align:right; }
+  @media (max-width:700px){ .footer-meta{ text-align:left; } }
+  .footer-links{
+    display:flex;
+    gap:18px;
+    margin-bottom:8px;
+    justify-content:flex-end;
+  }
+  @media (max-width:700px){ .footer-links{ justify-content:flex-start; } }
+  .footer-links a{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--sage);
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease;
+  }
+  .footer-links a:hover{ border-color:var(--sage); }
+  .footer-loc{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:rgba(245,247,246,0.4);
+  }
+
   .impact-figure{
     display:flex;
     align-items:baseline;
@@ -1133,10 +1225,8 @@
   @media (max-width:900px){ .cred-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:520px){ .cred-grid{grid-template-columns:1fr;} }
   .cred-card{
-    background:var(--paper);
-    border:1px solid var(--beige-line);
-    border-radius:var(--radius-sm);
-    padding:18px;
+    padding:16px 0 0;
+    border-top:1px solid var(--beige-line);
   }
   .cred-card .name{ font-weight:700; color:var(--navy); font-size:0.96rem; margin-bottom:6px;}
   .cred-card .org{
@@ -1457,7 +1547,13 @@
         <div class="full-name">Kem Oyl Nooky Alutaya</div>
         <h1>Kem Alutaya</h1>
         <div class="role">Healthcare Back-Office Support · Remote</div>
-        <div class="headline">I run healthcare back-office workflows, then find the ones worth automating.</div>
+        <div class="headline">
+          <span class="hl-line-1">I run healthcare back-office <span class="hl-morph">workflows</span>,</span>
+          <span class="hl-connector" aria-hidden="true">
+            <svg viewBox="0 0 200 14" preserveAspectRatio="none"><line class="hl-wire" x1="4" y1="7" x2="196" y2="7"/><circle class="hl-node" cx="4" cy="7" r="3"/><circle class="hl-node" cx="68" cy="7" r="3"/><circle class="hl-node" cx="132" cy="7" r="3"/><circle class="hl-node" cx="196" cy="7" r="3"/></svg>
+          </span>
+          <span class="headline-accent">then find the ones worth automating.</span>
+        </div>
         <p class="support">Insurance verification, EMR support, chart preparation, documentation, and facility coordination for healthcare teams where accuracy and volume both matter.</p>
         <div class="credibility-row">
           <span class="chip">5+ Years Healthcare Experience</span>
@@ -2022,6 +2118,12 @@
       <div class="case-card case-card-featured reveal">
           <div class="case-tab">Case 03 <span class="case-featured-tag">Highest Impact</span></div>
           <h3>Automating Administrative Draft Generation</h3>
+          <div class="impact-figure impact-lead">
+            <span class="impact-before">3 hrs</span>
+            <span class="impact-arrow">&rarr;</span>
+            <span class="impact-after">1 hr</span>
+            <span class="impact-label-inline">Daily schedule prep, before and after<em>Estimated, based on the previous manual process.</em></span>
+          </div>
           <div class="case-cols">
           <div class="case-col">
           <div class="case-block">
@@ -2076,13 +2178,7 @@
             <div class="arch-node arch-node-human"><span class="arch-tool">Me</span>Review every detail, then send</div>
             <div class="arch-caption">Illustration of the process, not a screenshot. No patient or facility data shown.</div>
           </div>
-          <div class="impact-figure">
-            <span class="impact-before">3 hrs</span>
-            <span class="impact-arrow">&rarr;</span>
-            <span class="impact-after">1 hr</span>
-          </div>
-          <div class="impact-label">Daily schedule prep, before and after</div>
-          <div class="case-footnote">Estimated, based on the previous manual process.</div>
+
       </div>
 
       <p class="privacy-note reveal">Privacy note: the case studies above describe workflows I personally worked on and helped build, but no patient-identifiable information, facility names, or employer-specific materials are shown or reproduced. Everything is described in generalized terms.</p>
@@ -2222,9 +2318,18 @@
 
 <footer>
   <div class="container footer-inner">
-    <span>Kem Alutaya | Medical Virtual Administrative Assistant</span>
-    <span>Last updated: August 2026</span>
-    <span>Philippines · Remote · UK / US / AU Hours</span>
+    <div class="footer-brand">
+      <div class="footer-name">Kem Alutaya</div>
+      <div class="footer-disciplines">Healthcare Operations · Administrative Support · Workflow Improvement</div>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="Kem-Alutaya-Resume.pdf" download>Résumé</a>
+        <a href="mailto:kemalutaya96@gmail.com">Email</a>
+      </div>
+      <div class="footer-loc">Philippines · Remote · UK / US / AU Hours · Updated Aug 2026</div>
+    </div>
   </div>
 </footer>
 
@@ -2273,6 +2378,13 @@
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Split the accent headline into words so it can assemble piece by piece
+    const accentEl = document.querySelector('.headline-accent');
+    if (accentEl) {
+      accentEl.innerHTML = accentEl.textContent.trim().split(' ')
+        .map(w => '<span class="hl-word">' + w + '</span>').join(' ');
+    }
+
     // Hero entrance — one orchestrated moment on load
     gsap.set('.full-name, .hero h1, .hero .role, .hero .headline, .hero .support, .credibility-row, .hero-ctas, .status-card', { opacity: 0, y: 16 });
     gsap.timeline({ defaults: { ease: 'power2.out', duration: 0.7 } })
@@ -2280,6 +2392,9 @@
       .to('.hero h1', { opacity: 1, y: 0 }, '-=0.5')
       .to('.hero .role', { opacity: 1, y: 0 }, '-=0.5')
       .to('.hero .headline', { opacity: 1, y: 0 }, '-=0.45')
+      .to('.hl-wire', { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut' }, '-=0.25')
+      .to('.hl-node', { opacity: 1, duration: 0.25, stagger: 0.09, ease: 'back.out(2)' }, '-=0.5')
+      .from('.headline-accent .hl-word', { opacity: 0, y: 12, duration: 0.45, stagger: 0.055, ease: 'power2.out' }, '-=0.25')
       .to('.hero .support', { opacity: 1, y: 0 }, '-=0.45')
       .to('.credibility-row', { opacity: 1, y: 0 }, '-=0.4')
       .to('.hero-ctas', { opacity: 1, y: 0 }, '-=0.4')
@@ -2343,7 +2458,10 @@
       gsap.to(obj, {
         val: target, duration: 1.4, ease: 'power2.out',
         scrollTrigger: { trigger: el, start: 'top 92%', once: true },
-        onUpdate: () => { el.textContent = Math.round(obj.val) + suffix; }
+        onUpdate: () => { el.textContent = Math.round(obj.val) + suffix; },
+        onComplete: () => {
+          gsap.fromTo(el, { scale: 1 }, { scale: 1.06, duration: 0.16, yoyo: true, repeat: 1, ease: 'power2.out' });
+        }
       });
     });
 
