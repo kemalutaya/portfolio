@@ -453,6 +453,26 @@
     grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
     gap:clamp(32px,4vw,56px);
   }
+  .about-intro{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  @media (max-width:700px){
+    .about-intro{
+      flex-direction:row;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .about-intro .about-photo{
+      margin-bottom:0;
+      flex:0 0 auto;
+      max-width:118px;
+    }
+    .about-intro .about-heading-group{ flex:1 1 180px; min-width:0; }
+    .about-intro .scope-note{ flex:1 1 100%; margin-top:4px; }
+  }
   .about-photo{
     width:100%;
     max-width:clamp(160px,26vw,290px);
@@ -554,8 +574,20 @@
   }
   .value-row:first-child{border-top:1px solid var(--beige-line);}
   @media (max-width:700px){
-    .value-row{grid-template-columns:44px 1fr; row-gap:10px;}
-    .value-row .tier-wrap{grid-column:1 / -1;}
+    .value-row{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:10px;
+      padding-block:22px;
+    }
+    .value-row .value-num{
+      font-size:0.75rem;
+      letter-spacing:0.08em;
+      opacity:0.75;
+    }
+    .value-row > div{ width:100%; }
+    .value-row .tier-wrap{ justify-content:flex-start; width:auto; }
   }
   .value-num{
     font-family:var(--font-mono);
@@ -1509,6 +1541,12 @@
 
     /* Timeline stat chips shouldn't overflow */
     .stat-chip{ font-size:0.72rem; padding:7px 11px; }
+
+    /* Tighten stacked vertical rhythm so sections don't drift apart */
+    .why-matters{ padding-block:clamp(28px,6vw,36px); }
+    .scope-note{ margin-top:16px; }
+    .about-photo{ margin-bottom:18px; }
+    .section-head{ margin-bottom:32px; }
   }
 
   @media print{
@@ -1683,10 +1721,12 @@
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container about-grid">
-      <div class="reveal">
+      <div class="reveal about-intro">
         <div class="about-photo"><img src="og-image.jpg" alt="Kem Alutaya" width="290" height="290" loading="lazy"></div>
-        <div class="eyebrow">About</div>
-        <h2>Five years inside healthcare operations.</h2>
+        <div class="about-heading-group">
+          <div class="eyebrow">About</div>
+          <h2>Five years inside healthcare operations.</h2>
+        </div>
         <div class="scope-note">
           <div class="label">Scope of Work</div>
           <p>Everything on this site describes administrative, operational, and documentation support. Clinical judgment, diagnosis, and complex-case decisions stay with licensed clinical personnel.</p>
