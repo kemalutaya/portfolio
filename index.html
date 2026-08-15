@@ -633,6 +633,9 @@
     border-radius:var(--radius-sm);
     padding:18px;
     position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
   }
   .sys-head{
     display:flex;
@@ -661,7 +664,7 @@
     overflow-wrap:break-word;
     min-width:0;
   }
-  .sys-card .desc{ font-size:0.84rem; color:var(--ink-soft); margin-bottom:14px; min-height:36px;}
+  .sys-card .desc{ font-size:0.84rem; color:var(--ink-soft); margin-bottom:14px; flex:1;}
   .badge{
     display:inline-block;
     font-family:var(--font-mono);
@@ -1600,7 +1603,7 @@
     </nav>
     <a href="Kem-Alutaya-Resume.pdf" download class="nav-resume">Résumé</a>
     <a href="#contact" class="nav-cta">Let's Talk</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-controls="navMobile" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
