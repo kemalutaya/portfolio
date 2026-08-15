@@ -574,20 +574,23 @@
   }
   .value-row:first-child{border-top:1px solid var(--beige-line);}
   @media (max-width:700px){
+    /* Number stays in a narrow gutter; everything else shares one left edge */
     .value-row{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      gap:10px;
+      grid-template-columns:34px 1fr;
+      column-gap:12px;
+      row-gap:12px;
+      align-items:start;
       padding-block:22px;
     }
     .value-row .value-num{
-      font-size:0.75rem;
-      letter-spacing:0.08em;
-      opacity:0.75;
+      font-size:0.78rem;
+      opacity:0.8;
+      padding-top:2px;
     }
-    .value-row > div{ width:100%; }
-    .value-row .tier-wrap{ justify-content:flex-start; width:auto; }
+    .value-row .tier-wrap{
+      grid-column:2;
+      justify-content:flex-start;
+    }
   }
   .value-num{
     font-family:var(--font-mono);
