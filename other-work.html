@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kem Oyl Nooky Alutaya — AI Data Annotation & General VA Work</title>
+<meta name="description" content="AI data annotation, QA, and general virtual assistant experience — Kem Oyl Nooky Alutaya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1720;
+    --dark-teal:#123B46;
+    --teal:#19B5A5;
+    --sage-deep:#0C6F64; /* teal-on-light, WCAG-safe */
+    --off-white:#F5F7F6;
+    --cool-gray:#DCE5E2;
+    --font-display:'Sora',sans-serif;
+    --font-body:'DM Sans',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--off-white);
+    color:var(--navy);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+  }
+  h1,h2,h3{font-family:var(--font-display);font-weight:700;color:var(--navy);}
+
+  /* ---- top nav ---- */
+  .topnav{
+    background:var(--navy);
+    color:var(--off-white);
+    padding:14px 0;
+    position:sticky;top:0;z-index:20;
+    border-bottom:1px solid rgba(220,229,226,0.12);
+  }
+  .topnav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .topnav a.back{
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    color:var(--teal);
+    text-decoration:none;
+    display:flex;align-items:center;gap:6px;
+  }
+  .topnav a.back:hover{text-decoration:underline;}
+  .topnav .tag{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:var(--cool-gray);
+    letter-spacing:0.08em;
+  }
+
+  /* ---- hero ---- */
+  .hero{
+    background:var(--navy);
+    color:var(--off-white);
+    padding:72px 0 60px;
+  }
+  .hero h1{
+    font-size:clamp(1.9rem,4.2vw,2.9rem);
+    line-height:1.15;
+    margin:14px 0 18px;
+    color:var(--off-white);
+  }
+  .hero h1 span{color:var(--teal);}
+  .hero p.lede{
+    font-size:1.05rem;
+    color:var(--cool-gray);
+    max-width:640px;
+  }
+  .hero .meta-row{
+    margin-top:28px;
+    display:flex;gap:22px;flex-wrap:wrap;
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--cool-gray);
+  }
+  .hero .meta-row strong{color:var(--teal);font-weight:500;}
+
+  /* ---- why-two-pages note ---- */
+  .context-note{
+    background:var(--cool-gray);
+    padding:20px 0;
+    border-bottom:1px solid rgba(11,23,32,0.08);
+  }
+  .context-note p{
+    font-size:0.92rem;
+    color:var(--dark-teal);
+    max-width:720px;
+  }
+  .context-note a{color:var(--sage-deep);font-weight:600;text-decoration:underline;}
+
+  section{padding:56px 0;}
+  section.alt{background:#fff;}
+  h2.section-title{
+    font-size:1.5rem;
+    margin-bottom:8px;
+  }
+  .section-sub{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--sage-deep);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    display:block;
+  }
+
+  /* ---- experience cards ---- */
+  .card{
+    background:var(--off-white);
+    border:1px solid var(--cool-gray);
+    border-radius:10px;
+    padding:26px 28px;
+    margin-bottom:20px;
+  }
+  section.alt .card{background:var(--off-white);}
+  .card-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    flex-wrap:wrap;gap:6px 16px;
+    margin-bottom:10px;
+  }
+  .card-head h3{font-size:1.15rem;}
+  .card-head .dates{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--dark-teal);
+    white-space:nowrap;
+  }
+  .card .org{
+    font-family:var(--font-mono);
+    font-size:0.82rem;
+    color:var(--sage-deep);
+    margin-bottom:12px;
+    display:block;
+  }
+  .card ul{margin:0;padding-left:20px;}
+  .card li{margin-bottom:6px;font-size:0.95rem;}
+
+  /* ---- skills grid ---- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+  }
+  .skill-block h4{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--sage-deep);
+    margin-bottom:10px;
+  }
+  .skill-block p{font-size:0.92rem;color:var(--dark-teal);}
+
+  /* ---- training row ---- */
+  .training-row{
+    display:flex;flex-wrap:wrap;gap:12px;
+  }
+  .training-chip{
+    background:#fff;
+    border:1px solid var(--cool-gray);
+    border-radius:999px;
+    padding:8px 16px;
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    color:var(--dark-teal);
+  }
+
+  /* ---- footer / contact ---- */
+  footer{
+    background:var(--navy);
+    color:var(--off-white);
+    padding:56px 0 40px;
+  }
+  footer h2{color:var(--off-white);font-size:1.4rem;margin-bottom:12px;}
+  footer p{color:var(--cool-gray);max-width:520px;margin-bottom:24px;}
+  .footer-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    padding:12px 22px;
+    border-radius:6px;
+    text-decoration:none;
+    border:1px solid var(--teal);
+    color:var(--teal);
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover{background:var(--teal);color:var(--navy);}
+  .btn.solid{background:var(--teal);color:var(--navy);}
+  .btn.solid:hover{background:var(--off-white);border-color:var(--off-white);}
+  .copyright{
+    margin-top:40px;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:rgba(245,247,246,0.5);
+  }
+
+  @media (max-width:640px){
+    .hero{padding:56px 0 44px;}
+    section{padding:44px 0;}
+    .card{padding:22px 20px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Back to Medical VA Portfolio</a>
+    <span class="tag">Kem Oyl Nooky Alutaya · Other Experience</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--teal);">Data Annotation &amp; General Virtual Assistant Work</span>
+    <h1>AI training data, QA, and general admin support &mdash; <span>the work behind the work.</span></h1>
+    <p class="lede">Alongside healthcare-focused VA work, I've spent time on the data side of AI systems, annotating and validating the datasets models are trained on, and on general administrative support outside of healthcare. This page covers that experience specifically.</p>
+    <div class="meta-row">
+      <span><strong>2 AI data roles</strong> &middot; Jan 2026–present, discontinuous</span>
+      <span><strong>3 VA training programs</strong> &middot; 2024</span>
+      <span><strong>Remote</strong> &middot; PH-based, US/UK/AU hours</span>
+    </div>
+  </div>
+</header>
+
+<div class="context-note">
+  <div class="wrap">
+    <p>My main portfolio focuses on healthcare back-office and Medical VA work &mdash; that's the role I'm best suited for and actively pursuing. This page exists separately for recruiters or roles specifically looking at AI data annotation or general (non-healthcare) VA experience, so it doesn't dilute either pitch. <a href="index.html">View the Medical VA portfolio &rarr;</a></p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="section-sub">AI Data Annotation &amp; QA</span>
+    <h2 class="section-title">Training data work</h2>
+    <p style="max-width:640px;margin-bottom:28px;color:var(--dark-teal);">Two roles, back to back, on the data side of AI model training &mdash; annotating images, validating datasets, and transcribing audio into the structured formats ML teams need.</p>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Analyst Level 2, AI Data Annotation &amp; Quality Assurance</h3>
+        <span class="dates">Jan 2026 &ndash; Apr 2026</span>
+      </div>
+      <span class="org">Innodata</span>
+      <ul>
+        <li>Annotated medical and everyday object images to improve AI model performance and training accuracy, following detailed annotation guidelines per dataset.</li>
+        <li>Performed QA and data validation on assigned datasets before submission &mdash; catching labeling errors before they reached the training pipeline.</li>
+        <li>Transcribed and structured speech recordings into clean, standardized text for ML applications.</li>
+        <li>Worked independently in a fully remote production environment with dataset-specific guidelines and quotas.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>AI Data Contributor, AI Training Data &amp; Transcription</h3>
+        <span class="dates">Sep 2025 &ndash; Dec 2025</span>
+      </div>
+      <span class="org">Telus Digital AI</span>
+      <ul>
+        <li>Transcribed audio recordings into structured datasets used for AI model training.</li>
+        <li>Performed data validation and quality review on completed transcription batches.</li>
+        <li>Supported research initiatives through data preparation and dataset organization.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="section-sub">General Virtual Assistant</span>
+    <h2 class="section-title">Admin support &amp; VA training</h2>
+    <p style="max-width:640px;margin-bottom:28px;color:var(--dark-teal);">Formal VA training completed in 2024, plus general administrative and data-tracking skills built across earlier roles &mdash; useful for admin, scheduling, and back-office work outside of healthcare specifically.</p>
+
+    <div class="training-row" style="margin-bottom:32px;">
+      <span class="training-chip">Ready To Round &mdash; VA Training (2024)</span>
+      <span class="training-chip">360MVA &mdash; VA Training (2024)</span>
+      <span class="training-chip">VA Of The Future &mdash; VA Training (2024)</span>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h4>Admin &amp; Scheduling</h4>
+        <p>Calendar management, email handling, document prep, and general back-office support &mdash; the core of VA training across all three programs.</p>
+      </div>
+      <div class="skill-block">
+        <h4>Data Tracking &amp; Reporting</h4>
+        <p>Client-list maintenance and tracking in Excel, weekly reporting on trends and pricing benchmarks, and data entry into Google Sheets from earlier research and lead-tracking work.</p>
+      </div>
+      <div class="skill-block">
+        <h4>Research</h4>
+        <p>Product and market research, competitor analysis, and listing/pricing benchmarking, from freelance product-research work.</p>
+      </div>
+      <div class="skill-block">
+        <h4>Tools</h4>
+        <p>Microsoft Word, Excel, PowerPoint, Outlook, Google Docs, Sheets, Calendar, Canva, Zoom, Slack, and Teams &mdash; comfortable daily use across all of them.</p>
+      </div>
+      <div class="skill-block">
+        <h4>AI Tools</h4>
+        <p>Regular use of ChatGPT and Claude for research, writing, and workflow support, alongside annotating training data for other AI systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="section-sub">Additional Experience</span>
+    <h2 class="section-title">Data tracking &amp; documentation</h2>
+    <p style="max-width:640px;margin-bottom:28px;color:var(--dark-teal);">Earlier roles that built the data-entry, list-maintenance, and documentation habits behind the work above.</p>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Client Acquisition Specialist</h3>
+        <span class="dates">Jul 2023 &ndash; Sep 2023 &middot; Part-time</span>
+      </div>
+      <span class="org">Nabepero (Work From Home)</span>
+      <ul>
+        <li>Updated and maintained client lists in Excel for accurate tracking.</li>
+        <li>Sourced and logged prospective client information from freelance marketplaces into a shared data sheet.</li>
+        <li>Attended daily huddles to stay current on account updates and onboarding processes.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Customer Sales Representative</h3>
+        <span class="dates">Nov 2019 &ndash; Jun 2020</span>
+      </div>
+      <span class="org">Teleperformance</span>
+      <ul>
+        <li>Updated reservation records in real time with zero data errors, for a hotel booking platform and airline back-office account.</li>
+        <li>Logged customer interactions and concerns in internal CRM, flagging patterns to QA.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <span class="section-sub">Education</span>
+    <h2 class="section-title">Background</h2>
+    <div class="card">
+      <div class="card-head">
+        <h3>Bachelor of Science in Computer Engineering</h3>
+        <span class="dates">Aug 2019</span>
+      </div>
+      <span class="org">STI College Surigao</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--teal);">Get in touch</span>
+    <h2>Looking for AI data work or general VA support?</h2>
+    <p>I can walk through either in more detail, or talk through fit for a specific role.</p>
+    <div class="footer-links">
+      <a class="btn solid" href="https://cal.com/kem-alutaya" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn" href="Kem-Alutaya-Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+      <a class="btn" href="index.html">Medical VA portfolio</a>
+    </div>
+    <p class="copyright">Kem Oyl Nooky Alutaya &middot; kemalutaya96@gmail.com</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
