@@ -125,9 +125,42 @@
 
   .section{
     padding-block:var(--pad-section);
+    position:relative;
   }
   .section-compact{
     padding-block:clamp(40px,6vw,64px);
+    position:relative;
+  }
+  .section[id]:not(:first-of-type)::before,
+  .section-compact[id]::before{
+    content:'';
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:64px; height:2px;
+    border-radius:2px;
+    background:linear-gradient(90deg, transparent, var(--sage), transparent);
+    opacity:0.55;
+  }
+
+  /* Card hover lift — consistent across all card-style components */
+  .sys-card, .wf-step, .cred-card, .minor-cred, .internship-card, .edu-card, .why-matters-item{
+    transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out), border-color .2s var(--ease-out);
+  }
+  .sys-card:hover, .wf-step:hover, .cred-card:hover, .minor-cred:hover, .internship-card:hover, .edu-card:hover, .why-matters-item:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 28px -16px rgba(11,23,32,0.22);
+    border-color:var(--sage);
+  }
+  .case-card{ transition:transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+  .case-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 36px -16px rgba(11,23,32,0.5);
+  }
+  [data-theme="dark"] .sys-card:hover, [data-theme="dark"] .wf-step:hover, [data-theme="dark"] .cred-card:hover,
+  [data-theme="dark"] .minor-cred:hover, [data-theme="dark"] .internship-card:hover, [data-theme="dark"] .edu-card:hover,
+  [data-theme="dark"] .why-matters-item:hover{
+    box-shadow:0 14px 28px -16px rgba(0,0,0,0.55);
   }
 
   .eyebrow{
@@ -212,12 +245,25 @@
   nav.links a{
     color:var(--ink-soft);
     padding-block:6px;
+    position:relative;
     border-bottom:1px solid transparent;
-    transition:color .15s var(--ease-out), border-color .15s var(--ease-out);
+    transition:color .15s var(--ease-out);
+  }
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    left:0; right:0; bottom:-1px;
+    height:1px;
+    background:var(--sage-deep);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .25s var(--ease-out);
   }
   nav.links a:hover, nav.links a.active{
     color:var(--sage-deep);
-    border-color:var(--sage-deep);
+  }
+  nav.links a:hover::after, nav.links a.active::after{
+    transform:scaleX(1);
   }
   .nav-cta{
     font-family:var(--font-mono);
@@ -823,6 +869,18 @@
     border-bottom:1px solid var(--ivory-dim);
   }
   .ae-row-details:last-child{ border-bottom:none; }
+  .ae-more-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:16px;
+    font-family:var(--font-mono);
+    font-size:0.84rem;
+    color:var(--sage-deep);
+    border-bottom:1px solid transparent;
+    transition:border-color .15s var(--ease-out);
+  }
+  .ae-more-link:hover{ border-color:var(--sage-deep); }
   .ae-row-details summary{
     display:flex;
     flex-wrap:wrap;
@@ -2194,6 +2252,7 @@
             <li>Roughly $1,000+ per month in profit generated from the items I listed, working about 4 hours a day alongside college.</li>
           </ul>
         </details>
+        <a href="other-work.html" class="ae-more-link">View full details on AI data annotation &amp; general VA work &rarr;</a>
       </div>
     </div>
   </section>
@@ -2514,7 +2573,6 @@
         <a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="Kem-Alutaya-Resume.pdf" download>Résumé</a>
         <a href="mailto:kemalutaya96@gmail.com">Email</a>
-        <a href="other-work.html">Other Work</a>
       </div>
       <div class="footer-loc">Philippines · Remote · UK / US Hours · Updated Aug 2026</div>
     </div>
