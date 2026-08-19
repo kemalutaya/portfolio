@@ -222,6 +222,8 @@
     *{animation:none !important;transition:none !important;}
   }
 
+  .reveal{opacity:0;transform:translateY(14px);}
+  .reveal.in{opacity:1;transform:translateY(0);transition:opacity 0.5s ease, transform 0.5s ease;}
 </style>
 </head>
 <body>
@@ -237,11 +239,11 @@
   <div class="wrap">
     <span class="eyebrow" style="color:var(--teal);">Data Annotation &amp; General Virtual Assistant Work</span>
     <h1>AI training data, QA, and general admin support &mdash; <span>the work behind the work.</span></h1>
-    <p class="lede">Alongside healthcare-focused VA work, I've spent time on the data side of AI systems, annotating and validating the datasets models are trained on, and on general administrative support outside of healthcare. This page covers that experience specifically.</p>
+    <p class="lede">Alongside healthcare-focused VA work, I've spent time on the data side of AI systems &mdash; annotating and validating the datasets models are trained on &mdash; and on general administrative support outside of healthcare. This page covers that experience specifically.</p>
     <div class="meta-row">
       <span><strong>2 AI data roles</strong> &middot; Jan 2026–present, discontinuous</span>
       <span><strong>3 VA training programs</strong> &middot; 2024</span>
-      <span><strong>Remote</strong> &middot; PH-based, US/UK/AU hours</span>
+      <span><strong>Remote</strong> &middot; PH-based, US/UK hours</span>
     </div>
   </div>
 </header>
@@ -258,7 +260,7 @@
     <h2 class="section-title">Training data work</h2>
     <p style="max-width:640px;margin-bottom:28px;color:var(--dark-teal);">Two roles, back to back, on the data side of AI model training &mdash; annotating images, validating datasets, and transcribing audio into the structured formats ML teams need.</p>
 
-    <div class="card">
+    <div class="card reveal">
       <div class="card-head">
         <h3>Analyst Level 2, AI Data Annotation &amp; Quality Assurance</h3>
         <span class="dates">Jan 2026 &ndash; Apr 2026</span>
@@ -272,7 +274,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <div class="card-head">
         <h3>AI Data Contributor, AI Training Data &amp; Transcription</h3>
         <span class="dates">Sep 2025 &ndash; Dec 2025</span>
@@ -318,7 +320,7 @@
       </div>
       <div class="skill-block">
         <h4>AI Tools</h4>
-        <p>Regular use of ChatGPT and Claude for research, writing, and workflow support, alongside annotating training data for other AI systems.</p>
+        <p>Regular use of ChatGPT and Claude for research, writing, and workflow support &mdash; working from the other side of AI tools, not just training data for them.</p>
       </div>
     </div>
   </div>
@@ -330,7 +332,7 @@
     <h2 class="section-title">Data tracking &amp; documentation</h2>
     <p style="max-width:640px;margin-bottom:28px;color:var(--dark-teal);">Earlier roles that built the data-entry, list-maintenance, and documentation habits behind the work above.</p>
 
-    <div class="card">
+    <div class="card reveal">
       <div class="card-head">
         <h3>Client Acquisition Specialist</h3>
         <span class="dates">Jul 2023 &ndash; Sep 2023 &middot; Part-time</span>
@@ -343,7 +345,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card reveal">
       <div class="card-head">
         <h3>Customer Sales Representative</h3>
         <span class="dates">Nov 2019 &ndash; Jun 2020</span>
@@ -361,7 +363,7 @@
   <div class="wrap">
     <span class="section-sub">Education</span>
     <h2 class="section-title">Background</h2>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-head">
         <h3>Bachelor of Science in Computer Engineering</h3>
         <span class="dates">Aug 2019</span>
@@ -375,7 +377,7 @@
   <div class="wrap">
     <span class="eyebrow" style="color:var(--teal);">Get in touch</span>
     <h2>Looking for AI data work or general VA support?</h2>
-    <p>I can walk through either in more detail, or talk through fit for a specific role.</p>
+    <p>Happy to walk through either of these in more detail, or talk through fit for a specific role.</p>
     <div class="footer-links">
       <a class="btn solid" href="https://cal.com/kem-alutaya" target="_blank" rel="noopener">Book a call</a>
       <a class="btn" href="Kem-Alutaya-Resume.pdf" target="_blank" rel="noopener">Download resume</a>
@@ -385,6 +387,17 @@
   </div>
 </footer>
 
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const items = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.15});
+    items.forEach(el=>io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+  }
+</script>
 
 </body>
 </html>
