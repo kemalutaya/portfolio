@@ -1254,10 +1254,10 @@
     color:rgba(245,247,246,0.42);
   }
 
-  .footer-brand{ max-width:420px; }
+  .footer-brand{ flex:1 1 260px; max-width:460px; min-width:0; }
   .footer-name{
     font-family:var(--font-display);
-    font-size:1.15rem;
+    font-size:clamp(1.02rem,1.6vw,1.15rem);
     font-weight:700;
     color:var(--ivory);
     letter-spacing:0.01em;
@@ -1265,15 +1265,16 @@
   }
   .footer-disciplines{
     font-family:var(--font-mono);
-    font-size:0.74rem;
+    font-size:0.75rem;
     color:rgba(245,247,246,0.5);
     line-height:1.6;
   }
-  .footer-meta{ text-align:right; }
+  .footer-meta{ flex:1 1 240px; min-width:0; text-align:right; }
   @media (max-width:700px){ .footer-meta{ text-align:left; } }
   .footer-links{
     display:flex;
-    gap:18px;
+    flex-wrap:wrap;
+    gap:10px 18px;
     margin-bottom:8px;
     justify-content:flex-end;
   }
@@ -1740,6 +1741,47 @@
     align-items:flex-start;
     gap:8px;
   }
+  .mail-fallback{
+    margin-top:6px;
+    padding:14px 16px;
+    border:1px dashed rgba(245,247,246,0.25);
+    border-radius:10px;
+    max-width:420px;
+  }
+  .mf-label{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:rgba(245,247,246,0.75);
+    margin-bottom:10px;
+  }
+  .mf-links{ display:flex; gap:10px; flex-wrap:wrap; }
+  .mf-links a, .mf-links button{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--navy);
+    background:var(--sage);
+    border:none;
+    padding:7px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:opacity .15s var(--ease-out), transform .12s var(--ease-out);
+  }
+  .mf-links button{ background:transparent; color:var(--sage); border:1px solid var(--sage); }
+  .mf-links a:hover, .mf-links button:hover{ opacity:0.85; }
+  .mf-links a:active, .mf-links button:active{ transform:scale(0.96); }
+  .mf-copied{
+    margin-top:10px;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--sage);
+    opacity:0;
+    transition:opacity .25s var(--ease-out);
+  }
+  .mf-copied.show{ opacity:1; }
+  @media (prefers-reduced-motion: reduce){
+    .mf-links a:active, .mf-links button:active{ transform:none; }
+  }
+
   .copy-confirm{
     font-family:var(--font-mono);
     font-size:0.76rem;
@@ -1760,8 +1802,9 @@
   .footer-inner{
     display:flex;
     justify-content:space-between;
+    align-items:flex-start;
     flex-wrap:wrap;
-    gap:10px;
+    gap:20px clamp(24px,4vw,48px);
   }
 
 
@@ -1900,9 +1943,6 @@
     </button>
   </div>
   <div class="nav-backdrop" id="navBackdrop"></div>
-  <a href="#top" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
-  </a>
 </header>
 
 <main id="top">
@@ -2745,7 +2785,15 @@
         <div class="cta-with-fallback">
           <a href="https://cal.com/kem-alutaya" target="_blank" rel="noopener" class="btn btn-accent">Schedule a 15-Min Call</a>
           <a href="mailto:kemalutaya96@gmail.com?subject=Healthcare%20admin%20support%20enquiry&body=Hi%20Kem%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20working%20together.%0A%0AA%20bit%20about%20us%3A%0A-%20Practice%20/%20company%3A%0A-%20What%20we%20need%20help%20with%3A%0A-%20Hours%20or%20timezone%3A%0A-%20Role%20type%20%28full-time%20/%20part-time%20/%20contract%29%3A%0A%0ALooking%20forward%20to%20hearing%20from%20you.%0A" class="btn btn-light" id="connectBtn">Email Me</a>
-          <span class="copy-confirm" id="copyConfirm">Email copied &mdash; kemalutaya96@gmail.com</span>
+          <div class="mail-fallback" id="mailFallback" hidden>
+            <div class="mf-label">No mail app opened? Use one of these:</div>
+            <div class="mf-links">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kemalutaya96%40gmail.com&su=Healthcare%20admin%20support%20enquiry&body=Hi%20Kem%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20working%20together.%0A%0AA%20bit%20about%20us%3A%0A-%20Practice%20/%20company%3A%0A-%20What%20we%20need%20help%20with%3A%0A-%20Hours%20or%20timezone%3A%0A-%20Role%20type%20%28full-time%20/%20part-time%20/%20contract%29%3A%0A%0ALooking%20forward%20to%20hearing%20from%20you.%0A" target="_blank" rel="noopener">Gmail</a>
+              <a href="https://outlook.live.com/mail/0/deeplink/compose?to=kemalutaya96%40gmail.com&subject=Healthcare%20admin%20support%20enquiry&body=Hi%20Kem%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20working%20together.%0A%0AA%20bit%20about%20us%3A%0A-%20Practice%20/%20company%3A%0A-%20What%20we%20need%20help%20with%3A%0A-%20Hours%20or%20timezone%3A%0A-%20Role%20type%20%28full-time%20/%20part-time%20/%20contract%29%3A%0A%0ALooking%20forward%20to%20hearing%20from%20you.%0A" target="_blank" rel="noopener">Outlook</a>
+              <button type="button" id="copyEmailBtn">Copy address</button>
+            </div>
+            <div class="mf-copied" id="copyConfirm">Copied &mdash; kemalutaya96@gmail.com</div>
+          </div>
         </div>
       </div>
     </div>
@@ -2769,6 +2817,10 @@
     </div>
   </div>
 </footer>
+
+  <a href="#top" class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+  </a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -2827,20 +2879,29 @@
   // browsers with no default mail client set, so this guarantees the email
   // is always reachable one way or another.
   const connectBtn = document.getElementById('connectBtn');
+  const mailFallback = document.getElementById('mailFallback');
   const copyConfirm = document.getElementById('copyConfirm');
-  if (connectBtn && copyConfirm && navigator.clipboard) {
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+
+  if (connectBtn && mailFallback) {
     connectBtn.addEventListener('click', () => {
-      // The mailto opens normally. If no mail client is configured nothing
-      // visible happens, so after a short delay offer the address instead of
-      // leaving the person stuck with a dead button.
-      const hidden = document.hidden;
+      // The mailto fires normally. If a mail client takes over, the page loses
+      // focus and we stay quiet. If nothing happens, surface webmail options
+      // rather than leaving the person with a dead button.
+      const wasHidden = document.hidden;
       setTimeout(() => {
-        if (document.hidden || hidden) return; // mail client took over — stay quiet
-        navigator.clipboard.writeText('kemalutaya96@gmail.com').then(() => {
-          copyConfirm.classList.add('show');
-          setTimeout(() => copyConfirm.classList.remove('show'), 6000);
-        }).catch(() => {});
-      }, 900);
+        if (document.hidden || wasHidden) return;
+        mailFallback.hidden = false;
+      }, 800);
+    });
+  }
+
+  if (copyEmailBtn && copyConfirm && navigator.clipboard) {
+    copyEmailBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('kemalutaya96@gmail.com').then(() => {
+        copyConfirm.classList.add('show');
+        setTimeout(() => copyConfirm.classList.remove('show'), 5000);
+      }).catch(() => {});
     });
   }
 
