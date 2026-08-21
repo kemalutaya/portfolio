@@ -71,6 +71,9 @@
     --gray:#93A6A2;
     --beige-line:rgba(255,255,255,0.12);
     --sage-line:rgba(159,201,194,0.35);
+    /* Deep teal is only legible on light surfaces (2.4-3.0:1 on dark).
+       On dark backgrounds the bright teal is the readable one (5.7-7.1:1). */
+    --sage-deep:#19B5A5;
   }
 
   [data-theme="dark"] body{ background:var(--bg-page); }
@@ -1320,6 +1323,56 @@
   }
 
   .case-flow{ margin:14px 0; }
+
+  .flow-toggle-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .flow-switch{
+    display:inline-flex;
+    background:rgba(245,247,246,0.08);
+    border:1px solid rgba(245,247,246,0.14);
+    border-radius:999px;
+    padding:3px;
+  }
+  .flow-btn{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:rgba(245,247,246,0.82);
+    background:none;
+    border:none;
+    padding:6px 13px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background .18s var(--ease-out), color .18s var(--ease-out), transform .12s var(--ease-out);
+  }
+  .flow-btn:hover{ color:#FFFFFF; }
+  .flow-btn.is-active{
+    background:var(--sage);
+    color:var(--navy);
+    font-weight:600;
+  }
+  .flow-btn:active{ transform:scale(0.96); }
+  .flow-tally{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px dashed rgba(245,247,246,0.16);
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--sage);
+  }
+  .flow-tally strong{ color:#FFFFFF; font-weight:600; }
+  .flow-tally-manual{ color:rgba(245,247,246,0.7); }
+  .flow-tally-manual strong{ color:rgba(245,247,246,0.9); }
+  @media (prefers-reduced-motion: reduce){
+    .flow-btn:active{ transform:none; }
+  }
   .case-subitems{ display:flex; flex-direction:column; gap:14px; }
   .case-subitem{
     padding-left:14px;
@@ -1533,6 +1586,43 @@
     font-family:var(--font-mono);
     font-size:0.76rem;
     color:var(--sage-deep);
+  }
+
+  /* ---------- SECURITY ---------- */
+  .security-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:clamp(20px,2.5vw,28px);
+  }
+  .sec-item{
+    background:var(--paper);
+    border:1px solid var(--beige-line);
+    border-radius:var(--radius-card);
+    padding:24px;
+  }
+  .sec-label{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    margin-bottom:10px;
+  }
+  .sec-item h3{
+    font-size:1.08rem;
+    font-weight:700;
+    margin-bottom:10px;
+    letter-spacing:-0.01em;
+  }
+  .sec-item p{ font-size:0.9rem; color:var(--ink-soft); line-height:1.55; }
+  .security-note{
+    margin-top:28px;
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    border-left:2px solid var(--sage);
+    padding-left:16px;
+    max-width:720px;
   }
 
   /* ---------- PHILOSOPHY ---------- */
@@ -1751,6 +1841,7 @@
       <a href="#systems">Systems</a>
       <a href="#experience">Experience</a>
       <a href="#improvements">Case Studies</a>
+      <a href="#security">Security</a>
       <a href="#contact">Contact</a>
     </nav>
     <a href="Kem-Alutaya-Resume.pdf" download class="nav-resume">Résumé</a>
@@ -1769,6 +1860,7 @@
     <a href="#systems">Systems</a>
     <a href="#experience">Experience</a>
     <a href="#improvements">Case Studies</a>
+    <a href="#security">Security</a>
     <a href="#contact">Contact</a>
     <a href="Kem-Alutaya-Resume.pdf" download>Résumé</a>
     <button class="theme-toggle theme-toggle-mobile" id="themeToggleMobile" aria-label="Switch to dark mode" aria-pressed="false" type="button">
@@ -1790,11 +1882,11 @@
         <h1>Kem Alutaya</h1>
         <div class="role">Healthcare Back-Office Support · Remote</div>
         <div class="headline">
-          <span class="hl-line-1">I run healthcare back-office <span class="hl-morph">workflows</span>,</span>
+          <span class="hl-line-1">I run healthcare back-office <span class="hl-morph">workflows</span> &mdash;</span>
           <span class="hl-connector" aria-hidden="true">
             <svg viewBox="0 0 200 14" preserveAspectRatio="none"><line class="hl-wire" x1="4" y1="7" x2="196" y2="7"/><circle class="hl-node" cx="4" cy="7" r="3"/><circle class="hl-node" cx="68" cy="7" r="3"/><circle class="hl-node" cx="132" cy="7" r="3"/><circle class="hl-node" cx="196" cy="7" r="3"/></svg>
           </span>
-          <span class="headline-accent">then find the ones worth automating.</span>
+          <span class="headline-accent">accurately, and faster than they were before.</span>
         </div>
         <p class="support">Insurance verification, EMR support, chart preparation, documentation, and facility coordination for healthcare teams where accuracy and volume both matter.</p>
         <div class="credibility-row">
@@ -2376,14 +2468,33 @@
             <div class="k">Problem</div>
             <div class="v">Three recurring daily tasks — sending physician schedules, notifying facilities, and preparing doctor-visit flyers — were all manual, repetitive, and error-prone: wrong doctor, wrong CC, wrong date, wrong attachment, typos.</div>
           </div>
-          <div class="case-flow">
-            <div class="flow-label">Schedules: Before → After</div>
-            <div class="flow-chain">
-              <span class="flow-step">Check patient count, per building</span>
-              <span class="flow-step">Check status, per building</span>
-              <span class="flow-step">Check insurance, per building</span>
-              <span class="flow-step">Manually draft &amp; send, 5+ buildings</span>
-              <span class="flow-step flow-after">Draft pre-filled with facility, date, and files, down to a few clicks to review and send</span>
+          <div class="case-flow flow-toggleable" id="scheduleFlow">
+            <div class="flow-toggle-head">
+              <div class="flow-label">Sending one doctor's schedule</div>
+              <div class="flow-switch" role="group" aria-label="Compare manual and automated process">
+                <button type="button" class="flow-btn" data-mode="manual" aria-pressed="false">Manual</button>
+                <button type="button" class="flow-btn is-active" data-mode="auto" aria-pressed="true">Automated</button>
+              </div>
+            </div>
+
+            <div class="flow-pane" data-pane="auto">
+              <div class="flow-chain">
+                <span class="flow-step flow-after">Select the doctor and facility — the macro fills recipient, CC, subject, body, and attachments</span>
+                <span class="flow-step flow-after">Review every detail and send</span>
+              </div>
+              <div class="flow-tally"><strong>2 steps</strong> · about 1 hour a day</div>
+            </div>
+
+            <div class="flow-pane" data-pane="manual" hidden>
+              <div class="flow-chain">
+                <span class="flow-step">Check patient count, per building</span>
+                <span class="flow-step">Check status, per building</span>
+                <span class="flow-step">Check insurance, per building</span>
+                <span class="flow-step">Gather and attach the right files</span>
+                <span class="flow-step">Draft the email, CC the right staff</span>
+                <span class="flow-step">Repeat for every building — often 5+ per doctor</span>
+              </div>
+              <div class="flow-tally flow-tally-manual"><strong>6 steps, repeated per building</strong> · about 3 hours a day</div>
             </div>
           </div>
           </div>
@@ -2501,10 +2612,6 @@
           <h3>Honest About My Scope</h3>
           <p>I understand the difference between administrative support and clinical responsibilities. I work within my role and escalate matters that require clinical judgment.</p>
         </div>
-        <div class="why-item reveal">
-          <h3>Reliable Remote Setup</h3>
-          <p>Main laptop, backup laptop, two backup power supplies, and backup internet, so a single outage doesn't interrupt the workflow.</p>
-        </div>
       </div>
 
       <div class="testimonials reveal">
@@ -2522,6 +2629,57 @@
           <div class="testimonial-source">Supervisor, Resident Eye Care Associates</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- DATA HANDLING & SECURITY -->
+  <section class="section" id="security">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Data Handling</div>
+        <h2>How I handle patient information.</h2>
+        <p class="sub">Working remotely with PHI means the setup matters as much as the skills. Here's exactly how I work.</p>
+      </div>
+
+      <div class="security-grid">
+        <div class="sec-item reveal">
+          <div class="sec-label">Training</div>
+          <h3>HIPAA certified</h3>
+          <p>Certified through Biologix (2026). Five years working inside systems that hold PHI, across a U.S. eye care practice and a major U.S. health plan.</p>
+        </div>
+
+        <div class="sec-item reveal">
+          <div class="sec-label">Workspace</div>
+          <h3>Private, dedicated room</h3>
+          <p>I work from a private room with a door that closes. No one else can see my screen, and no shared or public spaces are used for client work.</p>
+        </div>
+
+        <div class="sec-item reveal">
+          <div class="sec-label">Device security</div>
+          <h3>Locked down by default</h3>
+          <p>Two-factor authentication, device password and encryption, a password manager rather than reused credentials, and antivirus and firewall kept current.</p>
+        </div>
+
+        <div class="sec-item reveal">
+          <div class="sec-label">Working inside your systems</div>
+          <h3>Comfortable in restricted environments</h3>
+          <p>My most recent role ran entirely on a locked-down remote desktop where installing any new software required IT approval. I'm used to working within access controls rather than around them — the automation in Case 03 was built using only the tools already permitted on that machine.</p>
+        </div>
+
+        <div class="sec-item reveal">
+          <div class="sec-label">Agreements</div>
+          <h3>Ready to sign a BAA</h3>
+          <p>I understand what a Business Associate Agreement covers and will sign one as part of onboarding, alongside any NDA or confidentiality terms your practice requires.</p>
+        </div>
+
+        <div class="sec-item reveal">
+          <div class="sec-label">Continuity</div>
+          <h3>Backup for everything</h3>
+          <p>Main laptop plus a backup ready to go, two backup power supplies, and backup internet, so a single outage doesn't interrupt your workflow or leave work half-finished.</p>
+        </div>
+      </div>
+
+      <p class="security-note reveal">Scope reminder: I support operations. Clinical judgment, diagnosis, and complex-case decisions stay with licensed clinical personnel, and I escalate rather than guess.</p>
     </div>
   </section>
 
@@ -2553,8 +2711,8 @@
         </div>
         <div class="cta-with-fallback">
           <a href="https://cal.com/kem-alutaya" target="_blank" rel="noopener" class="btn btn-accent">Schedule a 15-Min Call</a>
-          <a href="mailto:kemalutaya96@gmail.com" class="btn btn-light" id="connectBtn">Let's Connect</a>
-          <span class="copy-confirm" id="copyConfirm">Email copied: kemalutaya96@gmail.com</span>
+          <a href="mailto:kemalutaya96@gmail.com?subject=Healthcare%20admin%20support%20enquiry&body=Hi%20Kem%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20working%20together.%0A%0AA%20bit%20about%20us%3A%0A-%20Practice%20/%20company%3A%0A-%20What%20we%20need%20help%20with%3A%0A-%20Hours%20or%20timezone%3A%0A-%20Role%20type%20%28full-time%20/%20part-time%20/%20contract%29%3A%0A%0ALooking%20forward%20to%20hearing%20from%20you.%0A" class="btn btn-light" id="connectBtn">Email Me</a>
+          <span class="copy-confirm" id="copyConfirm">Email copied &mdash; kemalutaya96@gmail.com</span>
         </div>
       </div>
     </div>
@@ -2639,10 +2797,17 @@
   const copyConfirm = document.getElementById('copyConfirm');
   if (connectBtn && copyConfirm && navigator.clipboard) {
     connectBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('kemalutaya96@gmail.com').then(() => {
-        copyConfirm.classList.add('show');
-        setTimeout(() => copyConfirm.classList.remove('show'), 3000);
-      }).catch(() => {});
+      // The mailto opens normally. If no mail client is configured nothing
+      // visible happens, so after a short delay offer the address instead of
+      // leaving the person stuck with a dead button.
+      const hidden = document.hidden;
+      setTimeout(() => {
+        if (document.hidden || hidden) return; // mail client took over — stay quiet
+        navigator.clipboard.writeText('kemalutaya96@gmail.com').then(() => {
+          copyConfirm.classList.add('show');
+          setTimeout(() => copyConfirm.classList.remove('show'), 6000);
+        }).catch(() => {});
+      }, 900);
     });
   }
 
@@ -2675,7 +2840,7 @@
       .to('.status-card', { opacity: 1, y: 0, duration: 0.8 }, '-=0.55');
 
     // Scroll reveal — grid siblings cascade together, everything else reveals on its own
-    const gridSelectors = ['.services-grid', '.systems-cards', '.cred-grid', '.cases-grid', '.why-grid', '.why-matters-grid', '.workflow-strip'];
+    const gridSelectors = ['.services-grid', '.systems-cards', '.cred-grid', '.cases-grid', '.why-grid', '.why-matters-grid', '.security-grid', '.workflow-strip'];
     const groups = new Map();
     const singles = [];
 
@@ -2758,8 +2923,33 @@
     });
   }
 
+  // Case 03: manual vs automated comparison toggle
+  document.querySelectorAll('.flow-toggleable').forEach(flow => {
+    const buttons = flow.querySelectorAll('.flow-btn');
+    const panes = flow.querySelectorAll('.flow-pane');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-mode');
+        buttons.forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on);
+        });
+        panes.forEach(p => { p.hidden = p.getAttribute('data-pane') !== mode; });
+
+        const shown = flow.querySelector('.flow-pane[data-pane="' + mode + '"]');
+        if (shown && typeof gsap !== 'undefined' &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          gsap.fromTo(shown.querySelectorAll('.flow-step, .flow-tally'),
+            { opacity: 0, y: 6 },
+            { opacity: 1, y: 0, duration: 0.26, stagger: 0.045, ease: 'power3.out' });
+        }
+      });
+    });
+  });
+
   // Scroll-spy nav highlighting
-  const sections = ['about','services','systems','experience','improvements','contact']
+  const sections = ['about','services','systems','experience','improvements','security','contact']
     .map(id => document.getElementById(id)).filter(Boolean);
   const navLinks = document.querySelectorAll('nav.links a');
 

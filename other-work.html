@@ -161,6 +161,45 @@
     background:linear-gradient(90deg, transparent, var(--teal), transparent);
     opacity:0.5;
   }
+  .section-resume{
+    display:inline-flex;
+    align-items:flex-start;
+    gap:12px;
+    margin-top:28px;
+    padding:16px 20px;
+    border:1px solid var(--line-soft);
+    border-radius:12px;
+    background:var(--bg-card-alt);
+    max-width:520px;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .section-resume:hover{ border-color:var(--teal); transform:translateY(-2px); }
+  .section-resume:active{ transform:translateY(0); }
+  .section-resume .sr-icon{
+    font-size:1rem;
+    color:var(--teal);
+    line-height:1.4;
+    flex-shrink:0;
+  }
+  .section-resume strong{
+    display:block;
+    font-family:'Sora',sans-serif;
+    font-size:0.98rem;
+    color:var(--text-heading);
+    margin-bottom:3px;
+  }
+  .section-resume em{
+    display:block;
+    font-style:normal;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.76rem;
+    color:var(--text-body);
+    line-height:1.5;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .section-resume:hover, .section-resume:active{ transform:none; }
+  }
+
   h2.section-title{
     font-size:1.5rem;
     margin-bottom:8px;
@@ -357,6 +396,10 @@
         <li>Supported research initiatives through data preparation and dataset organization.</li>
       </ul>
     </div>
+    <a class="section-resume" href="KemAlutaya_Resume_AI_DataAnnotation.pdf" target="_blank" rel="noopener">
+      <span class="sr-icon" aria-hidden="true">&darr;</span>
+      <span><strong>Resume tailored for AI data work</strong><em>Annotation, transcription, and dataset QA experience up front (PDF)</em></span>
+    </a>
   </div>
 </section>
 
@@ -394,6 +437,10 @@
         <p>Regular use of ChatGPT and Claude for research, writing, and workflow support &mdash; working from the other side of AI tools, not just training data for them.</p>
       </div>
     </div>
+    <a class="section-resume" href="KemAlutaya_Resume_VA_DataEntry.pdf" target="_blank" rel="noopener">
+      <span class="sr-icon" aria-hidden="true">&darr;</span>
+      <span><strong>Resume tailored for general VA &amp; data entry</strong><em>Admin, records management, and automation experience up front (PDF)</em></span>
+    </a>
   </div>
 </section>
 
@@ -451,7 +498,6 @@
     <p>Happy to walk through either of these in more detail, or talk through fit for a specific role.</p>
     <div class="footer-links">
       <a class="btn solid" href="https://cal.com/kem-alutaya" target="_blank" rel="noopener">Book a call</a>
-      <a class="btn" href="Kem-Alutaya-Resume.pdf" target="_blank" rel="noopener">Download resume</a>
       <a class="btn" href="index.html">Medical VA portfolio</a>
     </div>
     <p class="copyright">Kem Oyl Nooky Alutaya &middot; kemalutaya96@gmail.com</p>
