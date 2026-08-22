@@ -376,7 +376,12 @@
     color:var(--gray);
     margin-bottom:8px;
   }
-  .hero h1{
+  .hero .hero-name{
+    font-family:var(--font-display);
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+    line-height:1.12;
     font-size:clamp(2rem,7vw,4.4rem);
     font-weight:800;
   }
@@ -386,6 +391,8 @@
     font-size:clamp(1.05rem,1.6vw,1.3rem);
     color:var(--sage-deep);
     margin-top:10px;
+    line-height:1.6;
+    letter-spacing:normal;
   }
   .hero .headline{
     margin-top:26px;
@@ -1952,8 +1959,8 @@
     <div class="container hero-grid">
       <div>
         <div class="full-name">Kem Oyl Nooky Alutaya</div>
-        <h1>Kem Alutaya</h1>
-        <div class="role">Healthcare Back-Office Support · Remote</div>
+        <div class="hero-name">Kem Alutaya</div>
+        <h1 class="role">Healthcare Back-Office Support · Remote</h1>
         <div class="headline">
           <span class="hl-line-1">I run healthcare back-office <span class="hl-morph">workflows</span> &mdash;</span>
           <span class="hl-connector" aria-hidden="true">
@@ -2043,7 +2050,7 @@
         </div>
         <div class="why-matters-item reveal">
           <h3>Workflow Improvement</h3>
-          <p>Built an automated draft-generation workflow that saves roughly 2 hours per day (see Case 03 further down).</p>
+          <p>Built an automated draft-generation workflow that saves roughly 2 hours per day (see the case study further down).</p>
         </div>
       </div>
     </div>
@@ -2066,9 +2073,9 @@
         </div>
       </div>
       <div class="about-copy reveal">
-        <p>I'm Kem Alutaya, a Medical Virtual Administrative Assistant based in the Philippines with 5+ years of healthcare-adjacent experience, supporting healthcare workflows remotely for teams across the U.S. and UK. Professional working proficiency in English, written and verbal.</p>
+        <p>I'm Kem Alutaya, a Medical Virtual Administrative Assistant based in the Philippines with 5+ years in non-clinical healthcare administration, supporting healthcare workflows remotely for teams across the U.S. and UK. Professional working proficiency in English, written and verbal.</p>
         <p>I keep patient information organized, verify insurance eligibility, maintain accurate records, prepare charts, review documentation, and help healthcare teams stay on top of their daily administrative workload.</p>
-        <p>In my most recent role with an eye care organization, I worked extensively with <strong>Compulink</strong> and <strong>PointClickCare</strong> while handling insurance eligibility across multiple states and payers. I regularly reviewed patient records, prepared charts for upcoming physician schedules, performed facility and patient-status verification, processed EOBs, and supported facility communications. That engagement wrapped up in July 2026, and I'm now looking for my next long-term healthcare operations role.</p>
+        <p>In my most recent role with Resident Eye Care Associates, I worked extensively with <strong>Compulink</strong> and <strong>PointClickCare</strong> while handling insurance eligibility across multiple states and payers. I regularly reviewed patient records, prepared charts for upcoming physician schedules, performed facility and patient-status verification, processed EOBs, and supported facility communications. That engagement wrapped up in July 2026, and I'm now looking for my next long-term healthcare operations role.</p>
         <p>Before moving into medical virtual assistance, I worked in healthcare operations at <strong>Optum</strong>, including prior authorization support, backend escalations, documentation, workflow support, and agent coaching.</p>
         <p>My approach is simple: <strong>be accurate, be dependable, understand the workflow, and make the team's job easier.</strong></p>
       </div>
@@ -2329,6 +2336,7 @@
             <li>Ran daily and weekly stat meetings with leadership, presenting team performance.</li>
             <li>Built trend charts to track team performance over time.</li>
             <li>Handled backend escalations and supported new tool rollouts.</li>
+            <li>One of the teams I supported ranked 1st out of 5 on the floor.</li>
           </ul>
           <div class="stat-row">
             <span class="stat-chip">10+ agents coached</span>
@@ -2481,53 +2489,8 @@
         <h2>I look for ways to improve workflows, not just run them.</h2>
       </div>
 
-      <div class="cases-grid">
-        <div class="case-card reveal">
-          <div class="case-tab">Case 01</div>
-          <h3>Streamlining PCC Facility Updates</h3>
-          <div class="case-block">
-            <div class="k">Problem</div>
-            <div class="v">New patients are entered daily per facility, and each facility needs a "heading" — a label doctors see on their schedule so they know what to expect on arrival. Some facilities were missing one entirely.</div>
-          </div>
-          <div class="case-flow">
-            <div class="flow-label">Before → After</div>
-            <div class="flow-chain">
-              <span class="flow-step">Facility missing its heading, no context on the doctor's schedule</span>
-              <span class="flow-step flow-after">Heading added, unprompted, for consistency across every facility</span>
-            </div>
-          </div>
-          <div class="case-block">
-            <div class="k">Result</div>
-            <div class="v">My supervisor noticed the change before I'd mentioned doing it, and flagged it unprompted as proactive — it cut down on extra work for the clinic's staff.</div>
-          </div>
-          <div class="case-highlight">Noticed and fixed independently</div>
-        </div>
-
-        <div class="case-card reveal">
-          <div class="case-tab">Case 02</div>
-          <h3>Redesigning Facility Communication</h3>
-          <div class="case-block">
-            <div class="k">Problem</div>
-            <div class="v">The facility flyer template I'd been sending out hadn't changed in years — outdated compared to current design standards.</div>
-          </div>
-          <div class="case-flow">
-            <div class="flow-label">Before → After</div>
-            <div class="flow-chain">
-              <span class="flow-step">Same template used for years, dated look and layout</span>
-              <span class="flow-step flow-after">Redesigned to be readable for older patients, direct, and professional</span>
-            </div>
-          </div>
-          <div class="case-block">
-            <div class="k">Result</div>
-            <div class="v">Approached my client directly with the redesign, unprompted — she approved it for ongoing use and thanked me for developing that design skill.</div>
-          </div>
-          <div class="case-highlight">Adopted for ongoing use</div>
-        </div>
-
-      </div>
-
       <div class="case-card case-card-featured reveal">
-          <div class="case-tab">Case 03 <span class="case-featured-tag">Highest Impact</span></div>
+          <div class="case-tab">Case Study <span class="case-featured-tag">Highest Impact</span></div>
           <h3>Automating Administrative Draft Generation</h3>
           <div class="impact-figure impact-lead">
             <span class="impact-before">3 hrs</span>
@@ -2611,7 +2574,28 @@
 
       </div>
 
-      <p class="privacy-note reveal">Privacy note: the case studies above describe workflows I personally worked on and helped build, but no patient-identifiable information, facility names, or employer-specific materials are shown or reproduced. Everything is described in generalized terms.</p>
+      <div class="eyebrow reveal" style="margin-top:46px;">Other improvements</div>
+      <div class="value-list reveal">
+        <div class="value-row">
+          <div class="value-num">01</div>
+          <div>
+            <h3>Standardized facility headings in PCC</h3>
+            <div class="desc">Each facility needs a heading, the label doctors see on their schedule so they know what to expect on arrival. Some facilities had none. I added the missing ones for consistency across every facility. My supervisor noticed before I mentioned doing it and flagged it as proactive.</div>
+          </div>
+          <div class="tier-wrap"><span class="badge badge-live">Noticed and fixed independently</span></div>
+        </div>
+        <div class="value-row">
+          <div class="value-num">02</div>
+          <div>
+            <h3>Redesigned the facility flyer template</h3>
+            <div class="desc">The flyer template going out to facilities had not changed in years. I redesigned it to be readable for older patients, direct, and professional, then took it to the client unprompted. She approved it for ongoing use.</div>
+          </div>
+          <div class="tier-wrap"><span class="badge badge-live">Adopted for ongoing use</span></div>
+        </div>
+      </div>
+
+
+      <p class="privacy-note reveal">Privacy note: the work described above covers workflows I personally worked on and helped build, but no patient-identifiable information, facility names, or employer-specific materials are shown or reproduced. Everything is described in generalized terms.</p>
     </div>
   </section>
 
@@ -2625,8 +2609,8 @@
 
       <div class="cred-grid">
         <div class="cred-card reveal">
-          <div class="name">HIPAA Certified</div>
-          <div class="org">Biologix · 2026</div>
+          <div class="name">HIPAA Compliance Certification</div>
+          <div class="org">Biologix · 2024, renewed 2026</div>
         </div>
         <div class="cred-card reveal">
           <div class="name">Virtual Assistant Training</div>
@@ -2663,7 +2647,7 @@
       <div class="edu-card reveal">
         <div class="name">Bachelor of Science in Computer Engineering</div>
         <div class="org">STI College Surigao · 2019</div>
-        <p>A Computer Engineering background gives me a systems-oriented approach to healthcare administration — not just completing a workflow, but understanding how repetitive processes can be organized, documented, and improved. Case 03 is a direct result of that.</p>
+        <p>A Computer Engineering background gives me a systems-oriented approach to healthcare administration — not just completing a workflow, but understanding how repetitive processes can be organized, documented, and improved. The automation case study below is a direct result of that.</p>
       </div>
     </div>
   </section>
@@ -2717,8 +2701,8 @@
       <div class="security-grid">
         <div class="sec-item reveal">
           <div class="sec-label">Training</div>
-          <h3>HIPAA certified</h3>
-          <p>Certified through Biologix (2026). Five years working inside systems that hold PHI, across a U.S. eye care practice and a major U.S. health plan.</p>
+          <h3>HIPAA compliance certification</h3>
+          <p>Completed through Biologix in 2024 and renewed in 2026. Five years working inside systems that hold PHI, across a U.S. eye care practice and a major U.S. health plan.</p>
         </div>
 
         <div class="sec-item reveal">
@@ -2736,7 +2720,7 @@
         <div class="sec-item reveal">
           <div class="sec-label">Working inside your systems</div>
           <h3>Comfortable in restricted environments</h3>
-          <p>My most recent role ran entirely on a locked-down remote desktop where installing any new software required IT approval. I'm used to working within access controls rather than around them — the automation in Case 03 was built using only the tools already permitted on that machine.</p>
+          <p>My most recent role ran entirely on a locked-down remote desktop where installing any new software required IT approval. I'm used to working within access controls rather than around them — the automation in the case study above was built using only the tools already permitted on that machine.</p>
         </div>
 
         <div class="sec-item reveal">
