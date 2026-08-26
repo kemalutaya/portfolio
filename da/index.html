@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem('theme');
+      var theme = saved ? saved : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if(theme === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+    }catch(e){}
+  })();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kem Alutaya | AI Data Annotation &amp; Transcription</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B1720'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%2319B5A5' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Kem Alutaya, AI data annotation and transcription specialist. Bounding boxes, segmentation, classification, medical image annotation, audio transcription, and QA, delivered to production quotas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kem Alutaya",
+  "alternateName": "Kem Oyl Nooky Alutaya",
+  "jobTitle": "AI Data Annotation and Transcription Specialist",
+  "description": "Image annotation, audio transcription, and dataset quality assurance for AI training data, delivered to production KPI quotas.",
+  "email": "mailto:kemalutaya96@gmail.com",
+  "sameAs": ["https://www.linkedin.com/in/kalutaya/"],
+  "address": { "@type": "PostalAddress", "addressCountry": "PH" },
+  "knowsAbout": [
+    "Image annotation", "Bounding box annotation", "Semantic segmentation",
+    "Image classification", "Medical image annotation", "Audio transcription",
+    "Speech data annotation", "Annotation guideline adherence",
+    "Dataset quality assurance", "Data validation"
+  ],
+  "knowsLanguage": [
+    { "@type": "Language", "name": "English" },
+    { "@type": "Language", "name": "Filipino" }
+  ],
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "STI College Surigao" }
+}
+</script>
+</head>
+<body>
+<a href="#top" class="skip-link">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark"><span class="dot"></span> Kem Alutaya</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#work">What I Do</a>
+      <a href="#quality">Quality</a>
+      <a href="#experience">Experience</a>
+      <a href="#improvements">Case Study</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="../KemAlutaya_Resume_AI_DataAnnotation.pdf" download class="nav-resume">Résumé</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false" type="button">
+      <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-controls="navMobile" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#about">About</a>
+    <a href="#work">What I Do</a>
+    <a href="#quality">Quality</a>
+    <a href="#experience">Experience</a>
+    <a href="#improvements">Case Study</a>
+    <a href="#contact">Contact</a>
+    <a href="../KemAlutaya_Resume_AI_DataAnnotation.pdf" download>Résumé</a>
+    <button class="theme-toggle theme-toggle-mobile" id="themeToggleMobile" aria-label="Switch to dark mode" aria-pressed="false" type="button">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <span class="theme-toggle-label">Dark mode</span>
+    </button>
+  </div>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="full-name">Kem Oyl Nooky Alutaya</div>
+        <div class="hero-name">Kem Alutaya</div>
+        <h1 class="role">AI Data Annotation &amp; Transcription · Remote</h1>
+        <div class="headline">
+          <span class="hl-line-1">I label training data to spec <span class="hl-morph">consistently</span>,</span>
+          <span class="headline-accent">at production pace, and I check my own work before it ships.</span>
+        </div>
+        <p class="support">Bounding boxes, segmentation, classification and attribute tagging across medical and everyday imagery, plus audio transcription and dataset QA.</p>
+        <div class="credibility-row">
+          <span class="chip">Image &amp; Audio Data</span>
+          <span class="chip">Medical &amp; General Domains</span>
+          <span class="chip">Remote</span>
+          <span class="chip">UK / US Hours</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#quality" class="btn btn-primary">How I Keep Quality Up</a>
+          <a href="../KemAlutaya_Resume_AI_DataAnnotation.pdf" download class="btn-resume-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+            Download Résumé
+          </a>
+        </div>
+      </div>
+
+      <div class="status-card reveal">
+        <div class="tag"><span class="status-dot"></span> Availability Status</div>
+        <div class="field"><div class="k">Status</div><div class="v">Open to annotation and transcription work, available immediately</div></div>
+        <div class="field"><div class="k">Location</div><div class="v">Philippines (PHT · GMT+8)</div></div>
+        <div class="field"><div class="k">Coverage</div><div class="v">Aligned to UK &amp; US business hours</div></div>
+        <div class="field"><div class="k">Task types</div><div class="v">Boxes, masks, classification, transcription, QA</div></div>
+        <div class="field"><div class="k">Most Recent</div><div class="v">Innodata, Analyst Level 2, Jan–Apr 2026</div></div>
+        <div class="field"><div class="k">LinkedIn</div><div class="v"><a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener" style="color:inherit; border-bottom:1px solid rgba(245,247,246,0.3);">linkedin.com/in/kalutaya</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof-strip">
+    <div class="container proof-strip-inner reveal">
+      <div class="proof-item"><div class="proof-num" data-count="50" data-suffix="/hr">0</div><div class="proof-label">Images annotated, simpler tasks</div></div>
+      <div class="proof-item"><div class="proof-num" data-count="50" data-suffix="/hr">0</div><div class="proof-label">Short audio clips transcribed</div></div>
+      <div class="proof-item"><div class="proof-num">3</div><div class="proof-label">Annotation task types worked</div></div>
+      <div class="proof-item"><div class="proof-num">Above</div><div class="proof-label">Quota, consistently</div></div>
+    </div>
+      <p class="proof-qualifier reveal">Self-reported averages from my own tracking, not employer-published figures. Image throughput varied a lot with task complexity: a classification pass runs far quicker than a segmentation mask. Audio clip length varied too, so the clip figure reflects shorter recordings and longer ones took proportionally more time.</p>
+  </section>
+
+  <section class="section section-compact why-matters" aria-labelledby="why-matters-heading">
+    <div class="container">
+      <h2 id="why-matters-heading" class="sr-only">Why this matters</h2>
+      <div class="why-matters-grid">
+        <div class="why-matters-item reveal">
+          <h3>I Work Above Quota On Purpose</h3>
+          <p>Innodata ran hard KPI quotas per task. I targeted above the number rather than at it, so a slow or ambiguous batch never put the day's target at risk.</p>
+        </div>
+        <div class="why-matters-item reveal">
+          <h3>Comfortable Across Task Types</h3>
+          <p>Bounding boxes, segmentation masks, and classification and attribute tagging, on everyday objects and on medical imagery.</p>
+        </div>
+        <div class="why-matters-item reveal">
+          <h3>I Came From Regulated Data Work</h3>
+          <p>Five years handling patient records under HIPAA rules before this. Careful handling of sensitive data is a habit, not a policy I had to be taught.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stitch"></div>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">About</div>
+        <h2>Accurate, high-volume work inside someone else's rules.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>I'm Kem Alutaya, based in the Philippines, working remotely for teams across the U.S. and UK. My annotation and transcription work has been with Innodata and TELUS Digital AI, both part-time, across roughly eight months in 2025 and 2026.</p>
+          <p>That's the honest scope, and it isn't the whole picture. Before it I spent five years doing high-volume, high-accuracy work inside systems I didn't own: electronic medical records, payer portals, and booking platforms, where a wrong entry has a real consequence and the rules come from someone else. Annotation asked for the same discipline in a different interface.</p>
+          <p>What I bring to a labelling task is a bias toward reading the guideline properly before starting, flagging the genuinely ambiguous case instead of guessing at it, and reviewing my own output before submission rather than letting QA find it.</p>
+          <p class="scope-note">I annotate and transcribe to a client's specification. I don't set the labelling schema or make research decisions about what the data should mean.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work" style="background:var(--ivory-dim);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">What I Do</div>
+        <h2>Annotation, transcription, and the checking in between</h2>
+        <p class="sub">Six task types I've worked on in production, not in training exercises.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>Bounding Box Annotation</h3>
+          <p class="service-desc">Object localisation on everyday-object imagery, worked to a client guideline with defined edge-case rules.</p>
+          <div class="service-tags"><span class="chip">Object detection</span><span class="chip">Guideline-driven</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Segmentation &amp; Masks</h3>
+          <p class="service-desc">Outlining object shape rather than boxing it. The slowest task type per image and the one where care matters most.</p>
+          <div class="service-tags"><span class="chip">Shape accuracy</span><span class="chip">Boundary precision</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Classification &amp; Attribute Tagging</h3>
+          <p class="service-desc">Labelling what an image contains and tagging its properties against a fixed taxonomy.</p>
+          <div class="service-tags"><span class="chip">Taxonomy adherence</span><span class="chip">High volume</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Medical Image Annotation</h3>
+          <p class="service-desc">Annotation on medical imagery, supported by five years of working with clinical records and medical terminology.</p>
+          <div class="service-tags"><span class="chip">Medical domain</span><span class="chip">ICD-10 / CPT familiarity</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Audio Transcription</h3>
+          <p class="service-desc">Speech recordings transcribed and structured into clean, standardised text for model training.</p>
+          <div class="service-tags"><span class="chip">Speech data</span><span class="chip">Formatting standards</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>QA &amp; Data Validation</h3>
+          <p class="service-desc">Reviewing datasets against the annotation guideline before submission, mine and other people's.</p>
+          <div class="service-tags"><span class="chip">Pre-submission review</span><span class="chip">Consistency checks</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quality">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Quality</div>
+        <h2>How I keep the work clean.</h2>
+        <p class="sub">Annotation quality is mostly habits. These are mine.</p>
+      </div>
+      <div class="security-grid">
+        <div class="sec-item reveal">
+          <div class="sec-label">Throughput</div>
+          <h3>Above quota by design</h3>
+          <p>Innodata set per-task KPI quotas with real consequences for missing them. Rather than pacing to the number, I ran above it so a complex batch or a bad day never became a missed target.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Guidelines</div>
+          <h3>Read first, label second</h3>
+          <p>I go through the annotation guideline properly before the first item, including the edge-case rules most people skim. Re-reading it mid-batch when something feels off has saved more rework than working faster ever would.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Ambiguity</div>
+          <h3>Flag it, don't guess it</h3>
+          <p>When two labels both defend and the guideline doesn't settle it, I raise it rather than picking one quietly. One flagged question usually resolves a pattern across the whole batch.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Self-review</div>
+          <h3>I check before QA does</h3>
+          <p>I validate my own output against the guideline before submitting. Catching my own drift is cheaper for everyone than having a reviewer catch it downstream.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Consistency</div>
+          <h3>Same call on item 400 as item 4</h3>
+          <p>Long batches invite drift. I keep my own notes on how I've been resolving recurring edge cases so a decision made early holds all the way through.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Confidentiality</div>
+          <h3>Used to sensitive data</h3>
+          <p>Private workspace, encrypted and password-protected devices, two-factor authentication. Five years working under HIPAA rules with patient records, and I'll sign whatever NDA or confidentiality terms a project requires.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" style="background:var(--ivory-dim);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Work Experience</div>
+        <h2>Where this experience comes from</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-date">Jan–Apr 2026 · Part-time, remote</div>
+          <h3>Analyst Level 2, AI Data Annotation &amp; QA</h3>
+          <div class="org">Innodata</div>
+          <ul>
+            <li>Annotated medical and everyday-object images to improve model training accuracy, across bounding box, segmentation, and classification tasks.</li>
+            <li>Worked to per-task KPI quotas, consistently delivering above the required target.</li>
+            <li>Reviewed image datasets against detailed annotation guidelines and maintained quality standards across batches.</li>
+            <li>Performed quality assurance and data validation on assigned datasets before submission.</li>
+            <li>Transcribed and structured speech recordings into clean, standardised text for machine learning use.</li>
+          </ul>
+          <div class="stat-row">
+            <span class="stat-chip">~50 images/hr on simpler tasks</span>
+            <span class="stat-chip">Above quota, consistently</span>
+          </div>
+          <p class="stat-footnote">Self-reported averages from my own tracking. Throughput varied with task complexity.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Sep–Dec 2025 · Part-time, remote</div>
+          <h3>AI Data Contributor: Training Data &amp; Transcription</h3>
+          <div class="org">TELUS Digital AI</div>
+          <ul>
+            <li>Transcribed audio recordings into structured datasets used for AI model training.</li>
+            <li>Constructed high-quality text outputs from spoken content following detailed annotation guidelines.</li>
+            <li>Performed data validation and quality review for consistency across assigned projects.</li>
+            <li>Worked independently while meeting productivity and quality targets remotely.</li>
+          </ul>
+          <div class="stat-row">
+            <span class="stat-chip">~50 short clips/hr</span>
+          </div>
+          <p class="stat-footnote">Clip length varied; longer recordings took proportionally more time.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Nov 2023–Jul 2026 · Remote</div>
+          <h3>Medical Virtual Administrative Assistant</h3>
+          <div class="org">Resident Eye Care Associates / RTR, Eye Care Clinic</div>
+          <ul>
+            <li>Reviewed roughly 100 patient records a shift and prepared around 50 charts a day, working to next-day deadlines.</li>
+            <li>Worked daily inside two EMR systems and multiple payer portals, each with its own rules and data model.</li>
+            <li>Entered ICD-10 and CPT codes, reviewed medication and diagnosis history, and edited physician dictation from voice recordings.</li>
+            <li>Handled patient health information under HIPAA rules for nearly three years.</li>
+          </ul>
+          <p class="stat-footnote">Included here for the transferable part: high-volume accuracy, medical terminology, sensitive data handling, and audio-to-text work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="improvements">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Process Improvement</div>
+        <h2>I automate my own repetitive work.</h2>
+      </div>
+
+      <div class="case-card case-card-featured reveal">
+        <div class="case-tab">Case Study <span class="case-featured-tag">Highest Impact</span></div>
+        <h3>Cutting a Three-Hour Daily Task to One</h3>
+        <div class="impact-figure impact-lead">
+          <span class="impact-before">3 hrs</span>
+          <span class="impact-arrow">&rarr;</span>
+          <span class="impact-after">1 hr</span>
+          <span class="impact-label-inline">Daily preparation task, before and after<em>Estimated, based on the previous manual process.</em></span>
+        </div>
+        <div class="case-block">
+          <div class="k">Problem</div>
+          <div class="v">Three recurring daily tasks were fully manual, highly repetitive, and error-prone in predictable ways: wrong recipient, wrong date, wrong attachment, typos. Exactly the failure profile of any high-repetition task, annotation included.</div>
+        </div>
+        <div class="case-block">
+          <div class="k">What I did</div>
+          <div class="v">Mapped the manual process, identified which fields were genuinely repeatable and which needed a human decision, and built the repeatable part into Excel, Outlook, and Word macros. I used only tools already permitted on a locked-down remote desktop, because installing anything new required IT approval.</div>
+        </div>
+        <div class="case-block">
+          <div class="k">The judgment call</div>
+          <div class="v">I automated the mechanical part and deliberately kept a human review step before anything went out. The goal was never to remove myself from the loop, it was to spend my attention on the part that actually needed it.</div>
+        </div>
+        <div class="case-block">
+          <div class="k">Result</div>
+          <div class="v">The task dropped from about three hours a day to about one. The workflow was presented and approved for operational use.</div>
+        </div>
+      </div>
+
+      <p class="privacy-note reveal">Privacy note: this describes a workflow I personally built. No patient-identifiable information, client names, dataset names, or employer materials are shown or reproduced. Annotation work described elsewhere on this page is kept general for the same reason.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--ivory-dim);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Credentials</div>
+        <h2>Training and academic background</h2>
+      </div>
+      <div class="cred-grid">
+        <div class="cred-card reveal">
+          <div class="name">HIPAA Compliance Certification</div>
+          <div class="org">Biologix · 2024, renewed 2026</div>
+        </div>
+        <div class="cred-card reveal">
+          <div class="name">Bachelor of Science in Computer Engineering</div>
+          <div class="org">STI College Surigao · 2019</div>
+        </div>
+      </div>
+      <div class="edu-card reveal" style="margin-top:22px;">
+        <div class="name">Why the engineering background matters here</div>
+        <p>A Computer Engineering degree doesn't make me an ML engineer, and I won't claim it does. What it does give me is comfort with structured data, taxonomies, and specifications, and enough understanding of what training data is for that I treat a guideline as a spec rather than a suggestion.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="reveal">Let's talk about your dataset.</h2>
+      <p class="reveal">Tell me the task type, the guideline, and the volume, and I'll tell you honestly whether I'm a fit and what pace you can expect from me.</p>
+      <div class="contact-fields reveal">
+        <div class="field"><div class="k">Email</div><div class="v"><a href="mailto:kemalutaya96@gmail.com">kemalutaya96@gmail.com</a></div></div>
+        <div class="field"><div class="k">LinkedIn</div><div class="v"><a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener">linkedin.com/in/kalutaya</a></div></div>
+        <div class="field"><div class="k">Location</div><div class="v">Philippines · Remote · UK / US Hours</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-name">Kem Alutaya</div>
+      <div class="footer-disciplines">Data Annotation · Transcription · Dataset QA</div>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="../KemAlutaya_Resume_AI_DataAnnotation.pdf" download>Résumé</a>
+        <a href="mailto:kemalutaya96@gmail.com">Email</a>
+      </div>
+      <div class="footer-loc">Philippines · Remote · UK / US Hours · Updated Aug 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+<script src="../assets/main.js"></script>
+</body>
+</html>

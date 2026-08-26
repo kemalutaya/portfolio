@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem('theme');
+      var theme = saved ? saved : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if(theme === 'dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+    }catch(e){}
+  })();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kem Alutaya | Virtual Assistant, Admin, Research &amp; Customer Support</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B1720'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%2319B5A5' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Kem Alutaya, remote virtual assistant. Data entry, research, customer communication, scheduling, and document management, with 5+ years of accurate high-volume administrative work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kem Alutaya",
+  "alternateName": "Kem Oyl Nooky Alutaya",
+  "jobTitle": "Virtual Assistant",
+  "description": "Remote virtual assistant providing data entry, research, customer communication, scheduling, and document management support.",
+  "email": "mailto:kemalutaya96@gmail.com",
+  "sameAs": ["https://www.linkedin.com/in/kalutaya/"],
+  "address": { "@type": "PostalAddress", "addressCountry": "PH" },
+  "knowsAbout": [
+    "Data entry", "Remote administrative support", "Customer communication",
+    "Scheduling and coordination", "Document management", "Spreadsheet tracking",
+    "Online research", "E-commerce product research"
+  ],
+  "knowsLanguage": [
+    { "@type": "Language", "name": "English" },
+    { "@type": "Language", "name": "Filipino" }
+  ],
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "STI College Surigao" }
+}
+</script>
+</head>
+<body>
+<a href="#top" class="skip-link">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark"><span class="dot"></span> Kem Alutaya</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#work">What I Do</a>
+      <a href="#how">How I Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#improvements">Case Study</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="../KemAlutaya_Resume_VA_DataEntry.pdf" download class="nav-resume">Résumé</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false" type="button">
+      <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-controls="navMobile" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#about">About</a>
+    <a href="#work">What I Do</a>
+    <a href="#how">How I Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#improvements">Case Study</a>
+    <a href="#contact">Contact</a>
+    <a href="../KemAlutaya_Resume_VA_DataEntry.pdf" download>Résumé</a>
+    <button class="theme-toggle theme-toggle-mobile" id="themeToggleMobile" aria-label="Switch to dark mode" aria-pressed="false" type="button">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <span class="theme-toggle-label">Dark mode</span>
+    </button>
+  </div>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="full-name">Kem Oyl Nooky Alutaya</div>
+        <div class="hero-name">Kem Alutaya</div>
+        <h1 class="role">Virtual Assistant · Remote</h1>
+        <div class="headline">
+          <span class="hl-line-1">I keep your admin work <span class="hl-morph">accurate</span>,</span>
+          <span class="headline-accent">at volume, inside whatever system you already use.</span>
+        </div>
+        <p class="support">Data entry, research, customer communication, scheduling, and document management for busy teams and business owners.</p>
+        <div class="credibility-row">
+          <span class="chip">5+ Years Remote Admin</span>
+          <span class="chip">Philippines-based</span>
+          <span class="chip">Remote</span>
+          <span class="chip">UK / US Hours</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#how" class="btn btn-primary">How I Work</a>
+          <a href="../KemAlutaya_Resume_VA_DataEntry.pdf" download class="btn-resume-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+            Download Résumé
+          </a>
+        </div>
+      </div>
+
+      <div class="status-card reveal">
+        <div class="tag"><span class="status-dot"></span> Availability Status</div>
+        <div class="field"><div class="k">Status</div><div class="v">Open to remote admin and support work, available immediately</div></div>
+        <div class="field"><div class="k">Location</div><div class="v">Philippines (PHT · GMT+8)</div></div>
+        <div class="field"><div class="k">Coverage</div><div class="v">Aligned to UK &amp; US business hours</div></div>
+        <div class="field"><div class="k">Focus</div><div class="v">Admin, research, and customer-facing support</div></div>
+        <div class="field"><div class="k">Not a fit for</div><div class="v">High-volume outbound sales or cold-calling roles</div></div>
+        <div class="field"><div class="k">LinkedIn</div><div class="v"><a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener" style="color:inherit; border-bottom:1px solid rgba(245,247,246,0.3);">linkedin.com/in/kalutaya</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof-strip">
+    <div class="container proof-strip-inner reveal">
+      <div class="proof-item"><div class="proof-num">5+</div><div class="proof-label">Years remote admin experience</div></div>
+      <div class="proof-item"><div class="proof-num" data-count="20" data-suffix="+">0</div><div class="proof-label">Product listings researched / day</div></div>
+      <div class="proof-item"><div class="proof-num">Zero</div><div class="proof-label">Data errors, reservation updates</div></div>
+      <div class="proof-item"><div class="proof-num">1st</div><div class="proof-label">Of 5 teams, sales floor recognition</div></div>
+    </div>
+    <p class="proof-qualifier reveal">Figures are self-reported from specific past roles, not averaged across my whole career. Each one is explained where it comes from further down this page.</p>
+  </section>
+
+  <section class="section section-compact why-matters" aria-labelledby="why-matters-heading">
+    <div class="container">
+      <h2 id="why-matters-heading" class="sr-only">Why this matters</h2>
+      <div class="why-matters-grid">
+        <div class="why-matters-item reveal">
+          <h3>Accurate At Volume</h3>
+          <p>Whether it's product listings, reservation records, or patient charts, the pattern is the same: high volume, low tolerance for mistakes, and someone else's rules to follow.</p>
+        </div>
+        <div class="why-matters-item reveal">
+          <h3>Comfortable In New Systems</h3>
+          <p>I've worked daily inside booking platforms, e-commerce tools, and EMR software. Learning a new system fast is a skill I've had to use in every job so far.</p>
+        </div>
+        <div class="why-matters-item reveal">
+          <h3>I Build My Own Shortcuts</h3>
+          <p>When a task is repetitive, I look for the part that can be automated safely. A macro I built cut a daily task from 3 hours to 1 (see the case study further down).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stitch"></div>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">About</div>
+        <h2>Accurate, high-volume work, wherever it's needed.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>I'm Kem Alutaya, based in the Philippines, working remotely for teams and clients across the U.S. and UK. Over the past several years I've done data entry, research, customer communication, scheduling, and document management across a few different industries: e-commerce product research, hotel and airline booking support, and back-office administrative and records work for a U.S.-based private practice.</p>
+          <p>What connects that work isn't the industry, it's the pattern: a high volume of tasks, real accuracy requirements, and a system that belongs to someone else. I've learned that the fastest way to be useful in a new role is to understand the existing workflow fully before trying to improve it.</p>
+          <p>I'm best suited to administrative, research, and customer-support work. Roles centered on outbound sales or cold-calling aren't a good fit for me, and I'd rather say that upfront than take a role I won't be good at.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work" style="background:var(--ivory-dim);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">What I Do</div>
+        <h2>Support across the day-to-day admin workload</h2>
+        <p class="sub">Six areas I've handled in real, paid roles, not just training exercises.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>Data Entry &amp; Records</h3>
+          <p class="service-desc">Creating and updating records, maintaining demographics and details, and keeping data clean across the systems I'm given access to.</p>
+          <div class="service-tags"><span class="chip">High volume</span><span class="chip">Low error tolerance</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Research &amp; Data Collection</h3>
+          <p class="service-desc">Product and market research, cross-platform comparisons, and organizing findings into a usable spreadsheet or report.</p>
+          <div class="service-tags"><span class="chip">Excel</span><span class="chip">Google Sheets</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Customer Communication</h3>
+          <p class="service-desc">Phone and written support for customer questions, bookings, and issue resolution, with a calm and professional tone.</p>
+          <div class="service-tags"><span class="chip">Phone support</span><span class="chip">Written support</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Scheduling &amp; Coordination</h3>
+          <p class="service-desc">Managing calendars, coordinating between multiple parties, and preparing materials ahead of time so nothing gets missed.</p>
+          <div class="service-tags"><span class="chip">Calendar management</span><span class="chip">Multi-party coordination</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Document Management</h3>
+          <p class="service-desc">Organizing, uploading, and maintaining documents and records so they're easy for a team to find and trust.</p>
+          <div class="service-tags"><span class="chip">Document uploads</span><span class="chip">Organization systems</span></div>
+        </div>
+        <div class="service-card reveal">
+          <h3>Reporting &amp; Tracking</h3>
+          <p class="service-desc">Building and maintaining trackers and reports that give a team an accurate, current view of where things stand.</p>
+          <div class="service-tags"><span class="chip">Trend tracking</span><span class="chip">Spreadsheet reporting</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">How I Work</div>
+        <h2>What you can expect day to day.</h2>
+      </div>
+      <div class="security-grid">
+        <div class="sec-item reveal">
+          <div class="sec-label">Accuracy</div>
+          <h3>I check my own work</h3>
+          <p>Whether it's a product listing, a reservation, or a patient record, I review what I've entered before I consider it done. Catching my own mistake is cheaper than someone else finding it.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Learning curve</div>
+          <h3>Fast on new systems</h3>
+          <p>Every role I've had used different software. I'd rather ask a specific question early than guess and create rework later.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Communication</div>
+          <h3>Clear and direct</h3>
+          <p>I write things down, confirm what I understood, and flag a problem as soon as I see it rather than waiting for it to become bigger.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Reliability</div>
+          <h3>Backup for everything</h3>
+          <p>Main laptop plus a backup, backup power, and backup internet, so a single outage doesn't interrupt your workflow or leave work half-finished.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Confidentiality</div>
+          <h3>Used to sensitive information</h3>
+          <p>Private workspace, encrypted and password-protected devices, and two-factor authentication as standard. I'll sign an NDA or confidentiality agreement as part of onboarding.</p>
+        </div>
+        <div class="sec-item reveal">
+          <div class="sec-label">Fit</div>
+          <h3>Admin and support, not sales</h3>
+          <p>I do well in roles built around accuracy and follow-through. I'm upfront that outbound sales and cold-calling work isn't where I perform best.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" style="background:var(--ivory-dim);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Work Experience</div>
+        <h2>Where this experience comes from</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-date">Nov 2023–Jul 2026 · Remote, full-time</div>
+          <h3>Virtual Administrative Assistant</h3>
+          <div class="org">U.S.-based private practice · Remote</div>
+          <ul>
+            <li>Created and updated records, uploaded documents, and maintained demographics inside the client's record system.</li>
+            <li>Prepared daily schedules and coordinated communications across 15–25 facilities.</li>
+            <li>Reviewed roughly 100 records a shift and prepared around 50 documents a day to next-day deadlines.</li>
+            <li>Built an Excel and Outlook macro that cut a daily 3-hour task down to 1 (see case study below).</li>
+          </ul>
+          <p class="stat-footnote">This page focuses on the transferable administrative side of the role rather than industry-specific detail.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Nov 2019–Jun 2020 · Remote, full-time</div>
+          <h3>Customer Sales Representative</h3>
+          <div class="org">Teleperformance</div>
+          <ul>
+            <li>Handled inbound booking calls for Hotels.com: searching availability, confirming details, and reviewing bookings back to the customer before finalizing.</li>
+            <li>Team placed 1st out of 5 teams on the floor in multiple months, and I placed 1st on my own team.</li>
+            <li>Reassigned to back-office work on a United Airlines account during a call-volume drop, using Amadeus to verify and correct booking details and clear a backlog with zero data errors.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Nov 2018–Oct 2019 · Freelance</div>
+          <h3>Product Researcher</h3>
+          <div class="org">Amazon</div>
+          <ul>
+            <li>Cross-platform price research between Amazon and eBay, identifying items with a workable resale margin.</li>
+            <li>Pulled product photos and full listing details, and listed 20+ items per day.</li>
+            <li>Used ZikAnalytics for research, Gorilla Dropshipping to post listings, and Excel to track everything.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">2026 · 240 hours</div>
+          <h3>General SEO Internship</h3>
+          <div class="org">Kherk Roldan Advanced Digital Solutions</div>
+          <ul>
+            <li>Link building, directory submissions, guest posting, and social bookmarking as core daily work.</li>
+            <li>Optimized and maintained Google Business Profile listings, including posting updates and citation building.</li>
+            <li>Worked in Ahrefs, Google Search Console, and Google Business Profile.</li>
+          </ul>
+        </div>
+
+        <div class="additional-exp reveal">
+          <div class="tl-divider">Additional Experience</div>
+          <details class="ae-row-details">
+            <summary>
+              <span class="ae-date">Jul–Sep 2023</span>
+              <span class="ae-title">Client Acquisition Specialist</span>
+              <span class="ae-org">Nabepero (Work From Home) · Part-time</span>
+              <span class="ae-toggle" aria-hidden="true"></span>
+            </summary>
+            <ul>
+              <li>Updated and maintained client lists in Excel for accurate tracking, and logged prospect contact information into a shared data sheet.</li>
+              <li>Attended daily huddles to stay informed on account updates and onboarding processes.</li>
+              <li>Sourced leads from freelance marketplaces to identify potential clients.</li>
+            </ul>
+            <p class="stat-footnote">Included for the Excel and data-tracking skills involved. This was outreach-based work, which isn't the kind of role I'm looking for now; see the note above.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="improvements">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Process Improvement</div>
+        <h2>I look for the repetitive task worth fixing.</h2>
+      </div>
+
+      <div class="case-card case-card-featured reveal">
+        <div class="case-tab">Case Study <span class="case-featured-tag">Highest Impact</span></div>
+        <h3>Cutting a Three-Hour Daily Task to One</h3>
+        <div class="impact-figure impact-lead">
+          <span class="impact-before">3 hrs</span>
+          <span class="impact-arrow">&rarr;</span>
+          <span class="impact-after">1 hr</span>
+          <span class="impact-label-inline">Daily preparation task, before and after<em>Estimated, based on the previous manual process.</em></span>
+        </div>
+        <div class="case-block">
+          <div class="k">Problem</div>
+          <div class="v">Three recurring daily tasks were fully manual, repetitive, and error-prone in predictable ways: wrong recipient, wrong date, wrong attachment, typos. The kind of task most admin roles have at least one of.</div>
+        </div>
+        <div class="case-block">
+          <div class="k">What I did</div>
+          <div class="v">Mapped the manual process, identified which parts were genuinely repeatable versus which needed a human decision, and built the repeatable part into Excel, Outlook, and Word macros using tools already available on the machine, since installing anything new needed IT approval.</div>
+        </div>
+        <div class="case-block">
+          <div class="k">The judgment call</div>
+          <div class="v">I automated the mechanical part and kept a human review step before anything went out. The goal was to spend my attention on the part that actually needed it, not to remove myself from the process.</div>
+        </div>
+        <div class="case-block">
+          <div class="k">Result</div>
+          <div class="v">The task dropped from about three hours a day to about one. The workflow was presented and approved for ongoing use.</div>
+        </div>
+      </div>
+
+      <p class="privacy-note reveal">Privacy note: this describes a workflow I personally built. No client names, employer materials, or identifying details are shown or reproduced.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--ivory-dim);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Credentials</div>
+        <h2>Training and academic background</h2>
+      </div>
+      <div class="cred-grid">
+        <div class="cred-card reveal">
+          <div class="name">Virtual Assistant Training</div>
+          <div class="org">Ready To Round · 2024</div>
+        </div>
+        <div class="cred-card reveal">
+          <div class="name">Virtual Assistant Training</div>
+          <div class="org">360MVA · 2024</div>
+        </div>
+        <div class="cred-card reveal">
+          <div class="name">Virtual Assistant Training</div>
+          <div class="org">VA Of The Future · 2024</div>
+        </div>
+        <div class="cred-card reveal">
+          <div class="name">Bachelor of Science in Computer Engineering</div>
+          <div class="org">STI College Surigao · 2019</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="reveal">Let's talk about what you need help with.</h2>
+      <p class="reveal">Tell me what's eating your time, whether it's data entry, research, scheduling, or customer follow-up, and I'll tell you honestly whether I'm a fit.</p>
+      <div class="contact-fields reveal">
+        <div class="field"><div class="k">Email</div><div class="v"><a href="mailto:kemalutaya96@gmail.com">kemalutaya96@gmail.com</a></div></div>
+        <div class="field"><div class="k">LinkedIn</div><div class="v"><a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener">linkedin.com/in/kalutaya</a></div></div>
+        <div class="field"><div class="k">Location</div><div class="v">Philippines · Remote · UK / US Hours</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-name">Kem Alutaya</div>
+      <div class="footer-disciplines">Data Entry · Research · Customer Support · Scheduling</div>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/kalutaya/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="../KemAlutaya_Resume_VA_DataEntry.pdf" download>Résumé</a>
+        <a href="mailto:kemalutaya96@gmail.com">Email</a>
+      </div>
+      <div class="footer-loc">Philippines · Remote · UK / US Hours · Updated Aug 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+<script src="../assets/main.js"></script>
+</body>
+</html>
