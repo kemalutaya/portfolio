@@ -247,3 +247,49 @@
   }, { threshold: 0, rootMargin: '-40% 0px -55% 0px' });
 
   sections.forEach(sec => spyIo.observe(sec));
+
+  // Proof cards: radial glow follows the cursor across the gradient rim.
+  // Delegated so it costs one listener regardless of card count.
+  (function(){
+    document.querySelectorAll('.proof-strip-inner').forEach(strip => {
+      strip.addEventListener('pointermove', e => {
+        const card = e.target.closest('.proof-item');
+        if(!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  })();
+
+  // Scroll progress bar (motion-primitives: scroll-progress)
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    let ticking = false;
+    function update(){
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(window.scrollY / h, 1) : 0) + ')';
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if(!ticking){ ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  // Spotlight on content cards (motion-primitives: spotlight)
+  (function(){
+    const sel = '.service-card, .sys-card, .cred-card, .why-matters-item';
+    document.addEventListener('pointermove', e => {
+      const card = e.target.closest(sel);
+      if(!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+  })();

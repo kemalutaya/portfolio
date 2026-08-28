@@ -350,8 +350,8 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    padding-top:clamp(56px,8vw,96px);
-    padding-bottom:clamp(56px,8vw,96px);
+    padding-top:clamp(36px,4.5vw,60px);
+    padding-bottom:clamp(48px,6vw,72px);
   }
   .hero-grid{
     display:grid;
@@ -376,7 +376,7 @@
     margin:0;
     letter-spacing:-0.01em;
     line-height:1.12;
-    font-size:clamp(2rem,7vw,4.4rem);
+    font-size:clamp(2rem,6vw,3.6rem);
     font-weight:800;
   }
   .hero .role{
@@ -389,7 +389,7 @@
     letter-spacing:normal;
   }
   .hero .headline{
-    margin-top:26px;
+    margin-top:18px;
     font-size:clamp(1.2rem,2vw,1.55rem);
     color:var(--ink);
     font-family:var(--font-display);
@@ -398,13 +398,13 @@
     line-height:1.32;
   }
   .hero .support{
-    margin-top:22px;
+    margin-top:16px;
     color:var(--ink-soft);
     font-size:1.02rem;
     max-width:520px;
   }
   .credibility-row{
-    margin-top:30px;
+    margin-top:20px;
     display:flex;
     flex-wrap:wrap;
     gap:10px;
@@ -421,7 +421,7 @@
     border-radius:999px;
   }
   .hero-ctas{
-    margin-top:38px;
+    margin-top:26px;
     display:flex;
     flex-wrap:wrap;
     align-items:center;
@@ -545,36 +545,175 @@
     margin-inline:auto;
   }
 
+  /* ---------- SCROLL PROGRESS (motion-primitives: scroll-progress) ---------- */
+  /* Functional on a long single-page site: shows how much is left. */
+  .scroll-progress{
+    position:fixed;
+    top:0; left:0;
+    height:2px;
+    width:100%;
+    transform:scaleX(0);
+    transform-origin:0 50%;
+    background:linear-gradient(90deg, var(--sage-deep), var(--sage));
+    z-index:200;
+    pointer-events:none;
+  }
+
+  /* ---------- SPOTLIGHT (motion-primitives: spotlight) ---------- */
+  /* Same cursor-tracking mechanism as the proof cards, applied to content cards. */
+  .service-card, .sys-card, .cred-card, .why-matters-item{ position:relative; }
+  .service-card::after, .sys-card::after, .cred-card::after, .why-matters-item::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease;
+    background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),
+               rgba(25,181,165,0.10), transparent 45%);
+  }
+  .service-card:hover::after, .sys-card:hover::after,
+  .cred-card:hover::after, .why-matters-item:hover::after{ opacity:1; }
+
+  /* ---------- BORDER TRAIL (motion-primitives: border-trail) ---------- */
+  /* Draws attention to the one section that most deserves it. */
+  .case-card-featured{ position:relative; }
+  .case-card-featured .border-trail{
+    position:absolute;
+    top:0; left:0;
+    width:70px;
+    height:2px;
+    border-radius:2px;
+    background:linear-gradient(90deg, transparent, var(--sage), transparent);
+    offset-path:inset(0 round 18px);
+    animation:trailRun 7s linear infinite;
+    pointer-events:none;
+    z-index:3;
+  }
+  @keyframes trailRun{ to{ offset-distance:100%; } }
+  @supports not (offset-path: inset(0)){ .case-card-featured .border-trail{ display:none; } }
+
+  @media (prefers-reduced-motion: reduce){
+    .scroll-progress{ display:none; }
+    .case-card-featured .border-trail{ animation:none; display:none; }
+    .service-card::after, .sys-card::after, .cred-card::after, .why-matters-item::after{ transition:none; }
+  }
+
   /* ---------- PROOF STRIP ---------- */
+  /* Sits on the navy band in both themes, so it is styled dark-on-navy throughout. */
   .proof-strip{
     background:var(--navy);
-    padding-block:32px;
+    padding-block:38px;
   }
   .proof-strip-inner{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-    gap:20px;
-    text-align:center;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr));
+    gap:14px;
+  }
+  /* gradient rim + cursor-tracking glow */
+  .proof-item{
+    position:relative;
+    border-radius:15px;
+    padding:1.5px;
+    background:rgba(245,247,246,0.13);
+    transition:background .3s ease;
+  }
+  .proof-item::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:15px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease;
+    background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),
+               rgba(25,181,165,0.8), transparent 42%);
+  }
+  .proof-item:hover::before{ opacity:1; }
+  .proof-card{
+    position:relative;
+    z-index:1;
+    height:100%;
+    border-radius:13.5px;
+    overflow:hidden;
+    background:#0F1F29;
+    padding:20px 20px 18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:16px;
+    min-height:142px;
+  }
+  .proof-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0.5;
+    background:repeating-linear-gradient(45deg, transparent, transparent 9px,
+               rgba(25,181,165,0.05) 9px, rgba(25,181,165,0.05) 10px);
+  }
+  .proof-top{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .proof-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    border-radius:9px;
+    background:rgba(25,181,165,0.16);
+    color:var(--sage);
+    flex-shrink:0;
+  }
+  .proof-icon svg{ width:16px; height:16px; }
+  .proof-unit{
+    font-family:var(--font-mono);
+    font-size:0.6rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:4px 9px;
+    border-radius:999px;
+    border:1px solid rgba(245,247,246,0.16);
+    color:rgba(245,247,246,0.62);
+    white-space:nowrap;
   }
   .proof-num{
+    position:relative;
+    z-index:2;
     font-family:var(--font-display);
     font-weight:800;
-    font-size:clamp(1.6rem,3.2vw,2.2rem);
+    letter-spacing:-0.03em;
+    line-height:1;
+    font-size:clamp(1.75rem,3.4vw,2.35rem);
     color:var(--ivory);
   }
   .proof-label{
+    position:relative;
+    z-index:2;
     margin-top:6px;
     font-family:var(--font-mono);
-    font-size:0.75rem;
+    font-size:0.73rem;
     letter-spacing:0.04em;
+    line-height:1.4;
     color:var(--sage);
   }
   .proof-qualifier{
     text-align:center;
-    margin-top:18px;
+    margin-top:20px;
     font-family:var(--font-mono);
     font-size:0.75rem;
     color:rgba(245,247,246,0.6);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .proof-item::before, .proof-item{ transition:none; }
   }
 
   /* ---------- ABOUT ---------- */
