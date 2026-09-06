@@ -1350,25 +1350,6 @@
   .hl-line-1{ display:block; }
   .hl-word{ display:inline-block; }
   .hl-morph{ position:relative; display:inline-block; }
-  .hl-connector{
-    display:block;
-    width:190px;
-    max-width:60%;
-    height:14px;
-    margin:10px 0 8px;
-  }
-  .hl-connector svg{ width:100%; height:100%; overflow:visible; }
-  .hl-wire{
-    stroke:var(--sage-deep);
-    stroke-width:1.5;
-    stroke-dasharray:200;
-    stroke-dashoffset:200;
-  }
-  .hl-node{ fill:var(--sage-deep); opacity:0; }
-  @media (prefers-reduced-motion: reduce){
-    .hl-wire{ stroke-dashoffset:0; }
-    .hl-node{ opacity:1; }
-  }
 
   .impact-lead{
     margin-top:14px !important;
@@ -1993,9 +1974,6 @@
     }
     .impact-before{ font-size:1.35rem; }
     .impact-after{ font-size:2rem; }
-
-    /* Hero connector: scale with the text, don't sit at a fixed 190px */
-    .hl-connector{ width:150px; max-width:70%; }
 
     /* Case 03 architecture nodes: allow the tool tag to sit above long labels */
     .arch-node{ flex-wrap:wrap; gap:6px; }

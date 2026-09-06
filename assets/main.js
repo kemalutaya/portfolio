@@ -98,8 +98,6 @@
       .to('.hero h1', { opacity: 1, y: 0 }, '-=0.5')
       .to('.hero .role', { opacity: 1, y: 0 }, '-=0.5')
       .to('.hero .headline', { opacity: 1, y: 0 }, '-=0.45')
-      .to('.hl-wire', { strokeDashoffset: 0, duration: 0.7, ease: 'power2.inOut' }, '-=0.25')
-      .to('.hl-node', { opacity: 1, duration: 0.25, stagger: 0.09, ease: 'back.out(2)' }, '-=0.5')
       .from('.headline-accent .hl-word', { opacity: 0, y: 12, duration: 0.45, stagger: 0.055, ease: 'power3.out' }, '-=0.25')
       .to('.hero .support', { opacity: 1, y: 0 }, '-=0.45')
       .to('.credibility-row', { opacity: 1, y: 0 }, '-=0.4')
