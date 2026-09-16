@@ -223,18 +223,3 @@
     window.addEventListener('resize', update, { passive: true });
     update();
   })();
-
-  // CTA banner above the footer — dismissible, remembered per visitor
-  (function(){
-    const banner = document.getElementById('ctaBanner');
-    const closeBtn = document.getElementById('ctaBannerClose');
-    if(!banner || !closeBtn) return;
-    const KEY = 'ctaBannerDismissed';
-    try{
-      if(localStorage.getItem(KEY) === '1'){ banner.hidden = true; return; }
-    }catch(e){}
-    closeBtn.addEventListener('click', () => {
-      banner.hidden = true;
-      try{ localStorage.setItem(KEY, '1'); }catch(e){}
-    });
-  })();
