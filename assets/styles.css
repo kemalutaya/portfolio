@@ -1891,6 +1891,65 @@
   }
   .copy-confirm.show{ opacity:1; }
 
+  /* ---------- CTA BANNER (above footer) ---------- */
+  .cta-banner-card{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:var(--paper);
+    border:1px solid var(--beige-line);
+    border-radius:var(--radius-card);
+    padding:28px 32px;
+    transition:border-color .2s var(--ease-out), transform .2s var(--ease-out);
+  }
+  .cta-banner-card:hover{ border-color:var(--sage); }
+  .cta-banner-icon{
+    flex:none;
+    width:44px; height:44px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(25,181,165,0.12);
+    color:var(--sage-deep);
+  }
+  .cta-banner-icon svg{ width:20px; height:20px; }
+  .cta-banner-text{ flex:1; min-width:0; }
+  .cta-banner-text h3{
+    font-family:var(--font-display);
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .cta-banner-text p{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+  .cta-banner-btn{ flex:none; white-space:nowrap; }
+  .cta-banner-close{
+    position:absolute;
+    top:12px; right:12px;
+    width:30px; height:30px;
+    border-radius:50%;
+    border:1px solid var(--beige-line);
+    background:transparent;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--gray);
+    cursor:pointer;
+    transition:border-color .15s var(--ease-out), color .15s var(--ease-out), transform .12s var(--ease-out);
+  }
+  .cta-banner-close:hover{ border-color:var(--sage); color:var(--sage-deep); }
+  .cta-banner-close:active{ transform:scale(0.92); }
+  .cta-banner-close svg{ width:14px; height:14px; }
+  @media (max-width:640px){
+    .cta-banner-card{ flex-direction:column; align-items:flex-start; text-align:left; padding:24px 24px 26px; }
+    .cta-banner-btn{ width:100%; text-align:center; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cta-banner-card, .cta-banner-close{ transition:none; }
+  }
+
   footer{
     background:var(--navy);
     color:rgba(245,247,246,0.55);
