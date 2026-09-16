@@ -12,7 +12,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kem Oyl Nooky Alutaya — AI Data Annotation & General VA Work</title>
+<title>Kem Alutaya — AI Data Annotation & General VA Work</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B1720'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%2319B5A5' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://kemalutaya.github.io/portfolio/other-work.html">
 <meta name="description" content="AI data annotation, QA, and general virtual assistant experience — Kem Oyl Nooky Alutaya.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -257,7 +259,7 @@
   /* ---- skills grid ---- */
   .skills-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));
     gap:18px;
   }
   .skill-block h4{
@@ -309,6 +311,7 @@
   .btn:hover{background:var(--teal);color:var(--navy);}
   .btn.solid{background:var(--teal);color:var(--navy);}
   .btn.solid:hover{background:var(--off-white);border-color:var(--off-white);}
+  .copyright a{ color:var(--teal); border-bottom:1px solid rgba(25,181,165,0.45); }
   .copyright{
     margin-top:40px;
     font-family:var(--font-mono);
@@ -326,8 +329,6 @@
     *{animation:none !important;transition:none !important;}
   }
 
-  .reveal{opacity:0;transform:translateY(14px);}
-  .reveal.in{opacity:1;transform:translateY(0);transition:opacity 0.5s ease, transform 0.5s ease;}
 </style>
 </head>
 <body>
@@ -370,7 +371,7 @@
     <h2 class="section-title">Training data work</h2>
     <p style="max-width:640px;margin-bottom:28px;color:var(--text-body);">Two roles, back to back, on the data side of AI model training &mdash; annotating images, validating datasets, and transcribing audio into the structured formats ML teams need.</p>
 
-    <div class="card reveal">
+    <div class="card">
       <div class="card-head">
         <h3>Analyst Level 2, AI Data Annotation &amp; Quality Assurance</h3>
         <span class="dates">Jan 2026 &ndash; Apr 2026</span>
@@ -384,7 +385,7 @@
       </ul>
     </div>
 
-    <div class="card reveal">
+    <div class="card">
       <div class="card-head">
         <h3>AI Data Contributor, AI Training Data &amp; Transcription</h3>
         <span class="dates">Sep 2025 &ndash; Dec 2025</span>
@@ -450,7 +451,7 @@
     <h2 class="section-title">Data tracking &amp; documentation</h2>
     <p style="max-width:640px;margin-bottom:28px;color:var(--text-body);">Earlier roles that built the data-entry, list-maintenance, and documentation habits behind the work above.</p>
 
-    <div class="card reveal">
+    <div class="card">
       <div class="card-head">
         <h3>Client Acquisition Specialist</h3>
         <span class="dates">Jul 2023 &ndash; Sep 2023 &middot; Part-time</span>
@@ -463,7 +464,7 @@
       </ul>
     </div>
 
-    <div class="card reveal">
+    <div class="card">
       <div class="card-head">
         <h3>Customer Sales Representative</h3>
         <span class="dates">Nov 2019 &ndash; Jun 2020</span>
@@ -481,7 +482,7 @@
   <div class="wrap">
     <span class="section-sub">Education</span>
     <h2 class="section-title">Background</h2>
-    <div class="card reveal">
+    <div class="card">
       <div class="card-head">
         <h3>Bachelor of Science in Computer Engineering</h3>
         <span class="dates">Aug 2019</span>
@@ -500,7 +501,7 @@
       <a class="btn solid" href="https://cal.com/kem-alutaya" target="_blank" rel="noopener">Book a call</a>
       <a class="btn" href="index.html">Medical VA portfolio</a>
     </div>
-    <p class="copyright">Kem Oyl Nooky Alutaya &middot; kemalutaya96@gmail.com</p>
+    <p class="copyright">&copy; 2026 Kem Oyl Nooky Alutaya &middot; <a href="mailto:kemalutaya96@gmail.com">kemalutaya96@gmail.com</a></p>
   </div>
 </footer>
 
@@ -523,16 +524,6 @@
     updateButton(currentTheme());
     btn.addEventListener('click', () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
   })();
-
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const items = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-    },{threshold:0.15});
-    items.forEach(el=>io.observe(el));
-  } else {
-    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
-  }
 </script>
 
 </body>

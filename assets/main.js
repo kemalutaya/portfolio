@@ -69,21 +69,59 @@
     });
   }
 
-  if (copyEmailBtn && copyConfirm && navigator.clipboard) {
+  // The copy button must work even where the async Clipboard API is missing
+  // (non-secure contexts, older mobile browsers) and must say so when it
+  // genuinely can't copy, rather than looking like a dead button.
+  if (copyEmailBtn && copyConfirm) {
+    const EMAIL = 'kemalutaya96@gmail.com';
+    let hideTimer;
+
+    function announce(message, ok) {
+      copyConfirm.textContent = message;
+      copyConfirm.classList.toggle('is-error', !ok);
+      copyConfirm.classList.add('show');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => copyConfirm.classList.remove('show'), 6000);
+    }
+
+    function legacyCopy(text) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function fallback() {
+      if (legacyCopy(EMAIL)) announce('Copied — ' + EMAIL, true);
+      else announce('Couldn’t copy automatically. The address is ' + EMAIL, false);
+    }
+
     copyEmailBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('kemalutaya96@gmail.com').then(() => {
-        copyConfirm.classList.add('show');
-        setTimeout(() => copyConfirm.classList.remove('show'), 5000);
-      }).catch(() => {});
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(EMAIL)
+          .then(() => announce('Copied — ' + EMAIL, true))
+          .catch(fallback);
+      } else {
+        fallback();
+      }
     });
   }
 
-  // Motion: GSAP entrance + scroll reveal, with a plain-CSS fallback
+  // Motion: one hero entrance on load. Nothing reveals on scroll — the page is
+  // complete at rest, so no content waits on an observer to become visible.
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-
+  if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
     // Split the accent headline into words so it can assemble piece by piece
     const accentEl = document.querySelector('.headline-accent');
     if (accentEl) {
@@ -91,7 +129,7 @@
         .map(w => '<span class="hl-word">' + w + '</span>').join(' ');
     }
 
-    // Hero entrance — one orchestrated moment on load
+    // Hero entrance — the single orchestrated moment
     gsap.set('.full-name, .hero h1, .hero .role, .hero .headline, .hero .support, .credibility-row, .hero-ctas, .status-card', { opacity: 0, y: 16 });
     gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.7 } })
       .to('.full-name', { opacity: 1, y: 0 })
@@ -103,89 +141,6 @@
       .to('.credibility-row', { opacity: 1, y: 0 }, '-=0.4')
       .to('.hero-ctas', { opacity: 1, y: 0 }, '-=0.4')
       .to('.status-card', { opacity: 1, y: 0, duration: 0.8 }, '-=0.55');
-
-    // Scroll reveal — grid siblings cascade together, everything else reveals on its own
-    const gridSelectors = ['.services-grid', '.systems-cards', '.cred-grid', '.cases-grid', '.why-grid', '.why-matters-grid', '.security-grid', '.workflow-strip'];
-    const groups = new Map();
-    const singles = [];
-
-    document.querySelectorAll('.reveal:not(.status-card)').forEach(el => {
-      const gridParent = gridSelectors.map(sel => el.closest(sel)).find(Boolean);
-      if (gridParent) {
-        if (!groups.has(gridParent)) groups.set(gridParent, []);
-        groups.get(gridParent).push(el);
-      } else {
-        singles.push(el);
-      }
-    });
-
-    groups.forEach(els => {
-      gsap.set(els, { opacity: 0, y: 20 });
-      gsap.to(els, {
-        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08,
-        scrollTrigger: { trigger: els[0], start: 'top 88%', once: true }
-      });
-    });
-
-    singles.forEach(el => {
-      gsap.set(el, { opacity: 0, y: 20 });
-      gsap.to(el, {
-        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
-      });
-    });
-
-    // Case 03 flow diagram — steps cascade in sequence, following the arrow
-    // direction, with the "after" state settling into its highlight color
-    // once the chain completes.
-    document.querySelectorAll('.case-flow').forEach(flow => {
-      const steps = flow.querySelectorAll('.flow-step');
-      const afterStep = flow.querySelector('.flow-step.flow-after');
-      gsap.set(steps, { opacity: 0, y: -10 });
-      if (afterStep) gsap.set(afterStep, { color: 'rgba(245,247,246,0.45)' });
-
-      const tl = gsap.timeline({
-        delay: 0.25,
-        scrollTrigger: { trigger: flow, start: 'top 85%', once: true }
-      });
-      tl.to(steps, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', stagger: 0.16 });
-      if (afterStep) {
-        tl.to(afterStep, { color: '#19B5A5', duration: 0.5, ease: 'power3.out' }, '-=0.15');
-      }
-    });
-
-    // Proof strip count-up
-    document.querySelectorAll('.proof-num[data-count]').forEach(el => {
-      const target = parseInt(el.getAttribute('data-count'), 10);
-      const suffix = el.getAttribute('data-suffix') || '';
-      const obj = { val: 0 };
-      gsap.to(obj, {
-        val: target, duration: 1.4, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 92%', once: true },
-        onUpdate: () => { el.textContent = Math.round(obj.val) + suffix; },
-        onComplete: () => {
-          gsap.fromTo(el, { scale: 1 }, { scale: 1.06, duration: 0.16, yoyo: true, repeat: 1, ease: 'power3.out' });
-        }
-      });
-    });
-
-    // Case 03 architecture diagram — nodes light up in sequence
-    document.querySelectorAll('.arch-diagram').forEach(diagram => {
-      const nodes = diagram.querySelectorAll('.arch-node');
-      gsap.set(nodes, { opacity: 0.3, y: 6 });
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: diagram, start: 'top 82%', once: true }
-      });
-      nodes.forEach(node => {
-        tl.to(node, { opacity: 1, y: 0, duration: 0.32, ease: 'power3.out' });
-      });
-    });
-  } else {
-    // Fallback: GSAP unavailable or reduced motion preferred — show everything immediately
-    document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
-    document.querySelectorAll('.proof-num[data-count]').forEach(el => {
-      el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
-    });
   }
 
   // Case 03: manual vs automated comparison toggle
@@ -227,10 +182,13 @@
     updateToTop();
   }
 
-  // Scroll-spy nav highlighting
-  const sections = ['about','services','systems','experience','improvements','security','contact']
-    .map(id => document.getElementById(id)).filter(Boolean);
-  const navLinks = document.querySelectorAll('nav.links a');
+  // Scroll-spy nav highlighting. Sections are derived from the nav itself so
+  // every page highlights its own links — a hardcoded list silently skipped
+  // the sections that only exist on the /da/ and /va/ pages.
+  const navLinks = document.querySelectorAll('nav.links a[href^="#"]');
+  const sections = [...navLinks]
+    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+    .filter(Boolean);
 
   const spyIo = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -245,20 +203,6 @@
   }, { threshold: 0, rootMargin: '-40% 0px -55% 0px' });
 
   sections.forEach(sec => spyIo.observe(sec));
-
-  // Proof cards: radial glow follows the cursor across the gradient rim.
-  // Delegated so it costs one listener regardless of card count.
-  (function(){
-    document.querySelectorAll('.proof-strip-inner').forEach(strip => {
-      strip.addEventListener('pointermove', e => {
-        const card = e.target.closest('.proof-item');
-        if(!card) return;
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-    });
-  })();
 
   // Scroll progress bar (motion-primitives: scroll-progress)
   (function(){
@@ -278,16 +222,4 @@
     }, { passive: true });
     window.addEventListener('resize', update, { passive: true });
     update();
-  })();
-
-  // Spotlight on content cards (motion-primitives: spotlight)
-  (function(){
-    const sel = '.service-card, .sys-card, .cred-card, .why-matters-item';
-    document.addEventListener('pointermove', e => {
-      const card = e.target.closest(sel);
-      if(!card) return;
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    }, { passive: true });
   })();
