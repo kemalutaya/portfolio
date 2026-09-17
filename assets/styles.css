@@ -44,12 +44,14 @@
   }
 
   [data-theme="dark"]{
-    /* On a #0D171E page the light-theme plate is 1.00:1 — invisible.
-       Go darker than the page so the figure still reads as an object. */
-    --diag-plate:#070E14;
-    --diag-box:#131F29;
-    --diag-box-strong:#18242E;
-    --diag-edge:rgba(255,255,255,0.09);
+    /* On a #0D171E page the light-theme plate measured 1.00:1 — invisible.
+       Raised surfaces go lighter in dark mode here, so the plate takes the
+       same value as every other card (--paper), landing at the site's own
+       1.17:1 card separation rather than an arbitrary one. */
+    --diag-plate:#16262F;
+    --diag-box:#1F313B;
+    --diag-box-strong:#263B46;
+    --diag-edge:rgba(255,255,255,0.12);
 
     --bg-page:#0D171E;
     --ivory-dim:#14232B;
