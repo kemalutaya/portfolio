@@ -1,4 +1,15 @@
 :root{
+    /* Diagram plate: dark in both themes (text on it is light), but the
+       plate itself must separate from the page ground in each. */
+    --diag-plate:#0B1720;
+    --diag-box:#16242E;
+    --diag-box-strong:#1C2C37;
+    --diag-edge:rgba(255,255,255,0.10);
+    --diag-ink:#F5F7F6;
+    --diag-muted:#93A6A2;
+    --diag-accent:#19B5A5;
+    --diag-warn:#F5A97F;
+
     --ivory:#F5F7F6;
     --ivory-dim:#DCE5E2;
     --paper:#FFFFFF;
@@ -33,6 +44,13 @@
   }
 
   [data-theme="dark"]{
+    /* On a #0D171E page the light-theme plate is 1.00:1 — invisible.
+       Go darker than the page so the figure still reads as an object. */
+    --diag-plate:#070E14;
+    --diag-box:#131F29;
+    --diag-box-strong:#18242E;
+    --diag-edge:rgba(255,255,255,0.09);
+
     --bg-page:#0D171E;
     --ivory-dim:#14232B;
     --paper:#16262F;
@@ -789,11 +807,22 @@
   /* Process diagrams: navy plate matching the case-study architecture diagram. */
   .flow-figure{
     margin-top:28px;
-    background:var(--navy);
+    background:var(--diag-plate);
+    border:1px solid var(--diag-edge);
     border-radius:var(--radius-card);
     padding:clamp(16px,2.6vw,26px);
     overflow-x:auto;
   }
+  .flow-figure .d-box{ fill:var(--diag-box); stroke:var(--diag-accent); stroke-opacity:0.32; }
+  .flow-figure .d-box-strong{ fill:var(--diag-box-strong); stroke:var(--diag-accent); stroke-opacity:0.55; }
+  .flow-figure .d-box-warn{ fill:var(--diag-box-strong); stroke:var(--diag-warn); stroke-opacity:0.5; }
+  .flow-figure .d-ink{ fill:var(--diag-ink); }
+  .flow-figure .d-muted{ fill:var(--diag-muted); }
+  .flow-figure .d-accent{ fill:var(--diag-accent); }
+  .flow-figure .d-line{ fill:none; stroke:var(--diag-accent); stroke-width:1.6; }
+  .flow-figure .d-warn-line{ fill:none; stroke:var(--diag-warn); stroke-width:1.8; }
+  .flow-figure .d-muted-line{ fill:none; stroke:var(--diag-muted); stroke-width:1.6; }
+  .flow-figure .d-rule{ stroke:var(--diag-ink); stroke-opacity:0.12; stroke-width:1; }
   .flow-figure svg{ display:block; width:100%; min-width:520px; height:auto; }
   .flow-figure figcaption{
     margin-top:12px;
