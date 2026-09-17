@@ -772,6 +772,37 @@
     transition:border-color .2s var(--ease-out), transform .2s var(--ease-out);
   }
   .service-card:hover{border-color:var(--sage); transform:translateY(-3px);}
+  /* Same icon vocabulary as .sys-icon and .proof-icon, sized for service cards. */
+  .service-ic{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(25,181,165,0.12);
+    color:var(--sage-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+  .service-ic svg{ width:20px; height:20px; }
+
+  /* Process diagrams: navy plate matching the case-study architecture diagram. */
+  .flow-figure{
+    margin-top:28px;
+    background:var(--navy);
+    border-radius:var(--radius-card);
+    padding:clamp(16px,2.6vw,26px);
+    overflow-x:auto;
+  }
+  .flow-figure svg{ display:block; width:100%; min-width:520px; height:auto; }
+  .flow-figure figcaption{
+    margin-top:12px;
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    color:rgba(245,247,246,0.5);
+    font-style:italic;
+  }
+
   .service-card h3{
     font-size:1.24rem;
     font-weight:700;
