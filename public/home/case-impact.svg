@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Case study: a daily preparation task cut from about 3 hours to about 1">
+  <rect width="640" height="360" fill="#0B1720"/>
+  <rect x="0.5" y="0.5" width="639" height="359" fill="none" stroke="#19B5A5" stroke-opacity="0.35"/>
+  <text x="44" y="64" font-family="Consolas,Menlo,monospace" font-size="15" letter-spacing="2.4" fill="#19B5A5">CASE STUDY &#183; WORKFLOW AUTOMATION</text>
+  <text x="44" y="190" font-family="Segoe UI,Arial,Helvetica,sans-serif" font-size="64" font-weight="700" fill="#93A6A2" fill-opacity="0.6">3 hrs</text>
+  <line x1="44" y1="168" x2="210" y2="168" stroke="#93A6A2" stroke-opacity="0.7" stroke-width="4"/>
+  <path d="M236 170 H300 M286 156 L302 170 L286 184" fill="none" stroke="#19B5A5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="326" y="200" font-family="Segoe UI,Arial,Helvetica,sans-serif" font-size="96" font-weight="800" fill="#19B5A5">1 hr</text>
+  <text x="44" y="262" font-family="Segoe UI,Arial,Helvetica,sans-serif" font-size="22" font-weight="600" fill="#F5F7F6">Daily preparation task, before and after</text>
+  <text x="44" y="296" font-family="Segoe UI,Arial,Helvetica,sans-serif" font-size="17" font-style="italic" fill="#93A6A2">Estimated, based on the previous manual process.</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="How the schedule macro works, in five steps">
+  <rect width="640" height="360" fill="#0B1720"/>
+  <rect x="0.5" y="0.5" width="639" height="359" fill="none" stroke="#19B5A5" stroke-opacity="0.35"/>
+  <text x="40" y="54" font-family="Consolas,Menlo,monospace" font-size="14" letter-spacing="2.2" fill="#19B5A5">HOW THE SCHEDULE MACRO WORKS</text>
+  <g font-family="Segoe UI,Arial,Helvetica,sans-serif" font-size="18">
+    <rect x="40" y="76"  width="4" height="40" fill="#19B5A5" fill-opacity="0.55"/><rect x="58" y="84"  width="74" height="24" rx="5" fill="#19B5A5" fill-opacity="0.22"/><text x="95" y="101" font-family="Consolas,Menlo,monospace" font-size="13" fill="#19B5A5" text-anchor="middle">EXCEL</text><text x="148" y="102" fill="#F5F7F6">Doctor and facility assignment sheet</text>
+    <rect x="40" y="128" width="4" height="40" fill="#19B5A5" fill-opacity="0.55"/><rect x="58" y="136" width="74" height="24" rx="5" fill="#19B5A5" fill-opacity="0.22"/><text x="95" y="153" font-family="Consolas,Menlo,monospace" font-size="13" fill="#19B5A5" text-anchor="middle">MACRO</text><text x="148" y="154" fill="#F5F7F6">Match each facility to its doctor</text>
+    <rect x="40" y="180" width="4" height="40" fill="#19B5A5" fill-opacity="0.55"/><rect x="58" y="188" width="74" height="24" rx="5" fill="#19B5A5" fill-opacity="0.22"/><text x="95" y="205" font-family="Consolas,Menlo,monospace" font-size="13" fill="#19B5A5" text-anchor="middle">MACRO</text><text x="148" y="206" fill="#F5F7F6">Locate and attach the required files</text>
+    <rect x="40" y="232" width="4" height="40" fill="#19B5A5" fill-opacity="0.55"/><rect x="58" y="240" width="74" height="24" rx="5" fill="#19B5A5" fill-opacity="0.22"/><text x="95" y="257" font-family="Consolas,Menlo,monospace" font-size="13" fill="#19B5A5" text-anchor="middle">OUTLOOK</text><text x="148" y="258" fill="#F5F7F6">Draft built: recipient, CC, subject, body</text>
+    <rect x="40" y="284" width="4" height="40" fill="#19B5A5"/><rect x="58" y="292" width="74" height="24" rx="5" fill="#19B5A5"/><text x="95" y="309" font-family="Consolas,Menlo,monospace" font-size="13" fill="#0B1720" text-anchor="middle" font-weight="700">ME</text><text x="148" y="310" fill="#F5F7F6" font-weight="600">Review every detail, then send</text>
+  </g>
+</svg>
