@@ -61,7 +61,7 @@ export default function AboutGrid() {
         <div className="agrid__copy">
           <p className="agrid__lead">
             5+ years in non-clinical healthcare administration.
-            <span> Be accurate, be dependable, understand the workflow, and make the team’s job easier.</span>
+            <span> My approach: be accurate, be dependable, understand the workflow, and make the team’s job easier.</span>
           </p>
 
           <p className="agrid__note">

@@ -70,22 +70,14 @@
     line-height: 1.2;
     color: var(--navy);
   }
-  /* Platform signal, not brand furniture: this one stays Facebook blue in
-     both themes rather than following --orange. */
-  .rail__name svg { color: var(--verified); flex-shrink: 0; }
-
-  .rail__handle {
+  .rail__role {
     margin-top: 5px;
+    max-width: 22ch;
     font-size: 14.5px;
+    line-height: 1.35;
+    text-align: center;
     color: var(--muted);
   }
-  /* live visitor count, the same stat the phone shell shows */
-  .rail__visits {
-    color: var(--muted);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-  }
-  .rail__visits::before { content: ' · '; color: var(--muted); font-weight: 400; }
 
   /* Round-button row: the three social plates plus the theme switch. One row,
      one size, so the rail has a single band of controls instead of two. */
@@ -196,35 +188,8 @@
   .ricon__whole { transition: transform 300ms var(--ease-spring); }
   .rail__link:hover .ricon__whole { transform: translateY(-1.5px) rotate(-6deg) scale(1.08); }
 
-  .rail__link:hover .ricon__roof { transform: translateY(-1.5px); }
-  .rail__link:hover .ricon__house { transform: scale(1.06); }
-  .rail__link:hover .ricon__door { transform: scaleY(1.12); transform-origin: center bottom; }
-
-  .rail__link:hover .ricon__folder { transform: translateY(-1.5px) scale(1.05); }
-
-  .rail__link:hover .ricon__layer-top { transform: translateY(-2px) scale(1.06); }
-  .rail__link:hover .ricon__layer-bottom { transform: translateY(1px); opacity: 0.65; }
-
-  .ricon__star-fill { opacity: 0; transform: scale(0.8); }
-  .rail__link:hover .ricon__star-fill { opacity: 1; transform: scale(1); }
-  .rail__link:hover .ricon__star-line { transform: scale(1.08) rotate(-6deg); }
-
-  .ricon__steam { opacity: 0.55; }
-  .rail__link:hover .ricon__cup { transform: translateY(1px); }
-  .rail__link:hover .ricon__steam { opacity: 1; transform: translateY(-2px); }
-
-  .rail__link:hover .ricon__user { transform: translateY(-1px) scale(1.06); }
-
   /* The bubble draws itself. stroke-dashoffset is not a compositor property,
      but this is one 18px path and the same technique the old intro used. */
-  .ricon__msg {
-    stroke-dasharray: 74;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 600ms var(--ease-out), transform 300ms var(--ease-out);
-  }
-  .rail__link:hover .ricon__msg {
-    animation: ricon-draw 700ms var(--ease-out);
-  }
   @keyframes ricon-draw {
     0% { stroke-dashoffset: 74; }
     70% { stroke-dashoffset: 0; transform: scale(1); }
@@ -233,7 +198,6 @@
   }
 
   /* The active row keeps its icon in the rested state, just accented. */
-  .rail__link.active .ricon__star-fill { opacity: 1; transform: scale(1); }
   .rail__link:hover {
     color: var(--navy);
     background: var(--white);
@@ -263,4 +227,16 @@
   /* The rail IS the navigation up here, so the floating pill steps aside and
      the page keeps exactly one navigation surface. */
   .nav { display: none; }
+}
+
+/* Short laptop screens (1366x768 minus browser chrome is ~650px): tighten the
+   rail so the last tab, Contact, stays in view without scrolling the rail.
+   `.rail` prefixes outrank apple.css, which loads later. */
+@media (min-width: 1100px) and (max-height: 760px) {
+  .rail .rail__avatar { width: clamp(88px, 15vh, 120px); }
+  .rail .rail__name { margin-top: 10px; font-size: 20px; }
+  .rail .rail__actions { margin-top: 10px; }
+  .rail .rail__nav { margin-top: 12px; padding-top: 10px; }
+  .rail .rail__link { height: 38px; }
+  .rail .rail__copy { padding-top: 14px; }
 }

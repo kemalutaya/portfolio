@@ -87,7 +87,6 @@
 
   /* Verified badge - Facebook blue, not the site accent. It is a platform
      signal, not brand furniture, so it does not follow --orange. */
-  --verified:   #0866FF;
 
   /* Ink for anything sitting on --plate. Both are constant across themes:
      a brand mark on a light plate must not invert with the page. */

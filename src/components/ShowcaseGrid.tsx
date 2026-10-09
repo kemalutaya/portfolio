@@ -16,17 +16,17 @@ export default function ShowcaseGrid() {
         <div className="ktools__head-copy">
           <span className="pgrid__eyebrow">Automation</span>
           <h1 className="pgrid__title" id="showcase-title">
-            Three macros. Daily schedule prep cut from 3 hours to 1.
+            Three macros for the daily admin work.
           </h1>
           <p className="pgrid__lede">
-            Built with Excel, Outlook and Word on a locked-down remote desktop. The time saving
-            is an estimate, based on the previous manual process.
+            Built with Excel, Outlook and Word on a locked-down remote desktop. Daily schedule prep
+            went from about 3 hours to about 1, estimated from the previous manual process.
           </p>
         </div>
       </header>
 
       <div className="home__glass ktools__glass">
-        <Flagship eyebrow="Case study · Highest impact" />
+        <Flagship eyebrow="Case study" />
       </div>
     </section>
   )

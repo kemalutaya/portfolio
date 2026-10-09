@@ -1,11 +1,12 @@
-import { StrictMode, lazy, Suspense } from 'react'
+import { StrictMode, lazy, Suspense, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import App from './App'
 import Home from '@/components/Home'
 import NotFound from '@/components/NotFound'
 import { restorePerfTier } from '@/lib/perf'
 import { restorePrefs } from '@/lib/a11y'
+import ROUTE_META from '@/data/routes.json'
 
 // Every route but Home is its own chunk: the first visit only pays for Home.
 const ProjectsView = lazy(() => import('@/views/ProjectsView'))
@@ -16,7 +17,6 @@ const AboutGrid = lazy(() => import('@/components/AboutGrid'))
 const ContactGrid = lazy(() => import('@/components/ContactGrid'))
 const Privacy = lazy(() => import('@/components/Privacy'))
 const ToS = lazy(() => import('@/components/ToS'))
-const ThankYou = lazy(() => import('@/components/ThankYou'))
 const RoleView = lazy(() => import('@/views/RoleView'))
 import './styles/tokens.css'
 import './styles/global.css'
@@ -49,12 +49,24 @@ import './styles/perf.css'
 restorePerfTier()
 restorePrefs()
 
+// The route shells set each page's title for a direct load; this keeps it
+// right as the visitor moves around inside the app.
+function TitleSync() {
+  const key = useLocation().pathname.replace(/^\/|\/$/g, '')
+  useEffect(() => {
+    const meta = (ROUTE_META as Record<string, { title: string }>)[key]
+    document.title = meta?.title ?? 'Page not found | Kem Alutaya'
+  }, [key])
+  return null
+}
+
 const container = document.getElementById('root')
 if (!container) throw new Error('Root element #root not found')
 
 createRoot(container).render(
   <StrictMode>
     <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+      <TitleSync />
       <Routes>
         {/* The shell owns the rail, the shader and the intro; each child
             renders into its one scrolling panel. */}
@@ -72,7 +84,6 @@ createRoot(container).render(
         {/* Standalone pages: their own layout, no rail, document scroll. */}
         <Route path="/privacy" element={<Suspense fallback={null}><Privacy /></Suspense>} />
         <Route path="/terms" element={<Suspense fallback={null}><ToS /></Suspense>} />
-        <Route path="/thank-you" element={<Suspense fallback={null}><ThankYou /></Suspense>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

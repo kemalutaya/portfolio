@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { SealCheck, ArrowUpRight, Stack, Quotes } from '@/components/slab'
+import { ArrowUpRight, Quotes } from '@/components/slab'
 import { profile } from '@/data/profile'
 import ThemeButton from './ThemeButton'
 import { asset } from '@/lib/asset'
@@ -7,7 +7,7 @@ import { asset } from '@/lib/asset'
 /**
  * Home on a phone, the parts the rail and the bento used to carry:
  *
- *   HomeProfile  avatar, name, verified mark, handle and the theme switch -
+ *   HomeProfile  avatar, name, role and the theme switch -
  *                the rail's identity block, laid flat
  *   HomeStats    three proof facts (profile.stats)
  *   HomeExplore  one tile per rail view in a snap row, then the three
@@ -21,11 +21,8 @@ export function HomeProfile() {
       <div className="hprofile__who">
         <span className="hprofile__name">
           {profile.name}
-          <SealCheck size={16} weight="fill" className="hprofile__verified" aria-label={profile.verifiedLabel} />
         </span>
-        <span className="hprofile__handle">
-          {profile.handle} · {profile.role}
-        </span>
+        <span className="hprofile__role">{profile.role}</span>
       </div>
       <ThemeButton className="hprofile__theme" />
     </header>
@@ -45,15 +42,21 @@ export function HomeStats() {
   )
 }
 
-// Same facts as the desktop bento (HomeBento). Images are the real case
-// diagrams and her photo; the other tiles use a glyph, never stock art.
-const TILES = [
-  { n: '01', label: 'Case Studies', to: '/projects', title: 'Daily schedule prep, 3 hours to about 1', desc: 'An automation that cut a daily 3-hour task to about 1. Estimated, based on the previous manual process.', img: asset('/home/case-impact.svg') },
-  { n: '02', label: 'Services', to: '/services', title: 'Back-office support for U.S. and UK healthcare teams', desc: 'Insurance verification, EMR support, chart preparation and documentation.', Icon: Stack, dark: true },
+// Same facts as the desktop bento (HomeBento). Every tile shows something real:
+// a case diagram, her photo, or who the feedback came from.
+type Tile = { n: string; label: string; to: string; title: string; desc: string; img?: string }
+const REVIEWERS = [
+  ['Onshore Team', 'Resident Eye Care Associates'],
+  ['Supervisor', 'Optum'],
+  ['Supervisor', 'Resident Eye Care Associates'],
+]
+const TILES: Tile[] = [
+  { n: '01', label: 'Case Studies', to: '/projects', title: 'Daily schedule prep, 3 hours to about 1', desc: 'Estimated, based on the previous manual process.', img: asset('/home/case-impact.svg') },
+  { n: '02', label: 'Services', to: '/services', title: 'Back-office support for U.S. and UK healthcare teams', desc: 'Insurance verification, EMR support, chart preparation and documentation.', img: asset('/home/case-eligibility.svg') },
   { n: '03', label: 'Automation', to: '/showcase', title: 'Excel, Outlook and Word macros', desc: 'Built with the tools already on the remote desktop. I still review and send the output myself.', img: asset('/home/case-automation.svg') },
-  { n: '04', label: 'Testimonials', to: '/testimonials', title: 'What onshore teams and supervisors said', desc: 'Colleagues at Resident Eye Care Associates and Optum.', Icon: Quotes, dark: true, accent: true },
+  { n: '04', label: 'Testimonials', to: '/testimonials', title: 'What onshore teams and supervisors said', desc: 'Colleagues at Resident Eye Care Associates and Optum.' },
   { n: '05', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'Five years inside U.S. healthcare operations.', img: profile.avatarSrc },
-] as const
+]
 
 // The three testimonials from the live site, attributions verbatim. The third
 // is a paraphrase there, so it carries no quotation marks here either.
@@ -73,14 +76,22 @@ export function HomeExplore() {
       <ul className="htiles" role="list">
         {TILES.map((t) => (
           <li key={t.to}>
-            <Link to={t.to} className={`htile${'dark' in t && t.dark ? ' htile--dark' : ''}${'accent' in t && t.accent ? ' htile--accent' : ''}`}>
-              <span className="htile__n">{t.n} {t.label}</span>
-              {'img' in t ? (
+            <Link to={t.to} className="htile">
+              {t.img ? (
                 <img className="htile__img" src={t.img} alt="" loading="lazy" />
               ) : (
-                <span className="htile__glyph"><t.Icon size={52} weight="duotone" aria-hidden="true" /></span>
+                <span className="htile__reviews" aria-hidden="true">
+                  {REVIEWERS.map(([who, org], i) => (
+                    <span key={i} className="htile__review">
+                      <Quotes size={13} weight="fill" />
+                      <b>{who}</b>
+                      <span>{org}</span>
+                    </span>
+                  ))}
+                </span>
               )}
               <span className="htile__body">
+                <span className="htile__n">{t.n} {t.label}</span>
                 <span className="htile__title">{t.title}</span>
                 <span className="htile__desc">{t.desc}</span>
               </span>

@@ -97,32 +97,6 @@
    only the lift is animated, and only on transform, so the row never reflows
    while it plays. */
 .agrid__cap-marks { display: inline-flex; align-items: center; padding-left: var(--overlap); }
-.agrid__mark {
-  display: grid;
-  place-items: center;
-  width: var(--tile);
-  height: var(--tile);
-  margin-left: calc(-1 * var(--overlap));
-  border-radius: 9px;
-  background: var(--white);
-  box-shadow:
-    inset 0 0 0 1px var(--line-strong),
-    0 2px 6px -3px rgba(8, 18, 24, 0.35);
-  /* Descending, so later marks sit UNDER earlier ones and the stack reads
-     left to right the way the eye scans it. */
-  z-index: var(--i);
-  transition: transform 260ms var(--ease-spring);
-}
-.agrid__mark img {
-  width: 58%;
-  height: 58%;
-  object-fit: contain;
-}
-.agrid__cap:hover .agrid__mark { transform: translateY(-3px); }
-.agrid__cap:hover .agrid__mark:nth-child(2) { transition-delay: 40ms; }
-.agrid__cap:hover .agrid__mark:nth-child(3) { transition-delay: 80ms; }
-.agrid__cap:hover .agrid__mark:nth-child(4) { transition-delay: 120ms; }
-.agrid__cap:hover .agrid__mark:nth-child(5) { transition-delay: 160ms; }
 
 .agrid__cap-title {
   font-size: clamp(13px, min(1vw, 1.85vh), 17px);
@@ -174,13 +148,6 @@
   padding-block: clamp(7px, 0.9vh, 10px);
   box-shadow: inset 0 1px 0 var(--line);
 }
-.agrid__cell-go {
-  flex: 0 0 auto;
-  margin-left: auto;
-  color: var(--line-strong);
-  transition: color 220ms var(--ease-out), transform 220ms var(--ease-out);
-}
-.agrid__cell--wide:hover .agrid__cell-go { color: var(--orange); transform: translate(2px, -2px); }
 .agrid__cell-mark {
   display: grid;
   place-items: center;
@@ -195,7 +162,6 @@
 .agrid__cell-mark--img { background: var(--white); box-shadow: inset 0 0 0 1px var(--line-strong); }
 /* The HLA mark is a full-bleed gradient logo - an orange wash behind it reads
    as a second brand colour, so its tile is bare. */
-.agrid__cell-mark--plain { background: none; box-shadow: none; }
 .agrid__cell-mark img { width: 78%; height: 78%; object-fit: contain; }
 .agrid__cell-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .agrid__cell-title {
@@ -224,16 +190,6 @@
   .agrid__cell-meta { font-size: 10px; }
 }
 
-/* Dark theme: the mark tiles stay a light plate on purpose. Brand marks are
-   drawn for light backgrounds and several of these are monochrome black, so
-   inverting the tile would erase them. */
-[data-theme='dark'] .agrid__mark {
-  background: #F5F7F6;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
-    0 2px 6px -3px rgba(0, 0, 0, 0.6);
-}
-
 /* ---------- Right: the illustration ----------
    Bottom-aligned so the art sits on the floor of the sheet rather than floating in
    the middle of it, and pulled into the sheet's corner by the glass padding
@@ -258,6 +214,16 @@
   object-position: bottom right;
 }
 
+/* When the copy is taller than the panel (short laptop screens), the sheet
+   grows and the panel scrolls, instead of the copy spilling over the title.
+   The portrait is taken out of flow so the raster never sets the height. */
+@media (min-width: 1100px) {
+  .pgrid.agrid { height: auto; min-height: 100%; }
+  .agrid__glass { height: auto; grid-template-rows: auto; }
+  .agrid__copy { justify-content: safe center; }
+  .agrid__portrait img { position: absolute; inset: 0; }
+}
+
 /* ---------- Below the shell ---------- */
 @media (max-width: 1099px) {
   .agrid__glass { display: flex; flex-direction: column; gap: 20px; }
@@ -276,11 +242,6 @@
   /* The index has no room to earn its column at this width. */
   .agrid__cap { grid-template-columns: calc(5 * var(--tile) - 4 * var(--overlap) + var(--overlap)) minmax(0, 1fr); }
   .agrid__cap-index { display: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .agrid__mark,
-  .agrid__cap:hover .agrid__mark { transform: none; transition: none; }
 }
 
 /* Phone type floor. */

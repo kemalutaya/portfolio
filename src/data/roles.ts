@@ -25,9 +25,6 @@ export type RoleJob = {
 export type RoleCredential = { title: string; meta: string; kind: 'cert' | 'degree' }
 
 export type Role = {
-  /** document.title while the page is mounted. */
-  title: string
-  description: string
   eyebrow: string
   headline: string
   lede: string
@@ -52,16 +49,13 @@ const DEGREE: RoleCredential = {
 
 export const roles: Record<RoleKey, Role> = {
   da: {
-    title: 'Kem Alutaya | AI Data Annotation & Transcription',
-    description:
-      'Kem Alutaya, AI data annotation and transcription specialist. Bounding boxes, segmentation, classification, medical image annotation, audio transcription, and QA, delivered to production quotas.',
     eyebrow: 'AI Data Annotation & Transcription · Remote',
     headline: 'I label training data to spec, consistently, at production pace, and I check my own work before it ships.',
     lede: 'Bounding boxes, segmentation, classification and attribute tagging across medical and everyday imagery, plus audio transcription and dataset QA.',
     summary:
       "My annotation and transcription work has been with Innodata and TELUS Digital AI, both part-time, across roughly eight months in 2025 and 2026. Before that I spent five years doing high-volume, high-accuracy work inside systems I didn't own: electronic medical records, payer portals, and booking platforms. I read the guideline properly before starting, flag the genuinely ambiguous case instead of guessing, and review my own output before submission. I annotate and transcribe to a client's specification; I don't set the labelling schema or make research decisions about what the data should mean.",
     servicesTitle: 'What I do',
-    servicesSub: "Six task types I've worked on in production, not in training exercises.",
+    servicesSub: "Six task types I've worked on in production.",
     services: [
       {
         title: 'Bounding Box Annotation',
@@ -128,20 +122,17 @@ export const roles: Record<RoleKey, Role> = {
     resume: asset('/KemAlutaya_Resume_AI_DataAnnotation.pdf'),
     contactTitle: "Let's talk about your dataset.",
     contactLine:
-      "Tell me the task type, the guideline, and the volume, and I'll tell you honestly whether I'm a fit and what pace you can expect from me.",
+      "Tell me the task type, the guideline, and the volume, and I'll give you a straight answer on fit and the pace you can expect.",
   },
 
   va: {
-    title: 'Kem Alutaya | Virtual Assistant, Admin, Research & Customer Support',
-    description:
-      'Kem Alutaya, remote virtual assistant. Data entry, research, customer communication, scheduling, and document management, with 5+ years of accurate high-volume administrative work.',
     eyebrow: 'Virtual Assistant · Remote',
     headline: 'I keep your admin work accurate, at volume, inside whatever system you already use.',
     lede: 'Data entry, research, customer communication, scheduling, and document management for busy teams and business owners.',
     summary:
       "I've done data entry, research, customer communication, scheduling, and document management across e-commerce product research, hotel and airline booking support, and back-office administrative and records work for a U.S.-based private practice. What connects that work is the pattern: a high volume of tasks, real accuracy requirements, and a system that belongs to someone else. I'm best suited to administrative, research, and customer-support work. Roles centered on outbound sales or cold-calling aren't a good fit for me, and I'd rather say that upfront.",
     servicesTitle: 'What I do',
-    servicesSub: "Six areas I've handled in real, paid roles, not just training exercises.",
+    servicesSub: "Six areas I've handled in paid roles.",
     services: [
       {
         title: 'Data Entry & Records',
@@ -217,6 +208,6 @@ export const roles: Record<RoleKey, Role> = {
     resume: asset('/KemAlutaya_Resume_VA_DataEntry.pdf'),
     contactTitle: "Let's talk about what you need help with.",
     contactLine:
-      "Tell me what's eating your time, whether it's data entry, research, scheduling, or customer follow-up, and I'll tell you honestly whether I'm a fit.",
+      "Tell me what's eating your time, whether it's data entry, research, scheduling, or customer follow-up, and we can work out whether I'm the right help.",
   },
 }

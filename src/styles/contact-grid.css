@@ -358,6 +358,7 @@
   color: var(--navy);
 }
 .cgrid__done-body { margin: 0; max-width: 44ch; font-size: clamp(13px, 0.9vw, 15.5px); line-height: 1.55; color: var(--muted); }
+.cgrid__done-body a { color: var(--orange-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 .cgrid__again {
   margin-top: 6px;
   padding: 9px 16px;

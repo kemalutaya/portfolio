@@ -206,7 +206,7 @@ export default function ServicesGrid() {
             <h2 className="sgrid__offers-title">What I do.</h2>
             <p className="sgrid__offers-sub">
               My strongest fit is back-office healthcare support. I&rsquo;m open to limited call
-              handling, but I&rsquo;m not positioning myself as a high-volume inbound call specialist.
+              handling, but not high-volume inbound calls, outbound sales or cold-calling.
             </p>
           </div>
           <ul className="bento sgrid__services" role="list" style={CARDS}>

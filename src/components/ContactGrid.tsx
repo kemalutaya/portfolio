@@ -70,7 +70,7 @@ export default function ContactGrid() {
         <p className="pgrid__lede">
           I’m available immediately for a full-time remote role in insurance verification, EMR support, chart
           preparation or healthcare documentation, and open to contract work alongside that. Based in the
-          Philippines, aligned to UK and U.S. business hours. Send me the role and I’ll tell you honestly whether
+          Philippines, aligned to UK and U.S. business hours. Send me the role and I’ll tell you whether
           I’m a fit.
         </p>
       </header>
@@ -83,7 +83,7 @@ export default function ContactGrid() {
             <h2 className="cgrid__aside-title" id="contact-faq">
               Quick answers.
               <br />
-              <span>Still have one? Write below.</span>
+              <span>Still have one? Send it with the form.</span>
             </h2>
           </div>
 
@@ -144,12 +144,17 @@ export default function ContactGrid() {
                 <CheckCircle size={30} weight="fill" />
               </span>
               <h2 className="cgrid__done-title">
-                {status.via === 'webhook' ? 'Message sent.' : 'Your mail app has it.'}
+                {status.via === 'webhook' ? 'Message sent.' : 'Check your email app.'}
               </h2>
               <p className="cgrid__done-body">
-                {status.via === 'webhook'
-                  ? 'Thanks for getting in touch. I’ll reply by email.'
-                  : 'The message is laid out and addressed to me. Press send there and I’ll reply by email.'}
+                {status.via === 'webhook' ? (
+                  'Thanks for getting in touch. I’ll reply by email.'
+                ) : (
+                  <>
+                    Your message should be open there, addressed to me. Press send and I’ll reply by email. Nothing
+                    opened? Email me directly at <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+                  </>
+                )}
               </p>
               <button type="button" className="cgrid__again" onClick={() => setStatus({ kind: 'idle' })}>
                 Write another

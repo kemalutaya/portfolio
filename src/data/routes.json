@@ -1,0 +1,49 @@
+{
+  "": {
+    "title": "Kem Alutaya | Medical Virtual Administrative Assistant"
+  },
+  "projects": {
+    "title": "Case Studies | Kem Alutaya",
+    "description": "How an Excel, Outlook and Word automation cut an estimated 3-hour daily healthcare admin task to about 1 hour, plus the processes behind the daily work."
+  },
+  "services": {
+    "title": "Services | Kem Alutaya",
+    "description": "Insurance verification, EMR support, chart preparation, documentation, facility support and prior authorization support for U.S. and UK healthcare teams."
+  },
+  "showcase": {
+    "title": "Automation | Kem Alutaya",
+    "description": "The Excel, Outlook and Word macros built for physician schedules, facility notifications and doctor-visit flyers."
+  },
+  "testimonials": {
+    "title": "Testimonials | Kem Alutaya",
+    "description": "What onshore teams and supervisors at Resident Eye Care Associates and Optum said."
+  },
+  "about": {
+    "title": "About | Kem Alutaya",
+    "description": "Five years in U.S. healthcare back-office operations: experience, credentials and scope of work."
+  },
+  "contact": {
+    "title": "FAQs & Contact | Kem Alutaya",
+    "description": "Book a call or email. Answers on hours, HIPAA, scope and availability."
+  },
+  "privacy": {
+    "title": "Privacy | Kem Alutaya",
+    "description": "How this site handles your information.",
+    "robots": "noindex, follow"
+  },
+  "terms": {
+    "title": "Terms | Kem Alutaya",
+    "description": "Terms of use for this site.",
+    "robots": "noindex, follow"
+  },
+  "da": {
+    "title": "Kem Alutaya | AI Data Annotation & Transcription",
+    "description": "Kem Alutaya, AI data annotation and transcription specialist. Bounding boxes, segmentation, classification, medical image annotation, audio transcription, and QA, delivered to production quotas.",
+    "robots": "noindex, nofollow"
+  },
+  "va": {
+    "title": "Kem Alutaya | Virtual Assistant, Admin, Research & Customer Support",
+    "description": "Kem Alutaya, remote virtual assistant. Data entry, research, customer communication, scheduling, and document management, with 5+ years of accurate high-volume administrative work.",
+    "robots": "noindex, nofollow"
+  }
+}

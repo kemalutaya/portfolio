@@ -133,8 +133,7 @@ main > * {
    more - the page is dark or light, never both - so they carry their own
    ground instead of asking the background to become one. Same navy in both
    themes: their type is light either way. */
-.dark-section,
-.dark-section-alt {
+.dark-section {
   background-color: var(--panel-dark);
 }
 
@@ -167,55 +166,14 @@ main > * {
 }
 /* The slow fade - once the flood has covered the viewport (280ms), the whole
    orange sheet dissolves gently over the hero already rising beneath it. */
-.intro--leaving {
-  /* ease-in-out, not ease-out: holds the orange a beat, then dissolves at a
-     steady, unhurried pace - ease-out dumps most of the fade in the first
-     200ms and reads as a cut. */
-  animation: intro-fade-out 1000ms cubic-bezier(0.45, 0, 0.55, 1) 320ms forwards;
-}
 @keyframes intro-fade-out {
   to { opacity: 0; }
-}
-
-/* Dark still surface. A faint warm radial at the impact point keeps the
-   stage from reading dead flat. */
-.intro__stage {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 55%, rgba(25, 181, 165, 0.08), transparent 55%),
-    var(--navy-ink);
-}
-
-/* Square scene mapping the 600x600 viewBox, centered. Sized in vmin so the
-   ripple field breathes on any viewport; SVG user units scale with it. */
-.intro__scene {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(78vmin, 560px);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-}
-.intro__ripple {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
 }
 
 /* ── The drop ───────────────────────────────────────────────────
    transform list reads right-to-left: translate the fall FIRST, then squash
    around the impact point (transform-origin in viewBox units) so the bulb
    stays planted on the surface as it flattens. */
-.intro__drop {
-  fill: var(--orange);
-  transform-box: view-box;
-  transform-origin: 300px 330px;
-  opacity: 0;
-  animation: intro-drop 580ms forwards;
-}
 @keyframes intro-drop {
   0% {
     opacity: 1;
@@ -232,14 +190,6 @@ main > * {
 }
 
 /* Impact flash - tiny, hot, gone. */
-.intro__flash {
-  fill: var(--white);
-  transform-box: fill-box;
-  transform-origin: center;
-  opacity: 0;
-  transform: scale(0.2);
-  animation: intro-flash 140ms ease-out 450ms forwards;
-}
 @keyframes intro-flash {
   0%   { opacity: 0; transform: scale(0.2); }
   35%  { opacity: 1; transform: scale(1.6); }
@@ -252,21 +202,6 @@ main > * {
    keyframe settles everything at once. --ring-o dims outward - ripples
    dissipate as they propagate. Delays widen outward (90/95/105/120/130ms
    gaps) for the same reason: uniform stagger reads as template work. */
-.intro__ring {
-  stroke: var(--cream);
-  stroke-width: 1.5;
-  fill: none;
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: intro-ring 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-.intro__ring--1 { --ring-o: 0.95; transform: scale(0.85) rotate(1.2deg);  animation-delay: 500ms; }
-.intro__ring--2 { --ring-o: 0.9;  transform: scale(0.85) rotate(-1.5deg); animation-delay: 590ms; }
-.intro__ring--3 { --ring-o: 0.85; transform: scale(0.85) rotate(1.2deg);  animation-delay: 685ms; }
-.intro__ring--4 { --ring-o: 0.72; transform: scale(0.85) rotate(-1.5deg); animation-delay: 790ms; }
-.intro__ring--5 { --ring-o: 0.6;  transform: scale(0.85) rotate(1.2deg);  animation-delay: 910ms; }
-.intro__ring--6 { --ring-o: 0.45; transform: scale(0.85) rotate(-1.5deg); animation-delay: 1040ms; }
 @keyframes intro-ring {
   to {
     opacity: var(--ring-o);
@@ -278,13 +213,6 @@ main > * {
 /* Ring 3's orange twin - the one signal accent. Draws hot over its cream
    sibling, then dims to a persistent glow that is still on screen when the
    orange flood arrives, so the flood color already lives in the topography. */
-.intro__ring-accent {
-  stroke: var(--orange);
-  stroke-width: 2;
-  fill: none;
-  opacity: 0;
-  animation: intro-ring-accent 1050ms forwards 1150ms;
-}
 @keyframes intro-ring-accent {
   0% {
     opacity: 0;
@@ -300,55 +228,13 @@ main > * {
    HTML for crisp text. Mark inside the inner rings above the impact point;
    wordmark tracks-in 120ms behind the mark's spring - two arrival
    personalities, deliberately offset. Decorative, NOT a document heading. */
-.intro__lockup {
-  position: absolute;
-  left: 50%;
-  top: 34%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  z-index: 2;
-}
-.intro__mark {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-circle);
-  object-fit: contain;
-  background: var(--white);
-  padding: 8px;
-  box-shadow: 0 12px 32px -14px rgba(8, 18, 24, 0.5);
-  opacity: 0;
-  animation: intro-mark 450ms cubic-bezier(0.34, 1.56, 0.64, 1) 1300ms forwards;
-}
 @keyframes intro-mark {
   from { opacity: 0; transform: translateY(8px) scale(0.6); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-.intro__word {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 4vw, 30px);
-  font-weight: 600;
-  line-height: 1;
-  color: var(--cream);
-  opacity: 0;
-  letter-spacing: 0.12em;
-  animation: intro-word 430ms cubic-bezier(0.22, 1, 0.36, 1) 1420ms forwards;
-}
 @keyframes intro-word {
   from { opacity: 0; transform: translateY(12px); letter-spacing: 0.12em; }
   to   { opacity: 1; transform: translateY(0); letter-spacing: 0.04em; }
-}
-.intro__tag {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-align: center;
-  color: var(--cream);
-  opacity: 0;
-  animation: intro-tag 400ms var(--ease-out) 1550ms forwards;
 }
 @keyframes intro-tag {
   from { opacity: 0; transform: translateY(6px); }
@@ -360,25 +246,6 @@ main > * {
    the ripple origin is the story, so the reveal grows from it, not from
    dead center). Covers the viewport in 280ms, then the wipe on .intro
    takes over. */
-.intro__flood {
-  position: absolute;
-  left: 50%;
-  top: calc(50% + min(3.9vmin, 28px));
-  width: 220vmax;
-  height: 220vmax;
-  margin: -110vmax 0 0 -110vmax;
-  border-radius: 50%;
-  /* Burnt orange, not the bright accent: a full-viewport flash of #19B5A5 is
-     an eye-strain / photosensitivity risk, so the flood uses the darker ink
-     tone and lets the accents stay bright at small sizes only. */
-  background: var(--orange-ink);
-  transform: scale(0);
-  z-index: 3;
-  will-change: transform;
-}
-.intro--leaving .intro__flood {
-  animation: intro-flood 280ms cubic-bezier(0.7, 0, 0.84, 0) forwards;
-}
 @keyframes intro-flood {
   to { transform: scale(1); }
 }
@@ -386,60 +253,12 @@ main > * {
 /* ── Reduced motion: the composed final frame, no choreography ──
    Rings + accent + lockup at their settled states; fade in, hold, fade out
    (React swaps the classes on the same schedule). */
-.intro--reduced {
-  animation: none;
-  transition: opacity 400ms var(--ease-out);
-}
-.intro--reduced.intro--leaving { opacity: 0; }
-.intro--reduced .intro__drop,
-.intro--reduced .intro__flash,
-.intro--reduced .intro__flood { display: none; }
-.intro--reduced .intro__ring {
-  animation: intro-fade-static 200ms var(--ease-out) forwards;
-  stroke-dashoffset: 0;
-  transform: none;
-}
-.intro--reduced .intro__ring-accent {
-  animation: intro-fade-static 200ms var(--ease-out) forwards;
-  stroke-dashoffset: 0;
-  --ring-o: 0.35;
-}
-.intro--reduced .intro__mark,
-.intro--reduced .intro__word,
-.intro--reduced .intro__tag {
-  animation: intro-fade-static 200ms var(--ease-out) forwards;
-  transform: none;
-  letter-spacing: 0.04em;
-}
-.intro--reduced .intro__mark { --ring-o: 1; }
-.intro--reduced .intro__word { --ring-o: 1; }
-.intro--reduced .intro__tag { --ring-o: 0.6; }
 @keyframes intro-fade-static {
   to { opacity: var(--ring-o, 1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .intro { animation: none !important; transition: opacity 400ms var(--ease-out); }
-  .intro--leaving { opacity: 0; transform: none; }
-  .intro__drop,
-  .intro__flash,
-  .intro__flood { display: none !important; }
-  .intro__ring,
-  .intro__ring-accent {
-    animation: intro-fade-static 200ms var(--ease-out) forwards !important;
-    stroke-dashoffset: 0;
-    transform: none;
-  }
-  .intro__ring-accent { --ring-o: 0.35; }
-  .intro__mark,
-  .intro__word,
-  .intro__tag {
-    animation: intro-fade-static 200ms var(--ease-out) forwards !important;
-    transform: none;
-    letter-spacing: 0.04em;
-  }
-  .intro__mark, .intro__word { --ring-o: 1; }
-  .intro__tag { --ring-o: 0.6; }
 }
 
 /* ============================================

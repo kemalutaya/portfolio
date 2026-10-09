@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { SealCheck } from '@/components/slab'
 import ThemeGlyph from './ThemeGlyph'
 import {
   HomeIcon,
@@ -56,10 +55,9 @@ export default function Rail() {
 
         <h2 className="rail__name">
           {profile.name}
-          <SealCheck size={19} weight="fill" aria-label={profile.verifiedLabel} />
         </h2>
-        <p className="rail__handle">
-          {profile.handle}
+        <p className="rail__role">
+          {profile.role}
         </p>
 
         <div className="rail__actions">

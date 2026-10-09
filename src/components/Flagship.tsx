@@ -65,7 +65,7 @@ const TABS: FlagshipTab[] = [
     path: ' / three automations',
     pageTitle: 'Overview',
     caption:
-      'Three recurring daily tasks, each one manual, repetitive and error-prone, automated with Excel, Outlook and Word macros. Daily schedule prep went from 3 hours to 1, estimated from the previous manual process.',
+      'Three recurring daily tasks, each one manual, repetitive and error-prone, automated with Excel, Outlook and Word macros.',
     Icon: SquaresFour,
   },
   {
@@ -92,7 +92,7 @@ const TABS: FlagshipTab[] = [
     path: ' / flyer draft',
     pageTitle: 'Doctor-visit flyers',
     caption:
-      'Same drafting logic, plus auto-renaming the facility name and visit date per doctor. It took the longest to build: some facility names run long, and the flyer layout had to be adjusted to handle that without breaking.',
+      'Same drafting logic, plus filling in the facility name and visit date for each doctor. It took the longest to build: some facility names run long, and the flyer layout had to be adjusted to handle that without breaking.',
     Icon: FileDoc,
   },
   {
@@ -145,7 +145,7 @@ const AUTOMATIONS: Automation[] = [
     n: '03',
     figure: 'Longest build',
     title: 'Doctor-Visit Flyers',
-    text: 'Same drafting logic, plus auto-renaming the facility name and visit date per doctor.',
+    text: 'Same drafting logic, plus filling in the facility name and visit date for each doctor.',
   },
 ]
 
@@ -303,7 +303,7 @@ function OverviewMock() {
       <PageHead
         kicker="Case study"
         title="Automating administrative draft generation."
-        sub="Daily schedule prep: 3 hrs to 1 hr. Estimated, based on the previous manual process."
+        sub="Daily schedule prep: about 3 hrs to about 1. Estimated, based on the previous manual process."
       />
 
       <div className="flagship__card" style={{ ['--i' as string]: 3 }}>

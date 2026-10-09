@@ -33,14 +33,11 @@ export default function RoleView({ role: key }: { role: RoleKey }) {
   const role = roles[key]
 
   useEffect(() => {
-    const previous = document.title
-    document.title = role.title
     const robots = document.createElement('meta')
     robots.name = 'robots'
     robots.content = 'noindex, nofollow'
     document.head.appendChild(robots)
     return () => {
-      document.title = previous
       robots.remove()
     }
   }, [role])

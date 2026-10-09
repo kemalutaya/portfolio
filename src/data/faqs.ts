@@ -30,7 +30,7 @@ export const FAQS: QA[] = [
   },
   {
     q: 'What kind of role is not a fit?',
-    a: 'My strongest fit is back-office healthcare support. I’m open to limited call handling, but high-volume outbound sales or cold-calling roles aren’t a good fit, and I’d rather say that upfront.',
+    a: 'My strongest fit is back-office healthcare support. I’m open to limited call handling, but not high-volume inbound calls, outbound sales or cold-calling, and I’d rather say that upfront.',
   },
   {
     q: 'When can you start?',

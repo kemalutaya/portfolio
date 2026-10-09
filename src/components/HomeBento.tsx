@@ -48,13 +48,9 @@ const OFFERS = [
 
 const CLIENTS = [
   { name: 'Onshore Team', role: 'Resident Eye Care Associates', work: 'Detail · Speed · Accuracy', logo: undefined as string | undefined },
-  { name: 'Supervisor', role: 'Optum', work: 'Coaching · Proactive · Tidy', logo: undefined as string | undefined },
+  { name: 'Supervisor', role: 'Optum', work: 'Approachable · Proactive · Tidy', logo: undefined as string | undefined },
   { name: 'Supervisor', role: 'Resident Eye Care Associates', work: 'Workflow · Problem-solving', logo: undefined as string | undefined },
 ]
-
-// Three photos of you, fanned. Small copies are fine - the fan shows them under 100px.
-// One real portrait, fanned three deep. Query strings keep React's keys unique.
-const PHOTOS = [profile.avatarSrc, asset('/kem-alutaya.jpg?2'), asset('/kem-alutaya.jpg?3')]
 
 /** The AI systems as a flat list: every leaf of the Projects tree, in order. */
 const leaves = (n: StackNode): StackNode[] =>
@@ -104,15 +100,13 @@ export default function HomeBento() {
         </div>
       </Link>
 
-      {/* About: a fanned stack of photos. */}
+      {/* About: the one real portrait. */}
       <Link to="/about" className="bento__card bento__card--about">
         <CardHead Icon={User} title="About" desc="Five years inside U.S. healthcare operations." />
         <div className="bento__media bento__fan" aria-hidden="true">
-          {PHOTOS.map((src, i) => (
-            <span key={src} className="bento__photo" style={{ ['--i' as string]: i }}>
-              <img src={src} alt="" loading="lazy" decoding="async" />
-            </span>
-          ))}
+          <span className="bento__photo bento__photo--solo" style={{ ['--i' as string]: 1 }}>
+            <img src={profile.avatarSrc} alt="" loading="lazy" decoding="async" />
+          </span>
         </div>
       </Link>
 

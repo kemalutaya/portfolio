@@ -63,7 +63,6 @@ body {
   line-height: 1.04;
   font-weight: 700;
 }
-.view__title { letter-spacing: -0.025em; line-height: 1.1; }
 .rail__name { letter-spacing: -0.022em; font-weight: 700; }
 .home__tools-label { letter-spacing: -0.018em; }
 
@@ -79,7 +78,7 @@ body {
 /* Small text opens: eyebrows lose the wide caps tracking, captions gain a
    hair of space. Card names are sentence case - the caps-and-tracking
    treatment was hierarchy by decoration; weight and size do it instead. */
-.view__eyebrow,
+
 .home__tools-eyebrow {
   letter-spacing: 0.08em;
   font-weight: 600;
@@ -100,7 +99,7 @@ body {
 .bento__review-work,
 .bento__badge-tag,
 .bento__chip { letter-spacing: 0.01em; }
-.rail__handle,
+.rail__role,
 .rail__copy { letter-spacing: 0.004em; }
 .rail__link { letter-spacing: -0.006em; font-size: 16.5px; }
 
@@ -112,7 +111,6 @@ body {
 .rail__social:active,
 .rail__theme:active,
 .bento__card:active,
-.nav__theme:active,
 .a11y__button:active {
   transform: scale(0.97) !important;
   transition-duration: 100ms;
@@ -379,11 +377,9 @@ body {
      line; body sits at 0. Leading tightens on the head, loosens on ledes. */
   .home__title,
   .boot__title { letter-spacing: -0.024em; line-height: 1.06; }
-  .pgrid__title,
-  .view__title { letter-spacing: -0.022em; line-height: 1.08; }
+  .pgrid__title { letter-spacing: -0.022em; line-height: 1.08; }
   .home__lede,
-  .pgrid__lede,
-  .view__lede { font-weight: 500; line-height: 1.5; letter-spacing: 0.002em; }
+  .pgrid__lede { font-weight: 500; line-height: 1.5; letter-spacing: 0.002em; }
   .pgrid__eyebrow,
   .hproof__kicker { letter-spacing: 0.08em; }
   .hstats span { letter-spacing: 0.05em; font-size: 11.5px; }
@@ -392,7 +388,7 @@ body {
   .htile__title { letter-spacing: -0.014em; font-weight: 600; }
   .htile__desc,
   .hproof__meta,
-  .hprofile__handle { letter-spacing: 0.004em; }
+  .hprofile__role { letter-spacing: 0.004em; }
   .htile__n { letter-spacing: 0.06em; font-weight: 600; }
   .hsec__title { letter-spacing: -0.012em; }
 
@@ -545,8 +541,7 @@ body {
    ledes get a measure instead of the full line, tiles grow with the screen. */
 @media (min-width: 640px) and (max-width: 1099px) {
   .home__lede,
-  .pgrid__lede,
-  .view__lede { max-width: 60ch; }
+  .pgrid__lede { max-width: 60ch; }
   .bento__card { border-radius: 22px; }
   .htile { width: min(260px, 40vw); }
 }

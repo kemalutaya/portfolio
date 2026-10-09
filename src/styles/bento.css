@@ -173,7 +173,7 @@
   to   { transform: translateY(-50%); }
 }
 
-/* About: three photos fanned like a hand of cards. */
+/* About: one portrait. The Projects card reuses this fan for three diagrams. */
 .bento__fan { display: grid; place-items: center; }
 .bento__photo {
   grid-area: 1 / 1;
@@ -188,6 +188,7 @@
   transition: transform var(--dur-slow) var(--ease-spring);
 }
 .bento__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.bento__photo--solo { width: clamp(96px, 7.5vw, 128px); }
 .bento__card:hover .bento__photo {
   transform: rotate(calc((var(--i) - 1) * 14deg)) translateX(calc((var(--i) - 1) * 34px)) translateY(-4px);
 }
@@ -274,7 +275,9 @@
   font-size: 11px;
   font-weight: 600;
 }
-.bento__badge-tag svg { color: var(--verified); }
+/* The tag is an inverted pill, so its icon takes the other theme's teal. */
+.bento__badge-tag svg { color: #19B5A5; }
+[data-theme='dark'] .bento__badge-tag svg { color: #0C6F64; }
 
 /* Services: the five offers, title only. */
 .bento__card--services .bento__media { margin-top: clamp(4px, 0.7vh, 10px); }

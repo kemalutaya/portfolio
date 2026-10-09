@@ -2,7 +2,7 @@ import { asset } from '@/lib/asset'
 /**
  * YOUR IDENTITY - start here.
  *
- * Everything that says who you are lives in this file: name, handle, photo,
+ * Everything that says who you are lives in this file: name, role, photo,
  * socials, email and the Home headline. All values are real and sourced from
  * the previous static site; figures keep their qualifiers attached.
  *
@@ -22,13 +22,10 @@ export type Profile = {
   name: string
   /** First name, used in "Hi, I'm ___." on About. */
   firstName: string
-  handle: string
-  /** Short role line under the handle on phones. */
+  /** Role line under the name. */
   role: string
   /** Square image. An SVG, WebP or PNG with a transparent background looks best. */
   avatarSrc: string
-  /** Tooltip / screen-reader label on the verified tick next to your name. */
-  verifiedLabel: string
   email: string
   location: string
   /** Three short proof facts shown on phones under the Home lede. */
@@ -45,11 +42,8 @@ export type Profile = {
 export const profile: Profile = {
   name: 'Kem Alutaya',
   firstName: 'Kem',
-  handle: '@kalutaya',
   role: 'Medical Virtual Administrative Assistant',
   avatarSrc: asset('/kem-alutaya.jpg'),
-  // The tick is a real credential, not a platform badge: say exactly what it is.
-  verifiedLabel: 'HIPAA Compliance Certified (Biologix, 2024, renewed 2026)',
   email: 'kemalutaya96@gmail.com',
   location: 'Philippines (GMT+8), aligned to US & UK hours',
   // Figures are representative workload from the most recent healthcare role;

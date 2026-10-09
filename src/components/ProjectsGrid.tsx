@@ -259,7 +259,7 @@ export default function ProjectsGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">Case Studies</span>
         <h1 className="pgrid__title" id="projects-title">
-          I look for ways to improve workflows, not just run them.
+          I run the daily workflow, then look for ways to improve it.
         </h1>
         <p className="pgrid__lede">Three macros I built with Excel, Outlook and Word, two smaller fixes, and the systems I work in. Open a card to see it full size.</p>
       </header>

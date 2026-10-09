@@ -205,17 +205,6 @@
 .bento__photo--page { aspect-ratio: 3 / 4; }
 .bento__photo--page img { object-position: top; }
 
-/* Apps: a sideways reel of app and extension art. */
-.bento__reel--row {
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-}
-.bento__reel--row { display: flex; align-items: center; }
-.bento__reel--row .bento__reel-track { flex-direction: row; width: max-content; animation-name: bento-drift-left; animation-duration: 28s; }
-.bento__shot--app { width: 150px; padding: 4px; }
-.bento__shot--app::before { display: none; }
-.bento__shot--app img { aspect-ratio: 4 / 3; object-position: center; }
-
 /* ---------- Icon choreography (Its Hover idiom) ---------- */
 .picon path, .picon rect, .picon circle, .picon g {
   transition: transform 520ms var(--ease-spring), opacity 320ms var(--ease-out), stroke-dashoffset 600ms var(--ease-out);
@@ -223,27 +212,12 @@
   transform-origin: center;
 }
 .picon__cable { stroke-dasharray: 20; stroke-dashoffset: 0; }
-.pcard__btn:hover .picon__cable { animation: picon-draw 700ms var(--ease-out); }
 @keyframes picon-draw { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
-.pcard__btn:hover .picon__node-a { transform: translate(-1px, -1px); }
-.pcard__btn:hover .picon__node-b { transform: translate(1px, 1px); }
 
 .picon__line { transform-origin: left center; }
-.pcard__btn:hover .picon__line--1 { animation: picon-slide 500ms var(--ease-out); }
-.pcard__btn:hover .picon__line--2 { animation: picon-slide 500ms var(--ease-out) 90ms; }
 @keyframes picon-slide { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
 
-.pcard__btn:hover .picon__ticket { transform: rotate(-8deg) translateY(-1px); }
-
 .picon__meridian { transform-origin: center; }
-.pcard__btn:hover .picon__meridian { transform: scaleX(-1); }
-.pcard__btn:hover .picon__meridian--b { transform: scaleX(-1); }
-
-.pcard__btn:hover .picon__spark-big { transform: scale(1.12) rotate(12deg); }
-.pcard__btn:hover .picon__spark { transform: translate(-1px, 0) scale(0.85); }
-
-.pcard__btn:hover .picon__glyph { transform: translateY(-1.5px) scale(1.15); }
-.pcard__btn:hover .picon__home { transform: scale(1.6); }
 
 /* ---------- The dialog ----------
    A dark backdrop (no backdrop-filter: it re-blurred the animating shader
@@ -299,23 +273,13 @@
 /* ---------- Panels: the work, directly ---------- */
 .ppanel { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; min-width: 0; }
 
-/* Automations: only the strip, floating on the backdrop, full width. */
-.ppanel--strip { justify-content: center; }
-.ppanel--strip .wfs__caption { display: none; }
-.ppanel--strip .wfs { padding: 0; width: 100%; }
-.ppanel--strip [data-reveal] { opacity: 1 !important; transform: none !important; }
-.ppanel--strip .wfs__frame { pointer-events: none; width: clamp(520px, 46vw, 820px); }
-.ppanel--strip .wfs__strip:hover .wfs__track { animation-play-state: running; }
-.ppanel--strip .wfs__strip { mask-image: none; -webkit-mask-image: none; }
-
 /* The barrel: bare on the backdrop, filling the stage. */
 .ppanel--barrel { justify-content: center; }
 .ppanel--barrel .funnels__barrel { height: 100%; max-height: 780px; }
 .ppanel--barrel .funnels__barrel-skeleton { height: 60vh; }
 
-
 /* Windows: a bar on top, then either a live frame or a scrolling page. */
-.ppanel--frame, .ppanel--window {
+ .ppanel--window {
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -332,35 +296,6 @@
   overscroll-behavior: contain;
   padding-bottom: clamp(24px, 4vh, 48px);
 }
-
-.ppanel__tabs {
-  display: flex;
-  gap: 6px;
-  flex: none;
-  padding: 10px 12px 0;
-  background: var(--paper);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.ppanel__tabs::-webkit-scrollbar { display: none; }
-.ppanel__tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  flex: none;
-  height: 32px;
-  padding: 0 13px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--line-strong);
-  background: var(--white);
-  color: var(--navy);
-  font-size: 12.5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
-}
-.ppanel__tab svg { color: var(--orange); }
-.ppanel__tab[aria-selected='true'] { background: var(--navy); color: var(--cream); border-color: var(--navy); }
 
 .ppanel__bar {
   display: flex;
@@ -391,45 +326,6 @@
   color: var(--muted);
 }
 .ppanel__url-host { color: var(--navy); font-weight: 600; }
-.ppanel__ext {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  flex: none;
-  height: 28px;
-  padding: 0 11px;
-  border-radius: var(--radius-pill);
-  background: var(--navy);
-  color: var(--cream);
-  font-size: 12px;
-  font-weight: 600;
-}
-.ppanel__ext svg { color: var(--orange); }
-
-.ppanel__stage {
-  position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
-  background: var(--white);
-  overflow: hidden;
-}
-.ppanel__iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #fff;
-  opacity: 0;
-  transition: opacity 320ms var(--ease-out);
-}
-.ppanel__iframe[data-ready='true'] { opacity: 1; }
-.ppanel__skeleton {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, var(--plate) 30%, var(--white) 50%, var(--plate) 70%);
-  background-size: 200% 100%;
-  animation: ppanel-shimmer 1.4s linear infinite;
-}
 @keyframes ppanel-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 
 /* ---------- AI systems grid ----------
@@ -456,21 +352,6 @@
 .aig__head-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .aig__eyebrow { font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: #19B5A5; }
 .aig__title { font-size: clamp(18px, 1.5vw, 26px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; max-width: 34ch; }
-.aig__harness { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.aig__harness-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(239, 244, 242, 0.6); margin-right: 4px; }
-.aig__harness-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 36px;
-  padding: 0 12px 0 8px;
-  border-radius: var(--radius-pill);
-  background: #FFFFFF;
-  color: #0B1720;
-  font-size: 12.5px;
-  font-weight: 600;
-}
-.aig__harness-item img { width: 20px; height: 20px; object-fit: contain; }
 
 .aig__group { display: flex; flex-direction: column; gap: 12px; }
 .aig__group-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding: 0 2px; }
