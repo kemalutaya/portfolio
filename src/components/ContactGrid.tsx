@@ -127,7 +127,7 @@ export default function ContactGrid() {
             <ul className="cgrid__socials" role="list">
               {profile.socials.map((s) => (
                 <li key={s.label}>
-                  <a className="cgrid__social" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+                  <a className="cgrid__social" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}>
                     <img src={s.iconPath} alt="" loading="lazy" decoding="async" />
                   </a>
                 </li>

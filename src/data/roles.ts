@@ -107,7 +107,7 @@ export const roles: Record<RoleKey, Role> = {
       {
         role: 'Medical Virtual Administrative Assistant',
         org: 'Resident Eye Care Associates / RTR, Eye Care Clinic',
-        dates: 'Nov 2023–Jul 2026 · Remote',
+        dates: 'Nov 2023–Sep 2026 · Remote',
         bullets: [
           'Reviewed roughly 100 patient records a shift and prepared around 50 charts a day, working to next-day deadlines.',
           'Entered ICD-10 and CPT codes, reviewed medication and diagnosis history, and edited physician dictation from voice recordings.',
@@ -164,7 +164,7 @@ export const roles: Record<RoleKey, Role> = {
       {
         role: 'Virtual Administrative Assistant',
         org: 'U.S.-based private practice',
-        dates: 'Nov 2023–Jul 2026 · Remote, full-time',
+        dates: 'Nov 2023–Sep 2026 · Remote, full-time',
         bullets: [
           'Reviewed roughly 100 records a shift and prepared around 50 documents a day to next-day deadlines.',
           'Built an Excel and Outlook macro that cut a daily 3-hour task down to 1.',

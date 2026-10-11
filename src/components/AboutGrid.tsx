@@ -24,7 +24,7 @@ type Role = {
 const EXPERIENCE: Role[] = [
   {
     index: '01',
-    when: 'Nov 2023–Jul 2026',
+    when: 'Nov 2023–Sep 2026',
     title: 'Medical Virtual Administrative Assistant, Resident Eye Care Associates',
   },
   {

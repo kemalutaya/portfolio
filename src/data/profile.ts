@@ -14,6 +14,8 @@ export type SocialLink = {
   label: string
   href: string
   iconPath: string
+  /** Shown in the rail too. The rest appear on Contact only: the rail fits two. */
+  rail?: boolean
 }
 
 export type Stat = { value: string; label: string }
@@ -61,7 +63,10 @@ export const profile: Profile = {
     portraitAlt: 'Kem Alutaya',
   },
   socials: [
-    { label: 'LinkedIn profile', href: 'https://www.linkedin.com/in/kalutaya/', iconPath: asset('/icons/linkedin.svg') },
-    { label: 'Résumé (PDF)', href: asset('/Kem-Alutaya-Resume.pdf'), iconPath: asset('/icons/tools/doc.svg') },
+    { label: 'LinkedIn profile', href: 'https://www.linkedin.com/in/kalutaya/', iconPath: asset('/icons/linkedin.svg'), rail: true },
+    { label: 'Résumé (PDF)', href: asset('/Kem-Alutaya-Resume.pdf'), iconPath: asset('/icons/tools/doc.svg'), rail: true },
+    { label: 'WhatsApp', href: 'https://wa.me/639504543924', iconPath: asset('/icons/whatsapp.svg') },
+    { label: 'OnlineJobs.ph profile', href: 'https://v2.onlinejobs.ph/jobseekers/info/1959769', iconPath: asset('/icons/briefcase.svg') },
+    { label: 'Facebook profile', href: 'https://www.facebook.com/nookyxz', iconPath: asset('/icons/facebook.svg') },
   ],
 }

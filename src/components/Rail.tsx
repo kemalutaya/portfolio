@@ -62,7 +62,7 @@ export default function Rail() {
 
         <div className="rail__actions">
           <ul className="rail__socials" role="list" aria-label="Social profiles">
-          {profile.socials.map(({ label, href, iconPath }) => (
+          {profile.socials.filter((s) => s.rail).map(({ label, href, iconPath }) => (
             <li key={label}>
               <a
                 className="rail__social"
