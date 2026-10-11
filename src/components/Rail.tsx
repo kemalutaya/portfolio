@@ -70,6 +70,7 @@ export default function Rail() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
+                title={label}
               >
                 {/* Single-colour silhouettes, tinted by currentColor through a
                     CSS mask - same technique as the hero's social row. */}

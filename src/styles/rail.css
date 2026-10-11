@@ -84,7 +84,7 @@
   .rail__actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     margin-top: 18px;
   }
 
@@ -111,7 +111,7 @@
   .rail__socials {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     list-style: none;
   }
   .rail__social {
