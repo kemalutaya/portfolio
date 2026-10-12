@@ -174,16 +174,16 @@ export const roles: Record<RoleKey, Role> = {
       {
         role: 'Customer Sales Representative',
         org: 'Teleperformance',
-        dates: 'Nov 2019–Jun 2020 · Remote, full-time',
+        dates: 'Nov 2019–Jun 2020 · On-site, full-time',
         bullets: [
           'Handled inbound booking calls for Hotels.com: searching availability, confirming details, and reviewing bookings back to the customer before finalizing.',
           'Reassigned to back-office work on a United Airlines account, using Amadeus to verify and correct booking details and clear a backlog with zero data errors.',
         ],
       },
       {
-        role: 'Product Researcher',
-        org: 'Amazon',
-        dates: 'Nov 2018–Oct 2019 · Freelance',
+        role: 'Amazon Product Researcher / Lister',
+        org: 'Freelance',
+        dates: 'Nov 2018–Oct 2019 · Remote',
         bullets: [
           'Cross-platform price research between Amazon and eBay, identifying items with a workable resale margin.',
           'Pulled product photos and full listing details, and listed 20+ items per day.',
