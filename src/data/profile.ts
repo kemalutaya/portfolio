@@ -14,7 +14,8 @@ export type SocialLink = {
   label: string
   href: string
   iconPath: string
-  /** Shown in the rail too. The résumé appears on Contact only. */
+  /** Shown in the rail too. The résumé is not a rail icon: it has its own
+   *  labelled button on Home and a text link on Contact (profile.resumeSrc). */
   rail?: boolean
 }
 
@@ -28,6 +29,8 @@ export type Profile = {
   role: string
   /** Square image. An SVG, WebP or PNG with a transparent background looks best. */
   avatarSrc: string
+  /** The healthcare résumé. Home and Contact link it by name. */
+  resumeSrc: string
   email: string
   location: string
   /** Three short proof facts shown on phones under the Home lede. */
@@ -46,6 +49,7 @@ export const profile: Profile = {
   firstName: 'Kem',
   role: 'Medical Virtual Administrative Assistant',
   avatarSrc: asset('/kem-alutaya.jpg'),
+  resumeSrc: asset('/Kem-Alutaya-Resume.pdf'),
   email: 'kemalutaya96@gmail.com',
   location: 'Philippines (GMT+8), aligned to US & UK hours',
   // Figures are representative workload from the most recent healthcare role;

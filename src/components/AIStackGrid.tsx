@@ -1,4 +1,5 @@
 import { aiStack, type StackNode } from '@/data/ai-stack'
+import ToolMark from './ToolMark'
 
 /**
  * The systems as a grid, for the Case Studies pop-up.
@@ -30,6 +31,13 @@ function Card({ n }: { n: StackNode }) {
             <img src={t.src} alt="" width={22} height={22} loading="lazy" decoding="async" />
           </span>
         ))}
+        {/* A wordmark has no symbol to sit beside the name, so it gets its own
+            tile here and the name below stays plain text. */}
+        {n.logo?.wordmark && (
+          <span className="aig__mark aig__mark--wordmark">
+            <ToolMark logo={n.logo} size={20} />
+          </span>
+        )}
         {n.status && (
           <span className="aig__status" data-status={n.status}>
             {n.status}
@@ -37,7 +45,7 @@ function Card({ n }: { n: StackNode }) {
         )}
       </div>
       <h4 className="aig__name">
-        <n.Icon size={16} weight="duotone" aria-hidden="true" />
+        {!n.logo?.wordmark && <ToolMark logo={n.logo} Icon={n.Icon} size={16} />}
         {n.name}
       </h4>
       <p className="aig__what">{n.what}</p>

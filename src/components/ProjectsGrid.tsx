@@ -6,6 +6,7 @@ import { CaseStudyWindow, SchedulesPanel, NotificationsPanel, FlyersPanel, Impro
 import { caseDiagrams } from '@/data/funnels'
 import { automations } from '@/data/projects'
 import { aiStack, type StackNode } from '@/data/ai-stack'
+import ToolMark from './ToolMark'
 import { useIsPhone } from '@/hooks/useMediaQuery'
 
 /**
@@ -110,8 +111,8 @@ function AIPreview() {
           <div className="bento__chip-track">
             {[...row, ...row].map((n, i) => (
               <span key={`${n.id}-${i}`} className="bento__chip" data-status={n.status}>
-                <n.Icon size={15} weight="duotone" />
-                {n.name}
+                <ToolMark logo={n.logo} Icon={n.Icon} size={15} />
+                {!n.logo?.wordmark && n.name}
               </span>
             ))}
           </div>

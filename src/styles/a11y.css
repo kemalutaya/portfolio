@@ -14,8 +14,26 @@
   font-family: var(--font-display);
 }
 @media (max-width: 1099px) {
-  /* clear the bottom tab bar on phones */
-  .a11y { left: 14px; bottom: calc(94px + env(safe-area-inset-bottom, 0px)); }
+  /* Phones: top-right corner, beside the theme switch, scrolling away with the
+     page. Fixed above the tab bar it sat on top of card labels, quotes and
+     the contact form on every screen. The panel opens downward from here. */
+  .a11y {
+    position: absolute;
+    top: calc(28px + env(safe-area-inset-top, 0px));
+    right: 16px;
+    left: auto;
+    bottom: auto;
+  }
+  .a11y__button { width: 44px; height: 44px; }
+  .a11y .a11y__panel {
+    top: calc(100% + 10px);
+    bottom: auto;
+    left: auto;
+    right: 0;
+    transform: translateY(-8px) scale(0.98);
+    transform-origin: top right;
+  }
+  .a11y.is-open .a11y__panel { transform: none; }
 }
 
 .a11y__button {

@@ -47,7 +47,9 @@
   font-weight: 600;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--orange);
+  /* The plate is dark in both themes, so it takes the dark-theme accent:
+     the light-theme teal (#0C6F64) measured 3.13:1 here, this is ~7:1. */
+  color: #19B5A5;
 }
 .cgrid__aside-title {
   margin: 0;

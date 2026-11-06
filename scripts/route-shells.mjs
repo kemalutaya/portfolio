@@ -35,4 +35,16 @@ for (const [path, title, desc, robots] of ROUTES) {
   writeFileSync(`dist/${path}/index.html`, shell(path, title, desc, robots))
 }
 writeFileSync('dist/404.html', html)
-console.log(`route-shells: wrote ${ROUTES.length} route pages + 404.html`)
+
+// sitemap.xml from the same route list: Home plus every page without a
+// noindex. robots.txt (public/) points crawlers at it.
+const indexable = ['', ...ROUTES.filter(([, , , robots]) => !robots || !/noindex/.test(robots)).map(([path]) => path)]
+const today = new Date().toISOString().slice(0, 10)
+const urls = indexable
+  .map((path) => `  <url><loc>${SITE}${path ? `${path}/` : ''}</loc><lastmod>${today}</lastmod></url>`)
+  .join('\n')
+writeFileSync(
+  'dist/sitemap.xml',
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
+)
+console.log(`route-shells: wrote ${ROUTES.length} route pages + 404.html + sitemap.xml (${indexable.length} URLs)`)

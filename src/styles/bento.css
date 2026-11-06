@@ -342,6 +342,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* Narrow laptops (1100-1239px): the card is too slim for the names, so the
+   decorative index and icon tile step aside and the names get their width. */
+@media (max-width: 1239px) {
+  .bento__offer-num,
+  .bento__offer-tile { display: none; }
+}
 .bento__offer-num {
   flex: none;
   font-family: var(--font-display);

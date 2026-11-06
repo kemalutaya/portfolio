@@ -39,7 +39,7 @@
   row-gap: 0;
   align-items: flex-start;
   font-family: var(--font-display);
-  font-size: clamp(30px, 3.5vw, 72px);
+  font-size: clamp(30px, 3.3vw, 72px);
   font-weight: 700;
   letter-spacing: var(--ls-display);
   line-height: 1.06;
@@ -237,7 +237,12 @@
    Everything else assembles around it once the class is dropped. */
 html.is-intro-head .home__title { opacity: 0; }
 
-html.is-intro .home__cta,
+/* The page is invisible during the intro, so it must not take clicks either:
+   the tap that skips the intro (IntroOverlay) should reveal the page, not
+   open whatever card happened to sit under the finger. */
+html.is-intro body > * { pointer-events: none; }
+
+html.is-intro .home__actions,
 html.is-intro .home__lede,
 html.is-intro .home__glass,
 html.is-intro .nav,
@@ -253,7 +258,7 @@ html.is-intro .tabbar {
 /* The bar is fixed at the bottom; it rises into place instead. */
 html.is-intro .tabbar { transform: translateY(24px); }
 
-.home__cta,
+.home__actions,
 .home__lede,
 .home__glass,
 .nav,
@@ -300,7 +305,7 @@ html.is-intro .rail__inner > * {
 @media (prefers-reduced-motion: reduce) {
   .boot { display: none; }
   html.is-intro-head .home__title,
-  html.is-intro .home__cta,
+  html.is-intro .home__actions,
   html.is-intro .home__lede,
   html.is-intro .home__glass,
   html.is-intro .nav,

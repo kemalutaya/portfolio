@@ -34,14 +34,15 @@
   gap: clamp(20px, 4vw, 56px);
 }
 
-/* One line, never two. The size is bounded by what fits beside the CTA in the
-   panel at the 1100px breakpoint, not by what looks biggest at 1440. Below the
+/* One line, never two. The size is bounded by what fits the panel at the
+   1100px breakpoint, not by what looks biggest at 1440. Below the
    breakpoint the headline gets the full width and is allowed to wrap - a
    29-character sentence cannot be one legible line on a 390px phone. */
 .home__title {
   display: flex;
   flex-direction: column;
-  font-size: clamp(30px, 3.5vw, 72px);
+  /* 3.3vw, not 3.5: at 1100px the one-line headline ran ~30px past the panel. */
+  font-size: clamp(30px, 3.3vw, 72px);
   font-weight: 700;
   letter-spacing: var(--ls-display);
   line-height: 1.06;
@@ -72,6 +73,34 @@
 .home__cta svg { color: var(--orange); }
 .home__cta:hover { transform: translateY(-2px); }
 
+/* Get in touch + the résumé, one row under the lede. */
+.home__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(14px, 2vh, 22px);
+}
+.home__resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  transition: transform var(--dur-med) var(--ease-spring),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+.home__resume svg { color: var(--orange); }
+.home__resume:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--navy); }
+.home__cta:focus-visible,
+.home__resume:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
 /* One line, from 1400px up.
    The sentence is 130 characters. Measured against the panel it needs roughly
    0.65 x the viewport width to sit on one line, and the panel only offers that
@@ -98,11 +127,15 @@
 .home .tools-marquee__item { gap: 10px; padding-right: 44px; font-size: 13.5px; }
 .home .tools-marquee__item::after { height: 16px; }
 .home .tools-marquee__icon, .home .tools-marquee__img { width: 20px; height: 20px; }
+/* A wordmark spells the name, so it is sized by height and runs as wide as
+   it needs: about the cap height of the labels beside it, plus a little. */
+.home .tools-marquee__item--wordmark .tools-marquee__img { width: auto; height: calc(18px * var(--wordmark-scale, 1)); }
 /* Phones: the 44px gaps left two logos on screen. Pack the strip. */
 @media (max-width: 640px) {
   .home .tools-marquee__track { gap: 22px; padding: 10px 14px; }
   .home .tools-marquee__item { gap: 8px; padding-right: 22px; font-size: 12px; }
   .home .tools-marquee__icon, .home .tools-marquee__img { width: 18px; height: 18px; }
+  .home .tools-marquee__item--wordmark .tools-marquee__img { width: auto; height: calc(16px * var(--wordmark-scale, 1)); }
   .home__glass { padding: 12px; border-radius: var(--radius-card); gap: 12px; }
   .home__tools { gap: 8px; }
 }

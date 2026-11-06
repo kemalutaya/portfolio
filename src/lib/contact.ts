@@ -3,10 +3,16 @@ import { profile } from '@/data/profile'
 /**
  * Contact submission.
  *
- * Out of the box there is no backend: submitLead() opens the visitor's mail
- * client with a message addressed to profile.email (src/data/profile.ts).
+ * Three paths, first match wins:
+ *   1. VITE_WEB3FORMS_KEY set (.env.production): the message is posted to
+ *      Web3Forms, which emails it to the address the key was issued for
+ *      (profile.email). The key is public by design and only ever sends to
+ *      that inbox, so it is safe in client code.
+ *   2. VITE_CONTACT_ENDPOINT set: a JSON POST to your own backend (below).
+ *   3. Neither: submitLead() opens the visitor's mail client with a message
+ *      addressed to profile.email (src/data/profile.ts).
  *
- * To wire a real backend (Formspree, a serverless function, a webhook...):
+ * To wire your own backend instead (Formspree, a serverless function...):
  *   1. Set VITE_CONTACT_ENDPOINT in .env.production to the URL that accepts
  *      a JSON POST of the Lead type below.
  *   2. Have it answer 2xx on success, or a non-2xx with { "error": "..." }
@@ -15,6 +21,10 @@ import { profile } from '@/data/profile'
  */
 
 export const ENDPOINT: string = import.meta.env.VITE_CONTACT_ENDPOINT ?? ''
+export const WEB3FORMS_KEY: string = import.meta.env.VITE_WEB3FORMS_KEY ?? ''
+const WEB3FORMS_URL = 'https://api.web3forms.com/submit'
+/** True when Send delivers the message itself, without the visitor's mail app. */
+export const SENDS_ONLINE = Boolean(WEB3FORMS_KEY || ENDPOINT)
 export const RECIPIENT = profile.email
 
 export const MAX_NAME = 80
@@ -60,7 +70,33 @@ export function readLead(data: FormData): Lead | null {
 
 export class SubmitError extends Error {}
 
+const subjectFor = (lead: Lead) => `Healthcare admin support enquiry from ${lead.firstName} ${lead.lastName}`
+
 export async function submitLead(lead: Lead): Promise<SubmitResult> {
+  if (WEB3FORMS_KEY) {
+    const res = await fetch(WEB3FORMS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: subjectFor(lead),
+        from_name: 'Portfolio contact form',
+        name: `${lead.firstName} ${lead.lastName}`,
+        email: lead.email,
+        // Web3Forms puts this in Reply-To, so replying answers the visitor.
+        replyto: lead.email,
+        message: lead.message,
+        // Honeypot: Web3Forms drops the post when botcheck is filled.
+        botcheck: lead.website,
+      }),
+    })
+    const body = await res.json().catch(() => null)
+    if (!res.ok || !body?.success) {
+      throw new SubmitError(`That did not go through. Email me directly at ${RECIPIENT}.`)
+    }
+    return { via: 'webhook' }
+  }
+
   if (ENDPOINT) {
     const res = await fetch(ENDPOINT, {
       method: 'POST',
@@ -74,7 +110,7 @@ export async function submitLead(lead: Lead): Promise<SubmitResult> {
     return { via: 'webhook' }
   }
 
-  const subject = `Healthcare admin support enquiry from ${lead.firstName} ${lead.lastName}`
+  const subject = subjectFor(lead)
   const body = [`Name: ${lead.firstName} ${lead.lastName}`, `Email: ${lead.email}`, '', lead.message].join('\n')
   // encodeURIComponent on every value blocks header injection (CR/LF) and
   // parameter smuggling via & or ?.

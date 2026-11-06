@@ -1,8 +1,8 @@
-import { useState, type FormEvent } from 'react'
-import { PaperPlaneTilt, CheckCircle, WarningCircle, EnvelopeSimple, ArrowUpRight, CaretDown, CalendarBlank, Phone } from '@/components/slab'
+import { useState, type FormEvent, type FocusEvent } from 'react'
+import { PaperPlaneTilt, CheckCircle, WarningCircle, EnvelopeSimple, ArrowUpRight, CaretDown, CalendarBlank, Phone, FilePdf } from '@/components/slab'
 import { FAQS } from '@/data/faqs'
 import { profile } from '@/data/profile'
-import { readLead, submitLead, SubmitError, ENDPOINT, MAX_NAME, MAX_EMAIL, MAX_MESSAGE, type SubmitResult } from '@/lib/contact'
+import { readLead, submitLead, SubmitError, SENDS_ONLINE, MAX_NAME, MAX_EMAIL, MAX_MESSAGE, type SubmitResult } from '@/lib/contact'
 
 /**
  * ContactGrid - the Contact view as a fixed viewport.
@@ -59,6 +59,16 @@ export default function ContactGrid() {
   }
 
   const busy = status.kind === 'sending'
+
+  // On a phone the tab bar covers the bottom of the screen. The browser does
+  // not scroll a half-visible field on focus, so ask for it: scrollIntoView
+  // honours the page's scroll-padding-bottom, which clears the bar.
+  const onFieldFocus = (e: FocusEvent<HTMLFormElement>) => {
+    const el = e.target
+    if ((el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) && window.matchMedia('(max-width: 1099px)').matches) {
+      el.scrollIntoView({ block: 'nearest' })
+    }
+  }
 
   return (
     <section className="pgrid cgrid" aria-labelledby="contact-title">
@@ -124,8 +134,14 @@ export default function ContactGrid() {
               <Phone size={16} weight="fill" aria-hidden="true" />
               <span>{PHONE.label}</span>
             </a>
+            <a className="cgrid__mail" href={profile.resumeSrc} target="_blank" rel="noopener">
+              <FilePdf size={16} weight="fill" aria-hidden="true" />
+              <span>Download résumé (PDF)</span>
+            </a>
+            {/* The résumé has its own labelled link above, so the icon row
+                keeps only the profiles. */}
             <ul className="cgrid__socials" role="list">
-              {profile.socials.map((s) => (
+              {profile.socials.filter((s) => s.href !== profile.resumeSrc).map((s) => (
                 <li key={s.label}>
                   <a className="cgrid__social" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}>
                     <img src={s.iconPath} alt="" loading="lazy" decoding="async" />
@@ -161,7 +177,7 @@ export default function ContactGrid() {
               </button>
             </div>
           ) : (
-            <form className={`cgrid__form${busy ? ' is-sending' : ''}`} onSubmit={onSubmit} noValidate>
+            <form className={`cgrid__form${busy ? ' is-sending' : ''}`} onSubmit={onSubmit} onFocus={onFieldFocus} noValidate>
               {/* Honeypot. Hidden from people and assistive tech; a script that
                   fills every field trips it and the backend can drop the
                   post. autoComplete off so a browser never fills it either. */}
@@ -219,7 +235,7 @@ export default function ContactGrid() {
                   </span>
                 ) : (
                   <span className="cgrid__hint">
-                    {ENDPOINT ? 'Sends straight to my inbox.' : 'Opens your email app with the message filled in.'}{' '}
+                    {SENDS_ONLINE ? 'Sends straight to my inbox.' : 'Opens your email app with the message filled in.'}{' '}
                     Prefer to talk?{' '}
                     <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
                       Book a 15-min call

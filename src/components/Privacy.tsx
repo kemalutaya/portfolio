@@ -1,16 +1,19 @@
 import { ArrowLeft } from '@/components/slab'
 import { useNavigate } from 'react-router-dom'
 import { profile } from '@/data/profile'
+import { SENDS_ONLINE } from '@/lib/contact'
 
 /**
  * Privacy Policy. Every statement here was checked against the code:
  * - no analytics or tracking scripts (no gtag, GTM, Plausible, Umami, PostHog,
  *   fbq, Hotjar) in index.html or src/; fonts are bundled, not fetched;
  * - localStorage holds only the theme ('theme') and accessibility settings
- *   ('kv-a11y'); sessionStorage holds a performance tier ('perf-tier');
- * - the contact form opens the visitor's mail app (lib/contact.ts) because
- *   VITE_CONTACT_ENDPOINT is not set. If a form endpoint is ever configured,
- *   rewrite "What is collected" before deploying.
+ *   ('kv-a11y'); sessionStorage holds a performance tier ('perf-tier') and
+ *   whether the Home intro already played this tab ('intro-seen');
+ * - the contact form either posts to Web3Forms (VITE_WEB3FORMS_KEY set) or
+ *   opens the visitor's mail app (lib/contact.ts). "What is collected" picks
+ *   the matching copy from SENDS_ONLINE at build time. If another endpoint is
+ *   ever configured, rewrite that copy before deploying.
  */
 export default function Privacy() {
   const navigate = useNavigate()
@@ -28,7 +31,7 @@ export default function Privacy() {
         </button>
 
         <h1 className="legal-page__title">Privacy Policy</h1>
-        <p className="legal-page__updated">Last updated: September 2026</p>
+        <p className="legal-page__updated">Last updated: November 2026</p>
 
         <div className="legal-page__body">
           <h2>Who this covers</h2>
@@ -39,27 +42,34 @@ export default function Privacy() {
 
           <h2>What is collected</h2>
           <p>
-            Nothing is collected by me through this site. There are no analytics, tracking pixels or advertising
-            scripts, and no cookies are set.
+            There are no analytics, tracking pixels or advertising scripts on this site, and no cookies are set.
           </p>
-          <p>
-            The contact form does not send your details to a server. It opens your own email app with the message
-            filled in, and nothing leaves your device until you press send there. If you do, I receive it as an
-            ordinary email.
-          </p>
+          {SENDS_ONLINE ? (
+            <p>
+              The contact form sends what you type (your name, email address and message) through Web3Forms, a
+              form-delivery service, which passes it to my inbox as an email. It is used only to reply to you.
+              Nothing is sent until you press Send message.
+            </p>
+          ) : (
+            <p>
+              The contact form does not send your details to a server. It opens your own email app with the message
+              filled in, and nothing leaves your device until you press send there. If you do, I receive it as an
+              ordinary email.
+            </p>
+          )}
 
           <h2>Stored in your browser</h2>
           <p>
             If you change the theme or the accessibility settings, that choice is saved in your browser&apos;s local
-            storage so it is remembered on your next visit. The site also keeps a performance setting for the current
-            tab in session storage. None of this is sent anywhere, and you can clear it by clearing your browser&apos;s
+            storage so it is remembered on your next visit. The site also keeps a performance setting, and whether the
+            opening animation already played, for the current tab in session storage. None of this is sent anywhere, and you can clear it by clearing your browser&apos;s
             site data.
           </p>
 
           <h2>Other sites</h2>
           <p>
             The site is hosted on GitHub Pages. Links to Cal.com (booking a call) and LinkedIn take you to those
-            services, and their own privacy policies apply there.
+            services, and their own privacy policies apply there.{SENDS_ONLINE ? ' Web3Forms’ own privacy policy applies to messages sent through the form.' : ''}
           </p>
 
           <h2>Contact</h2>

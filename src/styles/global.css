@@ -105,6 +105,25 @@ button {
   border: 0;
 }
 
+/* Official tool logos (components/ToolMark.tsx). A symbol is a square of
+   --tool-mark; a wordmark keeps that height and runs as wide as it needs.
+   In dark mode each sits on a small white tile, because several marks
+   (UnitedHealthcare's navy, Davis Vision's charcoal) disappear on dark and
+   brand rules do not allow recoloring them. */
+.tool-mark {
+  flex: none;
+  width: var(--tool-mark, 16px);
+  height: var(--tool-mark, 16px);
+  object-fit: contain;
+}
+.tool-mark--wordmark { width: auto; height: calc((var(--tool-mark, 16px) - 1px) * var(--wordmark-scale, 1)); }
+[data-theme='dark'] .tool-mark {
+  box-sizing: content-box;
+  padding: 2px;
+  border-radius: 4px;
+  background: #fff;
+}
+
 /* ============================================
    HERO CANVAS - animated WebGL contour background
    Dropped in verbatim from extracted-hero-bg/BACKGROUND-EXPORT/hero-canvas.css

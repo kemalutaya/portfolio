@@ -387,6 +387,10 @@
   box-shadow: inset 0 0 0 1px rgba(11, 23, 32, 0.14), 0 6px 14px -10px rgba(8, 18, 24, 0.5);
 }
 .aig__mark img { width: 22px; height: 22px; object-fit: contain; }
+/* A wordmark (Davis Vision, March Vision, NJMMIS) in a wide tile, sized by
+   height like everywhere else (see .tool-mark in global.css). */
+.aig__mark--wordmark { width: auto; padding: 0 12px; }
+.aig__mark--wordmark img.tool-mark { width: auto; height: calc(19px * var(--wordmark-scale, 1)); padding: 0; background: none; }
 .aig__status {
   margin-left: auto;
   display: inline-flex;

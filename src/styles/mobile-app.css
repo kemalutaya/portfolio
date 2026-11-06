@@ -87,10 +87,12 @@
     transition: transform var(--dur-med) var(--ease-spring);
   }
   .theme-btn:active { transform: scale(0.92); }
+  /* The accessibility button holds the corner (a11y.css); the theme switch
+     sits just left of it, on the same line. */
   .theme-btn--float {
     position: fixed;
-    top: calc(14px + env(safe-area-inset-top, 0px));
-    right: 16px;
+    top: calc(28px + env(safe-area-inset-top, 0px));
+    right: 68px;
     z-index: 50;
   }
 
@@ -100,14 +102,20 @@
   .home,
   .pgrid { padding-top: calc(22px + env(safe-area-inset-top, 0px)); }
   .shell__panel { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
-  /* Inner pages float the theme switch top-right; keep the head clear of it. */
-  .pgrid__head { padding-right: 56px; }
+  /* A focused field scrolls clear of the tab bar instead of under it. */
+  html { scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  /* Inner pages carry the theme and accessibility buttons as a top row
+     (28px + 44px tall); the head starts below them and gets the full width,
+     instead of every line of the title wrapping early to dodge them. */
+  .pgrid { padding-top: calc(84px + env(safe-area-inset-top, 0px)); }
 
   /* ---------- Home: profile header ---------- */
+  /* Right padding leaves the corner to the accessibility button. */
   .hprofile {
     display: flex;
     align-items: center;
     gap: 12px;
+    padding-right: 52px;
     margin-bottom: 22px;
   }
   .hprofile__avatar {
@@ -130,13 +138,14 @@
     line-height: 1.1;
     color: var(--navy);
   }
+  /* The job title wraps rather than ending in "Assist...": it is the one line
+     a recruiter reads first. */
   .hprofile__role {
     font-size: 12.5px;
+    line-height: 1.3;
     color: var(--muted);
     margin-top: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-wrap: balance;
   }
   .hprofile__theme { margin-left: auto; }
 

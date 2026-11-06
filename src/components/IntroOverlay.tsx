@@ -56,9 +56,22 @@ const STEPS = [
   { label: 'Ready for visit', trigger: false, Icon: CheckCircle },
 ] as const
 
+// Once per tab session: a recruiter who comes back to Home should get the page,
+// not the same three seconds again. The flag lives in sessionStorage, so a new
+// visit (new tab) still gets the intro. Storage can throw (private mode,
+// blocked site data); then the intro simply plays.
+const INTRO_KEY = 'intro-seen'
+const seenThisSession = () => {
+  try { return sessionStorage.getItem(INTRO_KEY) === '1' } catch { return false }
+}
+const markSeen = () => {
+  try { sessionStorage.setItem(INTRO_KEY, '1') } catch { /* plays again next time */ }
+}
+
 const shouldRun =
   typeof window !== 'undefined' &&
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+  !seenThisSession() &&
   // Home is the deploy base (/portfolio/ on GitHub Pages), not the domain root.
   window.location.pathname.replace(/\/+$/, '') === import.meta.env.BASE_URL.replace(/\/+$/, '')
 
@@ -103,10 +116,28 @@ export default function IntroOverlay() {
       return
     }
 
+    markSeen()
+
     let cancelled = false
     let raf = 0
     const timers: number[] = []
     const anims: Animation[] = []
+
+    // Any tap, click, key or scroll skips straight to the page.
+    const SKIP_EVENTS = ['pointerdown', 'keydown', 'wheel', 'touchstart'] as const
+    const removeSkip = () => SKIP_EVENTS.forEach((e) => window.removeEventListener(e, skip))
+    function skip() {
+      if (cancelled) return
+      cancelled = true
+      removeSkip()
+      cancelAnimationFrame(raf)
+      timers.forEach(clearTimeout)
+      anims.forEach((a) => a.cancel())
+      release()
+      releaseHead()
+      setGone(true)
+    }
+    SKIP_EVENTS.forEach((e) => window.addEventListener(e, skip, { passive: true }))
     const wait = (ms: number) =>
       new Promise<void>((res) => timers.push(window.setTimeout(res, ms)))
     const play = (el: Element, frames: Keyframe[], opts: KeyframeAnimationOptions) => {
@@ -341,6 +372,7 @@ export default function IntroOverlay() {
 
       await wait(150)
       if (cancelled) return
+      removeSkip()
       releaseHead()
       setGone(true)
     }
@@ -348,6 +380,7 @@ export default function IntroOverlay() {
     void run()
 
     return () => {
+      removeSkip()
       cancelled = true
       cancelAnimationFrame(raf)
       timers.forEach(clearTimeout)

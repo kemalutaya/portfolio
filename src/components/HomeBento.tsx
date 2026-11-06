@@ -16,6 +16,7 @@ import {
   SealCheck,
 } from '@/components/slab'
 import { aiStack, type StackNode } from '@/data/ai-stack'
+import ToolMark from './ToolMark'
 import { profile } from '@/data/profile'
 import { asset } from '@/lib/asset'
 
@@ -42,8 +43,11 @@ const OFFERS = [
   { Icon: ShieldCheck, title: 'Insurance Verification', note: 'Medicare, Medicaid and vision eligibility' },
   { Icon: IdentificationCard, title: 'EMR & Patient Records', note: 'Records, demographics, uploads' },
   { Icon: ClipboardText, title: 'Chart Preparation', note: 'Next-day physician schedules' },
-  { Icon: FileText, title: 'Healthcare Documentation', note: 'EOBs, CPT matching, dictation' },
-  { Icon: Stamp, title: 'Prior Authorization Support', note: 'Intake, eligibility, CPT entry' },
+  // Shorter than the Services page names: the card is too narrow at 1280-1440
+  // for "Healthcare Documentation" or "Prior Authorization Support" on one
+  // line, and cut to "Prior Authorization Su..." it read as a mistake.
+  { Icon: FileText, title: 'Documentation', note: 'EOBs, CPT matching, dictation' },
+  { Icon: Stamp, title: 'Prior Authorization', note: 'Intake, eligibility, CPT entry' },
 ] as const
 
 const CLIENTS = [
@@ -120,8 +124,8 @@ export default function HomeBento() {
               <div className="bento__chip-track">
                 {[...row, ...row].map((n, i) => (
                   <span key={`${n.id}-${i}`} className="bento__chip" data-status={n.status}>
-                    <n.Icon size={15} weight="duotone" />
-                    {n.name}
+                    <ToolMark logo={n.logo} Icon={n.Icon} size={15} />
+                    {!n.logo?.wordmark && n.name}
                   </span>
                 ))}
               </div>

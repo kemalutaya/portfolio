@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight } from '@/components/slab'
+import { ArrowUpRight, DownloadSimple } from '@/components/slab'
 import { profile } from '@/data/profile'
 import ToolsMarquee from './ToolsMarquee'
 import HomeBento from './HomeBento'
@@ -43,17 +43,27 @@ export default function Home() {
               {displayName.line1} {displayName.line2}
             </span>
           </h1>
+        </div>
 
+        <p className="home__lede">{hero.body}</p>
+        {phone && <HomeStats />}
+
+        {/* The actions sit under the lede, not beside the headline: beside it,
+            the one-line headline pushed the CTA past the panel edge at every
+            laptop width below ~1900px. On a phone the tab bar's Contact action
+            carries "Get in touch", so only the résumé shows here. */}
+        <div className="home__actions">
           {!phone && (
             <Link className="home__cta" to="/contact">
               Get in touch
               <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
             </Link>
           )}
+          <a className="home__resume" href={profile.resumeSrc} target="_blank" rel="noopener">
+            <DownloadSimple size={16} weight="bold" aria-hidden="true" />
+            Download résumé (PDF)
+          </a>
         </div>
-
-        <p className="home__lede">{hero.body}</p>
-        {phone && <HomeStats />}
       </div>
 
       {/* Two plates, not one. The tools band and the bento are different
