@@ -361,6 +361,24 @@
 @container (min-height: 225px) {
   .bento__offer-note { display: block; }
 }
+/* Years on an Experience row: always shown, unlike the decorative index. */
+.bento__offer-when {
+  flex: none;
+  font-size: clamp(10px, 5.5cqh, 11.5px);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--orange-ink);
+}
+/* A shorter title for the narrowest laptops (1100-1239px). */
+.bento__offer-short { display: none; }
+@media (max-width: 1239px) {
+  .bento__offer-long { display: none; }
+  .bento__offer-short { display: inline; }
+}
+/* Three or four rows get more height each, so their notes fit sooner. */
+@container (min-height: 120px) {
+  .bento__offers--few .bento__offer-note { display: block; }
+}
 .bento__card:hover .bento__offer { transform: translateX(3px); }
 .bento__card:hover .bento__offer-tile { background: var(--orange); color: var(--white); }
 .bento__card:hover .bento__offer-num { color: var(--orange-ink); }
@@ -436,3 +454,8 @@
   .bento__badge-tag, .bento__review-work { font-size: 12px; }
   .bento__review-role { font-size: 12.5px; }
 }
+
+/* Diagrams drawn in two palettes (ThemedImg): show the one for the theme.
+   !important because each host styles its img with display: block. */
+html:not([data-theme='dark']) img.themed-img--dark,
+html[data-theme='dark'] img.themed-img--light { display: none !important; }

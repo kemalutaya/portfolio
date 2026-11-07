@@ -2,29 +2,24 @@ import type React from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowUpRight,
-  FolderOpen,
-  User,
-  Database,
-  ShieldCheck,
+  ChartLineUp,
+  Briefcase,
+  CalendarCheck,
   IdentificationCard,
-  ClipboardText,
-  FileText,
-  Stamp,
   Medal,
-  Stack,
   Trophy,
   SealCheck,
+  type Icon as PhosphorIcon,
 } from '@/components/slab'
-import { aiStack, type StackNode } from '@/data/ai-stack'
-import ToolMark from './ToolMark'
-import { profile } from '@/data/profile'
+import { ROLES, EXPERIENCE, AVAILABILITY, type HomeRow } from '@/data/home'
 import { asset } from '@/lib/asset'
+import ThemedImg from '@/components/ThemedImg'
 
 /**
- * Home's showcase: one card per rail view, each an index of what that view
- * holds, each built from content the portfolio already ships. Every card is
- * a link. Nothing here invents a fact - the funnels, the tools, the clients
- * and the credentials are the same records the views render in full.
+ * Home's showcase, ordered for a recruiter's first 30 seconds: results,
+ * where I've worked, when I can start, the roles I fit, proof and the
+ * credential. Every card is a link, and every fact is one the About page,
+ * the résumé or the role pages already state.
  *
  * Motion is transform-only on a clipped inner track, so a card never adds
  * height and Home stays a single viewport.
@@ -39,17 +34,6 @@ const PROJECT_SHOTS = [
   asset('/home/case-chartprep.svg'),
 ]
 
-const OFFERS = [
-  { Icon: ShieldCheck, title: 'Insurance Verification', note: 'Medicare, Medicaid and vision eligibility' },
-  { Icon: IdentificationCard, title: 'EMR & Patient Records', note: 'Records, demographics, uploads' },
-  { Icon: ClipboardText, title: 'Chart Preparation', note: 'Next-day physician schedules' },
-  // Shorter than the Services page names: the card is too narrow at 1280-1440
-  // for "Healthcare Documentation" or "Prior Authorization Support" on one
-  // line, and cut to "Prior Authorization Su..." it read as a mistake.
-  { Icon: FileText, title: 'Documentation', note: 'EOBs, CPT matching, dictation' },
-  { Icon: Stamp, title: 'Prior Authorization', note: 'Intake, eligibility, CPT entry' },
-] as const
-
 // Results from past roles, as the About page and /va state them. Self-reported.
 const RECORD = [
   { name: 'Team ranked 1st of 5', role: 'Optum, a team I coached as subject matter expert', work: 'Coaching · Documentation' },
@@ -59,19 +43,49 @@ const RECORD = [
   { name: 'About 3 hrs to about 1', role: 'Schedule prep, with three macros', work: 'Estimated' },
 ]
 
-/** The AI systems as a flat list: every leaf of the Projects tree, in order. */
-const leaves = (n: StackNode): StackNode[] =>
-  n.children?.length ? n.children.flatMap(leaves) : [n]
-// Training-only systems (Elation, Practice Fusion) stay out of the chips: the
-// card says "hands-on daily", and the Systems list labels them properly.
-const AI_BUILDS = leaves(aiStack).filter((n) => n.status !== 'Training')
+/** A ledger of rows: tile, title over a short note, optional index. Fewer
+ *  rows (`few`) show their notes at a smaller card height. */
+function Ledger({ rows, few, numbered }: { rows: HomeRow[]; few?: boolean; numbered?: boolean }) {
+  return (
+    <ul className={`bento__media bento__offers${few ? ' bento__offers--few' : ''}`} role="list">
+      {rows.map(({ Icon, title, note, when, short }, i) => (
+        <li key={title + note} className="bento__offer" style={{ '--i': i } as React.CSSProperties}>
+          {Icon && (
+            <span className="bento__offer-tile">
+              <Icon size={15} weight="duotone" aria-hidden="true" />
+            </span>
+          )}
+          <span className="bento__offer-text">
+            <span className="bento__offer-title">
+              {short ? (
+                <>
+                  <span className="bento__offer-long">{title}</span>
+                  <span className="bento__offer-short">{short}</span>
+                </>
+              ) : (
+                title
+              )}
+            </span>
+            <span className="bento__offer-note">{note}</span>
+          </span>
+          {when && <span className="bento__offer-when">{when}</span>}
+          {numbered && (
+            <span className="bento__offer-num" aria-hidden="true">
+              0{i + 1}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 function CardHead({
   Icon,
   title,
   desc,
 }: {
-  Icon: typeof FolderOpen
+  Icon: PhosphorIcon
   title: string
   desc: string
 }) {
@@ -90,53 +104,33 @@ function CardHead({
 }
 
 export default function HomeBento() {
-  const half = Math.ceil(AI_BUILDS.length / 2)
-  const toolRows = [AI_BUILDS.slice(0, half), AI_BUILDS.slice(half)]
-
   return (
     <nav className="bento" aria-label="Explore the portfolio">
-      {/* Projects: the funnel thumbnails drift upward on a looped track. */}
+      {/* Results: the case study diagrams drift upward on a looped track. */}
       <Link to="/projects" className="bento__card bento__card--projects">
-        <CardHead Icon={FolderOpen} title="Case Studies" desc="An automation that cut an estimated 3-hour daily task to about 1." />
+        <CardHead Icon={ChartLineUp} title="Results" desc="Case study: three macros cut an estimated 3-hour daily task to about 1." />
         <div className="bento__media bento__reel" aria-hidden="true">
           <div className="bento__reel-track">
             {[...PROJECT_SHOTS, ...PROJECT_SHOTS].map((f, i) => (
               <span key={i} className="bento__shot">
-                <img src={f} alt="" loading="lazy" decoding="async" />
+                <ThemedImg src={f} />
               </span>
             ))}
           </div>
         </div>
       </Link>
 
-      {/* About: the one real portrait. */}
+      {/* Experience: employers and years, the first thing a recruiter checks.
+          Keeps the old About slot (and its --about layout class). */}
       <Link to="/about" className="bento__card bento__card--about">
-        <CardHead Icon={User} title="About" desc="Five years inside U.S. healthcare operations." />
-        <div className="bento__media bento__fan" aria-hidden="true">
-          <span className="bento__photo bento__photo--solo" style={{ ['--i' as string]: 1 }}>
-            <img src={profile.avatarSrc} alt="" loading="lazy" decoding="async" />
-          </span>
-        </div>
+        <CardHead Icon={Briefcase} title="Experience" desc="5+ years in U.S. healthcare, at a practice and a health plan." />
+        <Ledger rows={EXPERIENCE} few />
       </Link>
 
-      {/* Systems: the EMRs and payer portals from ai-stack.ts, two chip rows
-          scrolling against each other. */}
-      <Link to="/projects" className="bento__card bento__card--ai">
-        <CardHead Icon={Database} title="Systems" desc="Hands-on daily in EMRs and payer portals." />
-        <div className="bento__media bento__chips" aria-hidden="true">
-          {toolRows.map((row, r) => (
-            <div key={r} className="bento__chip-row" data-dir={r ? 'right' : 'left'}>
-              <div className="bento__chip-track">
-                {[...row, ...row].map((n, i) => (
-                  <span key={`${n.id}-${i}`} className="bento__chip" data-status={n.status}>
-                    <ToolMark logo={n.logo} Icon={n.Icon} size={15} />
-                    {!n.logo?.wordmark && n.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Availability: start date, hours and setup. Keeps the old Systems slot. */}
+      <Link to="/contact" className="bento__card bento__card--ai">
+        <CardHead Icon={CalendarCheck} title="Availability" desc="Open to work, remote." />
+        <Ledger rows={AVAILABILITY} few />
       </Link>
 
       {/* Credentials: the badge that matters, on its plate. */}
@@ -153,25 +147,11 @@ export default function HomeBento() {
         </div>
       </Link>
 
-      {/* Services: the five offers as a compact index. */}
+      {/* Roles I fit: job titles with the evidence for each. Keeps the old
+          Services slot; the Services page still holds the full detail. */}
       <Link to="/services" className="bento__card bento__card--services">
-        <CardHead Icon={Stack} title="Services" desc="Back-office support for U.S. and UK healthcare teams." />
-        <ul className="bento__media bento__offers" role="list">
-          {OFFERS.map(({ Icon, title, note }, i) => (
-            <li key={title} className="bento__offer" style={{ '--i': i } as React.CSSProperties}>
-              <span className="bento__offer-tile">
-                <Icon size={15} weight="duotone" aria-hidden="true" />
-              </span>
-              <span className="bento__offer-text">
-                <span className="bento__offer-title">{title}</span>
-                <span className="bento__offer-note">{note}</span>
-              </span>
-              <span className="bento__offer-num" aria-hidden="true">
-                0{i + 1}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <CardHead Icon={IdentificationCard} title="Roles I fit" desc="Remote healthcare admin roles my experience lines up with." />
+        <Ledger rows={ROLES} numbered />
       </Link>
 
       {/* Track record: result cards drifting up a clipped column. It keeps the

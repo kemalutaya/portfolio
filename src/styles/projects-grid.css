@@ -474,7 +474,8 @@
 .csgrid__open-title { font-size: clamp(18px, 1.3vw, 22px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; color: var(--navy); }
 .csgrid__open .sgrid__case-cta { align-self: flex-start; margin-top: auto; }
 .csgrid__thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.csgrid__thumbs img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #0B1720; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+.csgrid__thumbs img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #F2F7F5; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+[data-theme='dark'] .csgrid__thumbs img { background: #0B1720; }
 .csgrid__chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .csgrid__privacy { text-align: center; }
 
@@ -521,5 +522,5 @@
 @media (max-width: 639px) {
   .flyer__caption { font-size: 12.5px; }
   .csgrid__thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .csgrid__thumbs img:nth-child(3) { display: none; }
+  .csgrid__thumbs img:nth-child(n+5) { display: none; } /* 3rd diagram: each has a light and a dark img */
 }

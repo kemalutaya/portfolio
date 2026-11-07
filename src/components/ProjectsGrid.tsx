@@ -18,6 +18,7 @@ import { caseDiagrams } from '@/data/funnels'
 import { caseStudy, automations, improvements } from '@/data/projects'
 import { aiStack, type StackNode } from '@/data/ai-stack'
 import ToolMark from './ToolMark'
+import ThemedImg from '@/components/ThemedImg'
 
 /**
  * Case Studies. It scrolls like Services and borrows its bands (sgrid__*):
@@ -240,7 +241,7 @@ export default function ProjectsGrid() {
             </span>
             <span className="csgrid__thumbs" aria-hidden="true">
               {caseDiagrams.slice(0, 3).map((f) => (
-                <img key={f.file} src={f.thumb} alt="" loading="lazy" decoding="async" />
+                <ThemedImg key={f.file} src={f.thumb} />
               ))}
             </span>
             <span className="sgrid__case-cta">

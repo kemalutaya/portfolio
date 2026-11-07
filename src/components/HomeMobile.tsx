@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Trophy } from '@/components/slab'
+import { ArrowUpRight, Briefcase, CalendarCheck, Trophy, type Icon } from '@/components/slab'
 import { profile } from '@/data/profile'
+import { EXPERIENCE, AVAILABILITY, type HomeRow } from '@/data/home'
 import ThemeButton from './ThemeButton'
+import ThemedImg from './ThemedImg'
 import { asset } from '@/lib/asset'
 
 /**
@@ -10,8 +12,8 @@ import { asset } from '@/lib/asset'
  *   HomeProfile  avatar, name, role and the theme switch -
  *                the rail's identity block, laid flat
  *   HomeStats    three proof facts (profile.stats)
- *   HomeExplore  one tile per rail view in a snap row, then the track
- *                record as proof cards
+ *   HomeExplore  one tile per rail view in a snap row, availability and
+ *                experience as two list cards, then the track record
  */
 
 export function HomeProfile() {
@@ -43,13 +45,37 @@ export function HomeStats() {
 }
 
 // Same facts as the desktop bento (HomeBento). Every tile shows something real:
-// a case diagram or the photo.
-type Tile = { n: string; label: string; to: string; title: string; desc: string; img: string }
+// a case diagram (light and dark versions) or the photo.
+type Tile = { n: string; label: string; to: string; title: string; desc: string; img: string; diagram?: boolean }
 const TILES: Tile[] = [
-  { n: '01', label: 'Case Studies', to: '/projects', title: 'Daily schedule prep, 3 hours to about 1', desc: 'Estimated, based on the previous manual process.', img: asset('/home/case-impact.svg') },
-  { n: '02', label: 'Services', to: '/services', title: 'Back-office support for U.S. and UK healthcare teams', desc: 'Insurance verification, EMR support, chart preparation and documentation.', img: asset('/home/case-eligibility.svg') },
+  { n: '01', label: 'Results', to: '/projects', title: 'Daily schedule prep, 3 hours to about 1', desc: 'Estimated, based on the previous manual process.', img: asset('/home/case-impact.svg'), diagram: true },
+  { n: '02', label: 'Roles I fit', to: '/services', title: 'Medical admin, insurance verification, prior auth', desc: 'Also chart prep and records, and VA or data entry work.', img: asset('/home/case-eligibility.svg'), diagram: true },
   { n: '03', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'Five years inside U.S. healthcare operations.', img: profile.avatarSrc },
 ]
+
+/** A titled card of short rows, linking to the page with the detail. */
+function ListCard({ to, Icon, title, rows }: { to: string; Icon: Icon; title: string; rows: HomeRow[] }) {
+  return (
+    <Link to={to} className="hlist">
+      <span className="hlist__head">
+        <span className="hlist__icon" aria-hidden="true"><Icon size={16} weight="fill" /></span>
+        <span className="hlist__title">{title}</span>
+        <ArrowUpRight size={15} weight="bold" aria-hidden="true" className="hlist__go" />
+      </span>
+      <ul className="hlist__rows" role="list">
+        {rows.map((r) => (
+          <li key={r.title} className="hlist__row">
+            <span className="hlist__text">
+              <b>{r.title}</b>
+              <span>{r.note}</span>
+            </span>
+            {r.when && <span className="hlist__when">{r.when}</span>}
+          </li>
+        ))}
+      </ul>
+    </Link>
+  )
+}
 
 // Results from past roles, the same ones the desktop bento lists. Self-reported.
 const RECORD = [
@@ -70,7 +96,7 @@ export function HomeExplore() {
         {TILES.map((t) => (
           <li key={t.to}>
             <Link to={t.to} className="htile">
-              <img className="htile__img" src={t.img} alt="" loading="lazy" />
+              {t.diagram ? <ThemedImg className="htile__img" src={t.img} /> : <img className="htile__img" src={t.img} alt="" loading="lazy" />}
               <span className="htile__body">
                 <span className="htile__n">{t.n} {t.label}</span>
                 <span className="htile__title">{t.title}</span>
@@ -81,6 +107,9 @@ export function HomeExplore() {
           </li>
         ))}
       </ul>
+
+      <ListCard to="/contact" Icon={CalendarCheck} title="Availability" rows={AVAILABILITY} />
+      <ListCard to="/about" Icon={Briefcase} title="Experience" rows={EXPERIENCE} />
 
       <div className="hsec">
         <h2 className="hsec__title">Track record</h2>

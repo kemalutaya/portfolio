@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { asset } from '@/lib/asset'
 import { TOOL_LOGOS, type ToolLogo } from '@/data/tool-logos'
 
 /**
@@ -14,8 +13,8 @@ import { TOOL_LOGOS, type ToolLogo } from '@/data/tool-logos'
  *   by exactly -50% and produce a seamless loop. The halfway point lands on the seam
  *   between the two copies, so the reset at 100% is invisible.
  * - Software logos render as plain <img> in full color. A symbol sits beside
- *   the name; a wordmark (Zoom) is drawn wider and replaces it. Payer portals
- *   carry no vendor mark: a generic glyph tinted to the accent via CSS mask.
+ *   the name; a wordmark (NJMMIS, Davis Vision, March Vision, Zoom) is drawn
+ *   wider and replaces it. `glyph` is a fallback for a tool with no logo.
  * - Accessibility: the animated track is aria-hidden because its content is
  *   duplicated and moving. The real semantic list sits in an sr-only <ul> so
  *   screen readers get a clean, deduped enumeration of the tools.
@@ -23,7 +22,7 @@ import { TOOL_LOGOS, type ToolLogo } from '@/data/tool-logos'
 
 type Tool = {
   name: string
-  /** Official logo (software only). Payers have none and get `glyph`. */
+  /** Official logo. A tool without one gets `glyph`. */
   logo?: ToolLogo
   /** Generic line glyph in public/icons/tools, tinted to the site accent. */
   glyph?: string
@@ -32,17 +31,15 @@ type Tool = {
 // The tools actually used day to day, each with its official logo
 // (data/tool-logos.ts). Full color: brand rules forbid recoloring.
 const t = (name: string, id: string): Tool => ({ name, logo: TOOL_LOGOS[id] })
-// Payer portals: no vendor marks on the public site, a neutral glyph instead.
-const payer = (name: string, glyph: string): Tool => ({ name, glyph: asset(`/icons/tools/${glyph}.svg`) })
 
 export const tools: Tool[] = [
   t('Compulink', 'compulink'),
   t('PointClickCare', 'pointclickcare'),
-  payer('Availity', 'shield'),
-  payer('NJMMIS', 'idcard'),
-  payer('Davis Vision', 'eye'),
-  payer('March Vision', 'eye'),
-  payer('UnitedHealthcare', 'shield'),
+  t('Availity', 'availity'),
+  t('NJMMIS', 'njmmis'),
+  t('Davis Vision', 'davis-vision'),
+  t('March Vision', 'march-vision'),
+  t('UnitedHealthcare', 'uhc'),
   t('Excel', 'excel'),
   t('Outlook', 'outlook'),
   t('Word', 'word'),

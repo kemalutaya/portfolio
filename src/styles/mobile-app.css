@@ -270,6 +270,39 @@
   .hproof__title { font-size: 14px; font-weight: 700; line-height: 1.3; }
   .hproof__meta { font-size: 12px; color: var(--muted); }
 
+  /* ---------- Home: list card (Availability, Experience) ---------- */
+  .hlist {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px 8px;
+    border-radius: 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    color: var(--navy);
+    transition: transform var(--dur-med) var(--ease-spring);
+  }
+  .hlist:active { transform: scale(0.98); }
+  .hlist__head { display: flex; align-items: center; gap: 10px; }
+  .hlist__icon {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--orange);
+    color: var(--white);
+  }
+  .hlist__title { flex: 1; font-size: 15px; font-weight: 700; }
+  .hlist__go { color: var(--orange-ink); }
+  .hlist__rows { list-style: none; margin: 0; padding: 0; }
+  .hlist__row { display: flex; align-items: center; gap: 12px; padding: 9px 0; }
+  .hlist__row + .hlist__row { border-top: 1px solid var(--line); }
+  .hlist__text { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+  .hlist__text b { font-size: 14px; font-weight: 600; }
+  .hlist__text span { font-size: 12.5px; color: var(--muted); }
+  .hlist__when { flex: none; font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--orange-ink); }
+
   /* ---------- Projects: filter + two-column grid ---------- */
   .pfilter {
     display: flex;
@@ -323,7 +356,8 @@
 [data-theme='dark'] .htile { background: var(--paper); }
 [data-theme='dark'] .htile__review { background: rgba(255, 255, 255, 0.05); }
 [data-theme='dark'] .htile__n { background: var(--orange); color: #0B1720; }
-[data-theme='dark'] .hproof { background: var(--paper); }
+[data-theme='dark'] .hproof,
+[data-theme='dark'] .hlist { background: var(--paper); }
 [data-theme='dark'] .hprofile__avatar { border-color: var(--paper); }
 [data-theme='dark'] .pfilter__btn[aria-pressed='true'] { background: var(--paper); }
 [data-theme='dark'] .tabbar { background: #060B10; }
