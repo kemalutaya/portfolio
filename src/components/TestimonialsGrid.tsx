@@ -31,7 +31,7 @@ const TESTIMONIALS: Testimonial[] = [
     index: '02',
     source: 'Supervisor',
     employer: 'Optum',
-    text: 'Easy going and not hard to approach as an assistant team leader / subject matter expert, very proactive and tidy when it comes to assigned tasks.',
+    text: 'Easy going and not hard to approach… very proactive and tidy when it comes to assigned tasks.',
     paraphrase: false,
   },
   {
@@ -64,7 +64,7 @@ export default function TestimonialsGrid() {
               <li key={t.index} className="tgrid__client">
                 <span className="tgrid__client-ghost" aria-hidden="true">{t.index}</span>
                 <span className="tgrid__client-body">
-                  <span className="tgrid__client-daily">
+                  <span className={`tgrid__client-daily${t.paraphrase ? ' tgrid__client-daily--para' : ''}`}>
                     {t.paraphrase ? t.text : `“${t.text}”`}
                   </span>
                   <span className="tgrid__client-head">

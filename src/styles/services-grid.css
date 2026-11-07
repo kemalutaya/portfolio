@@ -280,6 +280,43 @@
 }
 .sgrid__bullet svg { flex: none; margin-top: 2px; color: var(--orange); }
 
+/* ---------- Case study link ----------
+   The schedule macro's full story lives on Case Studies; this band points
+   there instead of animating it a second time. */
+.sgrid__case {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding: clamp(16px, 2vh, 22px) clamp(18px, 1.6vw, 26px);
+  border-radius: var(--radius-card);
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--navy);
+  text-decoration: none;
+  transition: box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-med) var(--ease-spring);
+}
+.sgrid__case:hover { box-shadow: inset 0 0 0 1px var(--navy); transform: translateY(-2px); }
+.sgrid__case:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.sgrid__case-copy { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.sgrid__case-title { font-size: clamp(17px, 1.25vw, 22px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
+.sgrid__case-note { font-size: 14px; color: var(--muted); }
+.sgrid__case-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: var(--radius-pill);
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 600;
+}
+.sgrid__case-cta svg { color: var(--orange); }
+
 /* ---------- The workflow ---------- */
 .sgrid__flow {
   display: flex;

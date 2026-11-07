@@ -8,9 +8,9 @@
  * Status is proficiency, stated honestly, matching the ladder on the previous
  * site: "Daily" (hands-on, production use every day), "Hands-On" (real
  * production use), "Training" (exposure through training, not production).
- * Each system also carries its official logo from data/tool-logos.ts
- * (`logo`), shown wherever the system is named; `Icon` stays as the fallback
- * and as the mark for the category nodes.
+ * Software systems also carry their official logo from data/tool-logos.ts
+ * (`logo`). Payer portals never do (see tool-logos.ts): they, and the
+ * category nodes, show their Phosphor `Icon`.
  */
 
 import { User, IdentificationCard, Database, Buildings, FileText, ShieldCheck, Eye, Lightning } from '@/components/slab'
@@ -70,15 +70,15 @@ export const aiStack: StackNode = {
       name: 'Insurance & Eligibility',
       what: 'Payer portals for eligibility and benefits verification across Medicare, Medicaid and vision plans.',
       children: [
-        { id: 'availity', logo: TOOL_LOGOS['availity'], Icon: ShieldCheck, name: 'Availity', status: 'Hands-On',
+        { id: 'availity', Icon: ShieldCheck, name: 'Availity', status: 'Hands-On',
           what: 'Eligibility and benefits verification.', stack: 'Multi-payer portal' },
-        { id: 'njmmis', logo: TOOL_LOGOS['njmmis'], Icon: IdentificationCard, name: 'NJMMIS', status: 'Hands-On',
+        { id: 'njmmis', Icon: IdentificationCard, name: 'NJMMIS', status: 'Hands-On',
           what: 'Medicaid and Medicare information, and vision-plan verification.', stack: 'New Jersey Medicaid' },
-        { id: 'davis-vision', logo: TOOL_LOGOS['davis-vision'], Icon: Eye, name: 'Davis Vision', status: 'Hands-On',
+        { id: 'davis-vision', Icon: Eye, name: 'Davis Vision', status: 'Hands-On',
           what: 'Vision plan eligibility checks.', stack: 'Vision payer' },
-        { id: 'march-vision', logo: TOOL_LOGOS['march-vision'], Icon: Eye, name: 'March Vision', status: 'Hands-On',
+        { id: 'march-vision', Icon: Eye, name: 'March Vision', status: 'Hands-On',
           what: 'Vision plan eligibility checks.', stack: 'Vision payer' },
-        { id: 'uhc', logo: TOOL_LOGOS['uhc'], Icon: ShieldCheck, name: 'UnitedHealthcare', status: 'Hands-On',
+        { id: 'uhc', Icon: ShieldCheck, name: 'UnitedHealthcare', status: 'Hands-On',
           what: 'Live eligibility verification.', stack: 'Commercial payer' },
       ],
     },

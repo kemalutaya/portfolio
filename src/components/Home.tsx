@@ -63,6 +63,8 @@ export default function Home() {
             <DownloadSimple size={16} weight="bold" aria-hidden="true" />
             Download résumé (PDF)
           </a>
+          {/* Desktop gets the same three proof facts as the phone, beside the buttons. */}
+          {!phone && <HomeStats />}
         </div>
       </div>
 

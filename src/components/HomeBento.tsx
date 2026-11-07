@@ -59,7 +59,9 @@ const CLIENTS = [
 /** The AI systems as a flat list: every leaf of the Projects tree, in order. */
 const leaves = (n: StackNode): StackNode[] =>
   n.children?.length ? n.children.flatMap(leaves) : [n]
-const AI_BUILDS = leaves(aiStack)
+// Training-only systems (Elation, Practice Fusion) stay out of the chips: the
+// card says "hands-on daily", and the Systems list labels them properly.
+const AI_BUILDS = leaves(aiStack).filter((n) => n.status !== 'Training')
 
 function CardHead({
   Icon,

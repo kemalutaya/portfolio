@@ -81,6 +81,38 @@
   gap: 12px;
   margin-top: clamp(14px, 2vh, 22px);
 }
+/* Desktop: the three proof facts sit at the right end of the actions row.
+   (Phones style .hstats under the lede, in mobile-app.css.) */
+@media (min-width: 1100px) {
+  .home__actions .hstats {
+    display: flex;
+    gap: clamp(14px, 1.6vw, 34px);
+    margin: 0 0 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+  .home__actions .hstats b {
+    display: block;
+    font-size: clamp(17px, 1.3vw, 22px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--navy);
+  }
+  .home__actions .hstats span {
+    display: block;
+    margin-top: 3px;
+    font-size: clamp(10px, 0.75vw, 11px);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}
+/* Narrow laptops: the facts wrap under the buttons, so they start on the left. */
+@media (min-width: 1100px) and (max-width: 1239px) {
+  .home__actions .hstats { margin-left: 0; }
+}
 .home__resume {
   display: inline-flex;
   align-items: center;

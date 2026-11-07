@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { GraduationCap, Student } from '@/components/slab'
+import { GraduationCap, Student, Sparkle } from '@/components/slab'
 import { profile } from '@/data/profile'
 import { asset } from '@/lib/asset'
 
@@ -19,6 +19,8 @@ type Role = {
   index: string
   when: string
   title: string
+  /** One line of proof from the résumé. Daily figures are typical (see the note under the list). */
+  detail?: string
 }
 
 const EXPERIENCE: Role[] = [
@@ -26,16 +28,19 @@ const EXPERIENCE: Role[] = [
     index: '01',
     when: 'Nov 2023–Sep 2026',
     title: 'Medical Virtual Administrative Assistant, Resident Eye Care Associates',
+    detail: '50+ charts and 50+ eligibility checks a day across Availity, NJMMIS, Davis Vision and March Vision, for 15 to 25 partner facilities.',
   },
   {
     index: '02',
     when: 'Nov 2022–Oct 2023',
     title: 'Subject Matter Expert / Assistant Team Leader, Optum',
+    detail: 'Promoted after two years. Trained and coached 10+ agents across up to 3 teams, and audited 10+ cases a day.',
   },
   {
     index: '03',
     when: 'Nov 2020–Nov 2022',
     title: 'Customer Service Representative, Prior Authorization, Optum',
+    detail: '30 to 50 prior authorization requests a day by phone and fax, across 8 U.S. states.',
   },
   {
     index: '04',
@@ -61,14 +66,14 @@ export default function AboutGrid() {
         <div className="agrid__copy">
           <p className="agrid__lead">
             5+ years in non-clinical healthcare administration.
-            <span> My approach: be accurate, be dependable, understand the workflow, and make the team’s job easier.</span>
+            <span> I check every portal that covers a patient before I call them verified.</span>
           </p>
 
           <p className="agrid__note">
             I verify insurance eligibility, keep patient records accurate, prepare charts and review documentation.
             Most recently at <strong>Resident Eye Care Associates</strong>, working in Compulink and PointClickCare; before that,
-            prior authorization at <strong>Optum</strong>. Clinical judgment, diagnosis and complex-case decisions stay
-            with licensed clinical personnel.
+            prior authorization at <strong>Optum</strong>, where I learned why a request gets approved, sent to a nurse
+            or denied.
           </p>
 
           <p className="agrid__note">
@@ -88,15 +93,19 @@ export default function AboutGrid() {
                 <span className="agrid__cap-marks">
                   <span className="agrid__cell-meta">{r.when}</span>
                 </span>
-                <span className="agrid__cap-title">{r.title}</span>
+                <span className="agrid__cap-title">
+                  {r.title}
+                  {r.detail && <span className="agrid__cap-detail">{r.detail}</span>}
+                </span>
                 <span className="agrid__cap-index" aria-hidden="true">
                   {r.index}
                 </span>
               </li>
             ))}
           </ul>
+          <p className="agrid__fine">Daily figures are typical for each role, self-reported.</p>
 
-          {/* Credentials: one plate, a pair of cells and one full-width row. */}
+          {/* Credentials: one plate, two rows of two cells. */}
           <div className="agrid__bar">
             <span className="agrid__cell">
               <span className="agrid__cell-mark agrid__cell-mark--img">
@@ -118,13 +127,24 @@ export default function AboutGrid() {
               </span>
             </span>
 
-            <span className="agrid__cell agrid__cell--wide">
+            <span className="agrid__cell">
               <span className="agrid__cell-mark">
                 <Student size={16} weight="fill" aria-hidden="true" />
               </span>
               <span className="agrid__cell-copy">
                 <span className="agrid__cell-title">Virtual Assistant Training</span>
                 <span className="agrid__cell-meta">Ready To Round · 360MVA · VA Of The Future · 2024</span>
+              </span>
+            </span>
+
+            {/* Course completion badges, not exam-based certifications: named as training. */}
+            <span className="agrid__cell">
+              <span className="agrid__cell-mark">
+                <Sparkle size={16} weight="fill" aria-hidden="true" />
+              </span>
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">AI Training, Claude Academy</span>
+                <span className="agrid__cell-meta">AI Fluency · AI capabilities and limitations · 2026</span>
               </span>
             </span>
           </div>

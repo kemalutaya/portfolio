@@ -101,8 +101,10 @@
   align-items: center;
   gap: 6px 12px;
 }
+/* The quote is the point of the page, so it is the largest text in each row;
+   who said it sits under it at label size. */
 .tgrid__client-name {
-  font-size: clamp(16px, min(1.3vw, 2.45vh), 23px);
+  font-size: clamp(14px, min(1vw, 1.9vh), 17px);
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.15;
@@ -124,9 +126,19 @@
    characters of each other, so they wrap the same way at every width. Keep
    them that length if you edit the copy. */
 .tgrid__client-daily {
-  font-size: clamp(12.5px, min(0.95vw, 1.8vh), 16.5px);
-  line-height: 1.5;
-  max-width: 78ch;
+  font-size: clamp(17px, min(1.45vw, 2.7vh), 25px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  max-width: 46ch;
+  color: var(--navy);
+  text-wrap: pretty;
+}
+/* A paraphrase is not a quote: plainer and quieter, so it never reads as
+   someone's own words. */
+.tgrid__client-daily--para {
+  font-size: clamp(15px, min(1.15vw, 2.2vh), 19px);
+  font-weight: 500;
   color: var(--muted);
 }
 .tgrid__client-tags {

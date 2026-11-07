@@ -52,7 +52,8 @@ const BUILDS: Project[] = [
 ]
 
 const leaves = (n: StackNode): StackNode[] => (n.children?.length ? n.children.flatMap(leaves) : [n])
-const AI_LEAVES = leaves(aiStack)
+// Training-only systems stay out of the preview chips; the Systems list labels them.
+const AI_LEAVES = leaves(aiStack).filter((n) => n.status !== 'Training')
 
 /* ---------- Previews ---------- */
 
@@ -262,7 +263,7 @@ export default function ProjectsGrid() {
         <h1 className="pgrid__title" id="projects-title">
           I run the daily workflow, then look for ways to improve it.
         </h1>
-        <p className="pgrid__lede">Three macros I built with Excel, Outlook and Word, two smaller fixes, and the systems I work in. Open a card to see it full size.</p>
+        <p className="pgrid__lede">Three macros I built with Excel, Outlook and Word, two smaller fixes, and the systems I work in.</p>
       </header>
 
       {phone && (

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
-import { IdentificationCard, ShieldCheck, ArrowsSplit, CheckCircle } from '@/components/slab'
+import { IdentificationCard, ShieldCheck, ArrowsSplit, CheckCircle, ArrowUpRight } from '@/components/slab'
 import type { Icon } from '@/components/slab'
-import Autopilot, { TOOLS } from '@/components/Autopilot'
+import { Link } from 'react-router-dom'
 import { asset } from '@/lib/asset'
 
 /**
@@ -42,7 +42,7 @@ const STAGES: Stage[] = [
   {
     index: '03',
     label: 'Outcome',
-    body: 'Active goes on to chart prep. Terminated is flagged to the office. Prior auth is escalated; clinical review stays with the RN.',
+    body: 'Active goes on to chart prep. Terminated is flagged to the office. Anything that needs prior auth is escalated.',
     Icon: ArrowsSplit,
     chips: ['Active', 'Terminated', 'Needs prior auth'],
   },
@@ -76,7 +76,7 @@ const SERVICES: Service[] = [
     index: '01',
     title: 'Insurance Verification',
     description:
-      'Eligibility and benefits verification across Medicare, Medicaid, and vision plans, plus ongoing patient insurance information review.',
+      'Eligibility and benefits verification across Medicare, Medicaid and vision plans: 50+ checks a day across four portals, cross-checking the same patient where plans overlap.',
     chip: 'Hands-On, Daily',
     logos: [SHIELD, IDCARD, EYE],
     bullets: ['Availity', 'NJMMIS', 'UnitedHealthcare', 'Davis Vision', 'March Vision'],
@@ -94,7 +94,7 @@ const SERVICES: Service[] = [
     index: '03',
     title: 'Chart Preparation',
     description:
-      'Pre-charting for upcoming physician schedules: reviewing allergies, diagnoses, and medication history, and flagging anything missing before the visit.',
+      'Pre-charting 50+ charts a day for the next day’s physician schedules: allergies, diagnoses and medication history, with anything missing flagged before the visit.',
     chip: 'Hands-On, Daily',
     logos: [BUILDING, DATABASE, DOC],
     bullets: ['Allergies & diagnoses', 'Medication history', 'PDPM lookups'],
@@ -120,7 +120,7 @@ const SERVICES: Service[] = [
     index: '06',
     title: 'Prior Authorization Support',
     description:
-      'Prior authorization intake, eligibility verification, and CPT entry, including urgent, out-of-network, and peer-to-peer requests, escalated to clinical personnel when needed.',
+      'At Optum: 30 to 50 requests a day by phone and fax across 8 U.S. states. Intake, eligibility and CPT entry, including urgent, out-of-network and peer-to-peer requests.',
     chip: 'Prior Experience',
     logos: [SHIELD, DOC, IDCARD],
     bullets: ['Medical & surgical', 'DME / Part B', 'Transplant'],
@@ -203,10 +203,9 @@ export default function ServicesGrid() {
             live site's ladder names one. */}
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
-            <h2 className="sgrid__offers-title">What I do.</h2>
+            <h2 className="sgrid__offers-title">What I do</h2>
             <p className="sgrid__offers-sub">
-              My strongest fit is back-office healthcare support. I&rsquo;m open to limited call
-              handling, but not high-volume inbound calls, outbound sales or cold-calling.
+              Daily volumes are typical figures from my most recent roles, self-reported.
             </p>
           </div>
           <ul className="bento sgrid__services" role="list" style={CARDS}>
@@ -239,33 +238,21 @@ export default function ServicesGrid() {
           </p>
         </div>
 
-        {/* The schedule macro as a live flow. Its caption and the tool chips sit in a header
-            above the window, so the canvas gets the whole glass width. */}
-        <div className="sgrid__flow">
-          <header className="sgrid__flow-head">
-            <div className="sgrid__flow-copy">
-              <span className="sgrid__flow-eyebrow">Automation</span>
-              <h2 className="sgrid__flow-title">How the schedule macro works.</h2>
-              <p className="sgrid__flow-sub">
-                Excel holds the doctor and facility assignments. The macro matches the highlighted
-                facility to the assigned doctor, attaches the required files and builds the Outlook
-                draft. I review every detail, then send. Illustration of the process, not a
-                screenshot; no patient or facility data shown.
-              </p>
-            </div>
-            <ul className="sgrid__flow-tools" role="list" aria-label="Tools that power this flow">
-              {TOOLS.map(({ Icon: ToolIcon, label }) => (
-                <li key={label} className="sgrid__flow-tool">
-                  <ToolIcon size={14} weight="duotone" aria-hidden="true" />
-                  <span>{label}</span>
-                </li>
-              ))}
-            </ul>
-          </header>
-          <div className="sgrid__flow-main">
-            <Autopilot compact maxScale={1.08} />
-          </div>
-        </div>
+        {/* The schedule macro has one home, the Case Studies page. Services links
+            to it instead of telling the same story a second time. */}
+        <Link to="/projects" className="sgrid__case">
+          <span className="sgrid__case-copy">
+            <span className="sgrid__flow-eyebrow">Case study</span>
+            <span className="sgrid__case-title">
+              The macros that cut daily schedule prep from about 3 hours to about 1
+            </span>
+            <span className="sgrid__case-note">Estimated, based on the previous manual process.</span>
+          </span>
+          <span className="sgrid__case-cta">
+            Read the case study
+            <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
+          </span>
+        </Link>
       </div>
     </section>
   )

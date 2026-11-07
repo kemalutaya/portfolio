@@ -78,10 +78,8 @@ export default function ContactGrid() {
           Looking for a full-time healthcare operations role.
         </h1>
         <p className="pgrid__lede">
-          I’m available immediately for a full-time remote role in insurance verification, EMR support, chart
-          preparation or healthcare documentation, and open to contract work alongside that. Based in the
-          Philippines, aligned to UK and U.S. business hours. Send me the role and I’ll tell you whether
-          I’m a fit.
+          Insurance verification, EMR support, chart preparation or healthcare documentation, remote, on UK or
+          U.S. business hours from the Philippines. Send me the role and I’ll tell you whether I’m a fit.
         </p>
       </header>
 

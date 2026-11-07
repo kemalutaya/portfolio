@@ -4,9 +4,9 @@ import { asset } from '@/lib/asset'
  * The two role-variant pages, /da and /va.
  *
  * Every string is condensed from the old static pages (da/index.html and
- * va/index.html). Figures keep the qualifier those pages gave them. The
- * healthcare role is named "U.S.-based private practice" on both pages, as
- * the /va page does, so no clinic name appears.
+ * va/index.html) and the matching résumés. Figures keep their qualifier.
+ * The healthcare role names Resident Eye Care Associates, as About, the
+ * testimonials and all three résumés already do.
  */
 
 export type RoleKey = 'da' | 'va'
@@ -28,7 +28,8 @@ export type Role = {
   eyebrow: string
   headline: string
   lede: string
-  summary: string
+  /** One string per paragraph. */
+  summary: string[]
   servicesTitle: string
   servicesSub: string
   services: RoleService[]
@@ -52,14 +53,16 @@ export const roles: Record<RoleKey, Role> = {
     eyebrow: 'AI Data Annotation & Transcription · Remote',
     headline: 'I label training data to spec, consistently, at production pace, and I check my own work before it ships.',
     lede: 'Bounding boxes, segmentation, classification and attribute tagging across medical and everyday imagery, plus audio transcription and dataset QA.',
-    summary:
-      "My annotation and transcription work has been with Innodata and TELUS Digital AI, both part-time, across roughly eight months in 2025 and 2026. Before that I spent five years doing high-volume, high-accuracy work inside systems I didn't own: electronic medical records, payer portals, and booking platforms. I read the guideline properly before starting, flag the genuinely ambiguous case instead of guessing, and review my own output before submission. I annotate and transcribe to a client's specification; I don't set the labelling schema or make research decisions about what the data should mean.",
+    summary: [
+      "My annotation and transcription work has been with Innodata and TELUS Digital AI, both part-time, across roughly eight months in 2025 and 2026. Before that I spent five years doing high-volume, high-accuracy work inside systems I didn't own: electronic medical records, payer portals and booking platforms.",
+      "I read the guideline properly before starting, flag the genuinely ambiguous case instead of guessing, and review my own output before submission. I annotate and transcribe to a client's specification; I don't set the labeling schema or decide what the data should mean.",
+    ],
     servicesTitle: 'What I do',
     servicesSub: "Six task types I've worked on in production.",
     services: [
       {
         title: 'Bounding Box Annotation',
-        description: 'Object localisation on everyday-object imagery, worked to a client guideline with defined edge-case rules.',
+        description: 'Object localization on everyday-object imagery, worked to a client guideline with defined edge-case rules.',
       },
       {
         title: 'Segmentation & Masks',
@@ -67,7 +70,7 @@ export const roles: Record<RoleKey, Role> = {
       },
       {
         title: 'Classification & Attribute Tagging',
-        description: 'Labelling what an image contains and tagging its properties against a fixed taxonomy.',
+        description: 'Labeling what an image contains and tagging its properties against a fixed taxonomy.',
       },
       {
         title: 'Medical Image Annotation',
@@ -75,7 +78,7 @@ export const roles: Record<RoleKey, Role> = {
       },
       {
         title: 'Audio Transcription',
-        description: 'Speech recordings transcribed and structured into clean, standardised text for model training.',
+        description: 'Speech recordings transcribed and structured into clean, standardized text for model training.',
       },
       {
         title: 'QA & Data Validation',
@@ -106,7 +109,7 @@ export const roles: Record<RoleKey, Role> = {
       },
       {
         role: 'Medical Virtual Administrative Assistant',
-        org: 'Resident Eye Care Associates / RTR, Eye Care Clinic',
+        org: 'Resident Eye Care Associates',
         dates: 'Nov 2023–Sep 2026 · Remote',
         bullets: [
           'Reviewed roughly 100 patient records a shift and prepared around 50 charts a day, working to next-day deadlines.',
@@ -117,6 +120,7 @@ export const roles: Record<RoleKey, Role> = {
     ],
     credentials: [
       { title: 'HIPAA Compliance Certification', meta: 'Biologix · 2024, renewed 2026', kind: 'cert' },
+      { title: 'AI Training, Claude Academy', meta: 'AI Fluency · AI capabilities and limitations · 2026', kind: 'cert' },
       DEGREE,
     ],
     resume: asset('/KemAlutaya_Resume_AI_DataAnnotation.pdf'),
@@ -129,8 +133,10 @@ export const roles: Record<RoleKey, Role> = {
     eyebrow: 'Virtual Assistant · Remote',
     headline: 'I keep your admin work accurate, at volume, inside whatever system you already use.',
     lede: 'Data entry, research, customer communication, scheduling, and document management for busy teams and business owners.',
-    summary:
-      "I've done data entry, research, customer communication, scheduling, and document management across e-commerce product research, hotel and airline booking support, and back-office administrative and records work for a U.S.-based private practice. What connects that work is the pattern: a high volume of tasks, real accuracy requirements, and a system that belongs to someone else. I'm best suited to administrative, research, and customer-support work. Roles centered on outbound sales or cold-calling aren't a good fit for me, and I'd rather say that upfront.",
+    summary: [
+      "I've done data entry, research, customer communication, scheduling and document management across e-commerce product research, hotel and airline booking support, back-office work at Optum, and records work for a U.S. eye care practice. What connects that work: a high volume of tasks, real accuracy requirements, and a system that belongs to someone else.",
+      "I'm best suited to administrative, research and customer-support work. Roles centered on outbound sales or cold-calling aren't a good fit for me.",
+    ],
     servicesTitle: 'What I do',
     servicesSub: "Six areas I've handled in paid roles.",
     services: [
@@ -162,14 +168,32 @@ export const roles: Record<RoleKey, Role> = {
     experienceNote: 'Figures are self-reported from specific past roles, not averaged across my whole career.',
     experience: [
       {
-        role: 'Virtual Administrative Assistant',
-        org: 'U.S.-based private practice',
+        role: 'Virtual Administrative Assistant (Back-Office)',
+        org: 'Resident Eye Care Associates',
         dates: 'Nov 2023–Sep 2026 · Remote, full-time',
         bullets: [
-          'Reviewed roughly 100 records a shift and prepared around 50 documents a day to next-day deadlines.',
-          'Built an Excel and Outlook macro that cut a daily 3-hour task down to 1.',
+          'Reviewed roughly 100 records a shift and prepared around 50 patient charts a day to next-day deadlines.',
+          'Ran 50+ data verification checks a day across four portals before records were processed.',
+          'Built three Excel, Outlook and Word macros that cut daily schedule prep from about 3 hours to about 1.',
         ],
         note: 'Time saving estimated, based on the previous manual process.',
+      },
+      {
+        role: 'Subject Matter Expert / Assistant Team Leader',
+        org: 'Optum',
+        dates: 'Nov 2022–Oct 2023 · Hybrid',
+        bullets: [
+          'Promoted into a leadership-track role. Trained and coached 10+ agents on documentation accuracy, supporting up to 3 teams.',
+          'Built daily and weekly KPI trackers, and reviewed and corrected agent documentation.',
+        ],
+      },
+      {
+        role: 'Customer Service Representative',
+        org: 'Optum',
+        dates: 'Nov 2020–Nov 2022 · Hybrid',
+        bullets: [
+          'Processed 30 to 50 inbound requests a day from providers, verifying eligibility and account details and entering case data.',
+        ],
       },
       {
         role: 'Customer Sales Representative',
@@ -203,6 +227,7 @@ export const roles: Record<RoleKey, Role> = {
       { title: 'Virtual Assistant Training', meta: 'Ready To Round · 2024', kind: 'cert' },
       { title: 'Virtual Assistant Training', meta: '360MVA · 2024', kind: 'cert' },
       { title: 'Virtual Assistant Training', meta: 'VA Of The Future · 2024', kind: 'cert' },
+      { title: 'AI Training, Claude Academy', meta: 'AI Fluency · AI capabilities and limitations · 2026', kind: 'cert' },
       DEGREE,
     ],
     resume: asset('/KemAlutaya_Resume_VA_DataEntry.pdf'),

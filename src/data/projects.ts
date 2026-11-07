@@ -38,8 +38,8 @@ export const automations: CaseItem[] = [
   {
     id: 'notifications',
     title: 'Facility notifications',
-    short: '50+ facilities. I now send 25+ notifications a day with zero mistakes.',
-    desc: 'More than 50 facilities, each with its own contact details. The macro drafts each notification with the correct facility email, date, template and attachments. I now send 25+ notifications a day with zero mistakes.',
+    short: '50+ facilities. Sent 25+ notifications a day with no errors.',
+    desc: 'More than 50 facilities, each with its own contact details. The macro drafts each notification with the correct facility email, date, template and attachments. I sent 25+ notifications a day with no errors.',
   },
   {
     id: 'flyers',

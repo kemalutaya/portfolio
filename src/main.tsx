@@ -1,6 +1,6 @@
 import { StrictMode, lazy, Suspense, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import App from './App'
 import Home from '@/components/Home'
 import NotFound from '@/components/NotFound'
@@ -11,7 +11,6 @@ import ROUTE_META from '@/data/routes.json'
 // Every route but Home is its own chunk: the first visit only pays for Home.
 const ProjectsView = lazy(() => import('@/views/ProjectsView'))
 const ServicesView = lazy(() => import('@/views/ServicesView'))
-const ShowcaseView = lazy(() => import('@/views/ShowcaseView'))
 const TestimonialsGrid = lazy(() => import('@/components/TestimonialsGrid'))
 const AboutGrid = lazy(() => import('@/components/AboutGrid'))
 const ContactGrid = lazy(() => import('@/components/ContactGrid'))
@@ -32,7 +31,6 @@ import './styles/home.css'
 import './styles/bento.css'
 import './styles/projects-grid.css'
 import './styles/services-grid.css'
-import './styles/showcase.css'
 import './styles/testimonials-grid.css'
 import './styles/about-grid.css'
 import './styles/contact-grid.css'
@@ -43,6 +41,7 @@ import './styles/a11y.css'
 import './styles/apple.css'
 // Last: the perf tiers only ever turn things OFF, so they must win.
 import './styles/perf.css'
+import './styles/type-scale.css'
 
 // Re-apply this tab's performance verdict before the first paint, so a
 // downgraded visitor never sees the expensive layers flash back on reload.
@@ -74,7 +73,8 @@ createRoot(container).render(
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<ProjectsView />} />
           <Route path="/services" element={<ServicesView />} />
-          <Route path="/showcase" element={<ShowcaseView />} />
+          {/* The macro story lives on Case Studies only; old Automation links land there. */}
+          <Route path="/showcase" element={<Navigate to="/projects" replace />} />
           <Route path="/testimonials" element={<TestimonialsGrid />} />
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/contact" element={<ContactGrid />} />

@@ -29,6 +29,10 @@ export const FAQS: QA[] = [
     a: 'Compulink and PointClickCare for EMR work; Availity, NJMMIS, UnitedHealthcare, Davis Vision and March Vision for eligibility; Microsoft Office and Outlook daily. My last role ran on a locked-down remote desktop, so I’m used to working within access controls.',
   },
   {
+    q: 'Do you use AI tools?',
+    a: 'Yes, Claude and ChatGPT, for drafting, formatting and checking my own work. I keep patient information out of them: anything with PHI stays inside the practice’s own systems. I’ve also completed Claude Academy courses on AI fluency and on what AI can and can’t do.',
+  },
+  {
     q: 'What kind of role is not a fit?',
     a: 'My strongest fit is back-office healthcare support. I’m open to limited call handling, but not high-volume inbound calls, outbound sales or cold-calling, and I’d rather say that upfront.',
   },

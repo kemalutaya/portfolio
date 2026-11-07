@@ -53,16 +53,15 @@ const REVIEWERS = [
 const TILES: Tile[] = [
   { n: '01', label: 'Case Studies', to: '/projects', title: 'Daily schedule prep, 3 hours to about 1', desc: 'Estimated, based on the previous manual process.', img: asset('/home/case-impact.svg') },
   { n: '02', label: 'Services', to: '/services', title: 'Back-office support for U.S. and UK healthcare teams', desc: 'Insurance verification, EMR support, chart preparation and documentation.', img: asset('/home/case-eligibility.svg') },
-  { n: '03', label: 'Automation', to: '/showcase', title: 'Excel, Outlook and Word macros', desc: 'Built with the tools already on the remote desktop. I still review and send the output myself.', img: asset('/home/case-automation.svg') },
-  { n: '04', label: 'Testimonials', to: '/testimonials', title: 'What onshore teams and supervisors said', desc: 'Colleagues at Resident Eye Care Associates and Optum.' },
-  { n: '05', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'Five years inside U.S. healthcare operations.', img: profile.avatarSrc },
+  { n: '03', label: 'Testimonials', to: '/testimonials', title: 'What onshore teams and supervisors said', desc: 'Colleagues at Resident Eye Care Associates and Optum.' },
+  { n: '04', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'Five years inside U.S. healthcare operations.', img: profile.avatarSrc },
 ]
 
 // The three testimonials from the live site, attributions verbatim. The third
 // is a paraphrase there, so it carries no quotation marks here either.
 const QUOTES = [
   { text: '"Attentive to detail and finishes the task very fast and accurate."', source: 'Onshore Team, Resident Eye Care Associates', kind: 'Testimonial' },
-  { text: '"Easy going and not hard to approach as an assistant team leader / subject matter expert, very proactive and tidy when it comes to assigned tasks."', source: 'Supervisor, Optum', kind: 'Testimonial' },
+  { text: '"Easy going and not hard to approach… very proactive and tidy when it comes to assigned tasks."', source: 'Supervisor, Optum', kind: 'Testimonial' },
   { text: "Noted for being proactive about solving problems as they came up, and for consistently looking for ways to improve how the clinic's workflows ran, rather than just following the process as-is.", source: 'Supervisor, Resident Eye Care Associates', kind: 'Paraphrased feedback' },
 ] as const
 

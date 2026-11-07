@@ -105,6 +105,21 @@
   line-height: 1.25;
   color: var(--navy);
 }
+/* One line of proof under each role, from the résumé. */
+.agrid__cap-detail {
+  display: block;
+  margin-top: 3px;
+  font-size: clamp(13px, min(0.9vw, 1.7vh), 15px);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.agrid__fine {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
 .agrid__cap-index {
   font-size: clamp(10.5px, 0.68vw, 12px);
   font-weight: 700;
@@ -141,6 +156,10 @@
   text-decoration: none;
 }
 .agrid__cell + .agrid__cell { box-shadow: inset 1px 0 0 var(--line); }
+/* Two rows of two: the second row gets a hairline on top, the right column
+   keeps its divider. */
+.agrid__cell:nth-child(3) { box-shadow: inset 0 1px 0 var(--line); }
+.agrid__cell:nth-child(4) { box-shadow: inset 1px 0 0 var(--line), inset 0 1px 0 var(--line); }
 /* The third fact is a link, not a credential, so it gets its own full-width
    row under the pair rather than a third column that would squeeze all three. */
 .agrid__cell + .agrid__cell--wide {

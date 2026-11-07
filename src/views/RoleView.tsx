@@ -58,7 +58,9 @@ export default function RoleView({ role: key }: { role: RoleKey }) {
       </header>
 
       <div className="home__glass sgrid__glass">
-        <p className="agrid__note">{role.summary}</p>
+        {role.summary.map((para) => (
+          <p key={para.slice(0, 24)} className="agrid__note">{para}</p>
+        ))}
 
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
