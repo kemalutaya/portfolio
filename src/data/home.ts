@@ -32,13 +32,13 @@ export const ROLES: HomeRow[] = [
   { Icon: Keyboard, title: 'VA / Data Entry', note: 'High-volume entry, Excel macros' },
 ]
 
-// Where I've worked, most recent first (the About timeline in brief). Role
-// and employer share the title, and the years sit beside it, so both survive
-// the smallest laptop card, where the notes are hidden.
+// Where I've worked, most recent first (the About timeline in brief). The
+// Home card is wide, so the title carries role and employer in full; `short`
+// takes over on the narrowest laptops, and the years always show.
 export const EXPERIENCE: HomeRow[] = [
-  { title: 'Medical VA, eye care', short: 'Medical VA', note: 'U.S. eye care practice', when: '2023–26' },
-  { title: 'SME, Optum', note: 'Coached up to 3 teams', when: '2022–23' },
-  { title: 'Prior auth, Optum', short: 'Prior auth', note: '8 U.S. states', when: '2020–22' },
+  { title: 'Medical VA, Resident Eye Care Associates', short: 'Medical VA, eye care', note: 'Back-office for a U.S. eye care practice', when: '2023–26' },
+  { title: 'Subject matter expert, Optum', short: 'SME, Optum', note: 'Coached agents across up to 3 teams', when: '2022–23' },
+  { title: 'Prior authorization, Optum', short: 'Prior auth, Optum', note: 'Provider requests across 8 U.S. states', when: '2020–22' },
 ]
 
 // The screening questions, answered before they are asked.

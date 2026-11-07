@@ -20,8 +20,10 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
   }
+  /* Two wide cards on a diagonal: Experience opens the top row, Results
+     closes the bottom one. */
+  .bento__card--about    { grid-column: span 2; }
   .bento__card--projects { grid-column: span 2; }
-  .bento__card--quotes   { grid-column: span 2; }
 }
 
 .bento__card {
@@ -98,6 +100,15 @@
   font-size: clamp(11.5px, 0.74vw, 13px);
   line-height: 1.4;
   color: var(--muted);
+}
+/* The second sentence on a wide card: same size as the description, a
+   step darker, so it reads as the detail under the headline result. */
+.bento__more {
+  margin-top: 2px;
+  font-size: clamp(11.5px, 0.74vw, 13px);
+  line-height: 1.45;
+  color: var(--navy);
+  opacity: 0.82;
 }
 .bento__arrow {
   position: absolute;
@@ -379,13 +390,22 @@
 @container (min-height: 120px) {
   .bento__offers--few .bento__offer-note { display: block; }
 }
+/* Experience is a wide card with three rows, so its type can step up a size
+   from the small cards' ledgers. */
+.bento__card--about .bento__offer-title { font-size: clamp(12px, 10cqh, 15px); }
+.bento__card--about .bento__offer-note { font-size: clamp(11px, 7.5cqh, 12.5px); }
+.bento__card--about .bento__offer-when { font-size: clamp(11px, 8cqh, 13px); }
+/* The extra Results sentence needs the head column at full height: on the
+   narrowest and shortest laptops it would be cut, so it steps aside there. */
+@media (max-width: 1239px), (max-height: 740px) {
+  .bento__more { display: none; }
+}
 .bento__card:hover .bento__offer { transform: translateX(3px); }
 .bento__card:hover .bento__offer-tile { background: var(--orange); color: var(--white); }
 .bento__card:hover .bento__offer-num { color: var(--orange-ink); }
 
-/* Track record (the old Testimonials slot): head left, result column drifting up on the right. */
-.bento__card--quotes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 14px; }
-.bento__card--quotes .bento__media { margin-top: 0; grid-row: 1; grid-column: 2; }
+/* Track record (the old Testimonials slot): a small card, the result column
+   drifting up under the head. */
 .bento__reviews {
   overflow: hidden;
   mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);

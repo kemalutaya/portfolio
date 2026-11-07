@@ -16,9 +16,9 @@ import { asset } from '@/lib/asset'
 import ThemedImg from '@/components/ThemedImg'
 
 /**
- * Home's showcase, ordered for a recruiter's first 30 seconds: results,
- * where I've worked, when I can start, the roles I fit, proof and the
- * credential. Every card is a link, and every fact is one the About page,
+ * Home's showcase, ordered for a recruiter's first 30 seconds. Top row:
+ * where I've worked (wide), the roles I fit, the track record. Bottom row:
+ * the credential, when I can start, and the results case study (wide). Every card is a link, and every fact is one the About page,
  * the résumé or the role pages already state.
  *
  * Motion is transform-only on a clipped inner track, so a card never adds
@@ -84,10 +84,13 @@ function CardHead({
   Icon,
   title,
   desc,
+  more,
 }: {
   Icon: PhosphorIcon
   title: string
   desc: string
+  /** An extra sentence under the description, for the wide cards. */
+  more?: string
 }) {
   return (
     <header className="bento__head">
@@ -98,6 +101,7 @@ function CardHead({
         <h3 className="bento__title">{title}</h3>
       </span>
       <p className="bento__desc">{desc}</p>
+      {more && <p className="bento__more">{more}</p>}
       <ArrowUpRight size={15} weight="bold" aria-hidden="true" className="bento__arrow" />
     </header>
   )
@@ -106,51 +110,17 @@ function CardHead({
 export default function HomeBento() {
   return (
     <nav className="bento" aria-label="Explore the portfolio">
-      {/* Results: the case study diagrams drift upward on a looped track. */}
-      <Link to="/projects" className="bento__card bento__card--projects">
-        <CardHead Icon={ChartLineUp} title="Results" desc="Case study: three macros cut an estimated 3-hour daily task to about 1." />
-        <div className="bento__media bento__reel" aria-hidden="true">
-          <div className="bento__reel-track">
-            {[...PROJECT_SHOTS, ...PROJECT_SHOTS].map((f, i) => (
-              <span key={i} className="bento__shot">
-                <ThemedImg src={f} />
-              </span>
-            ))}
-          </div>
-        </div>
-      </Link>
-
-      {/* Experience: employers and years, the first thing a recruiter checks.
-          Keeps the old About slot (and its --about layout class). */}
+      {/* Experience: employers and years, the first thing a recruiter checks,
+          so it opens the grid in a wide card. Keeps the --about class. */}
       <Link to="/about" className="bento__card bento__card--about">
         <CardHead Icon={Briefcase} title="Experience" desc="5+ years in U.S. healthcare, at a practice and a health plan." />
         <Ledger rows={EXPERIENCE} few />
       </Link>
 
-      {/* Availability: start date, hours and setup. Keeps the old Systems slot. */}
-      <Link to="/contact" className="bento__card bento__card--ai">
-        <CardHead Icon={CalendarCheck} title="Availability" desc="Open to work, remote." />
-        <Ledger rows={AVAILABILITY} few />
-      </Link>
-
-      {/* Credentials: the badge that matters, on its plate. */}
-      <Link to="/about" className="bento__card bento__card--creds">
-        <CardHead Icon={Medal} title="Credentials" desc="HIPAA Certified by Biologix, renewed 2026." />
-        <div className="bento__media bento__badge" aria-hidden="true">
-          <span className="bento__badge-ring">
-            <img src={asset('/hipaa-badge.svg')} alt="" width={72} height={72} />
-          </span>
-          <span className="bento__badge-tag">
-            <SealCheck size={14} weight="fill" />
-            HIPAA Certified
-          </span>
-        </div>
-      </Link>
-
       {/* Roles I fit: job titles with the evidence for each. Keeps the old
           Services slot; the Services page still holds the full detail. */}
       <Link to="/services" className="bento__card bento__card--services">
-        <CardHead Icon={IdentificationCard} title="Roles I fit" desc="Remote healthcare admin roles my experience lines up with." />
+        <CardHead Icon={IdentificationCard} title="Roles I fit" desc="Remote healthcare admin roles." />
         <Ledger rows={ROLES} numbered />
       </Link>
 
@@ -168,6 +138,47 @@ export default function HomeBento() {
                 </span>
                 <span className="bento__review-role">{c.role}</span>
                 <span className="bento__review-work">{c.work}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </Link>
+
+      {/* Credentials: the badge that matters, on its plate. */}
+      <Link to="/about" className="bento__card bento__card--creds">
+        <CardHead Icon={Medal} title="Credentials" desc="HIPAA Certified by Biologix, renewed 2026." />
+        <div className="bento__media bento__badge" aria-hidden="true">
+          <span className="bento__badge-ring">
+            <img src={asset('/hipaa-badge.svg')} alt="" width={72} height={72} />
+          </span>
+          <span className="bento__badge-tag">
+            <SealCheck size={14} weight="fill" />
+            HIPAA Certified
+          </span>
+        </div>
+      </Link>
+
+      {/* Availability: start date, hours and setup. Keeps the old Systems slot. */}
+      <Link to="/contact" className="bento__card bento__card--ai">
+        <CardHead Icon={CalendarCheck} title="Availability" desc="Open to work, remote." />
+        <Ledger rows={AVAILABILITY} few />
+      </Link>
+
+      {/* Results: the wide card that closes the grid. The head carries the
+          result and one line on how it was built; the diagrams drift upward
+          on a looped track beside it. */}
+      <Link to="/projects" className="bento__card bento__card--projects">
+        <CardHead
+          Icon={ChartLineUp}
+          title="Results"
+          desc="Case study: three macros cut an estimated 3-hour daily task to about 1."
+          more="I built them in Excel, Outlook and Word for 18 doctors' daily schedules, and I still review every draft before it goes out."
+        />
+        <div className="bento__media bento__reel" aria-hidden="true">
+          <div className="bento__reel-track">
+            {[...PROJECT_SHOTS, ...PROJECT_SHOTS].map((f, i) => (
+              <span key={i} className="bento__shot">
+                <ThemedImg src={f} />
               </span>
             ))}
           </div>
