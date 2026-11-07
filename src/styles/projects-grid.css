@@ -437,3 +437,89 @@
   .bento__kicker { font-size: 10.5px; }
   .bento__build-desc { font-size: 12px; }
 }
+
+/* ============================================
+   CASE STUDIES - scrolling layout (Nov 2026)
+   The page no longer sits in FIXED_ROUTES. It carries .sgrid, so it takes
+   Services' height, glass, plate and type scale; what follows is only what
+   Services does not have: the card grids, the dialog cards and the flyer.
+   ============================================ */
+.csgrid__cards { list-style: none; margin: 0; padding-left: 0; display: grid; gap: clamp(10px, 1vw, 16px); grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+@media (min-width: 760px) {
+  .csgrid .csgrid__cards--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .csgrid .csgrid__cards--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 960px) {
+  .csgrid .csgrid__cards--fixes { grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); }
+}
+.csgrid__card { list-style: none; gap: 8px; overflow: visible; }
+.csgrid__card .bento__title { line-height: 1.2; }
+.csgrid__card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.csgrid__card .sgrid__chip { margin-top: auto; }
+.csgrid__card .bento__desc { margin-bottom: 6px; }
+
+/* The flyer card: copy on the left, the two sheets on the right. */
+.csgrid__card--flyer { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@media (min-width: 1400px) {
+  .csgrid__card--flyer { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); align-items: start; }
+}
+.csgrid__flyer-copy { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.csgrid__flyer-copy .sgrid__chip { margin-top: 4px; }
+
+/* Diagrams and Systems: whole cards that open a dialog. */
+.csgrid__open { gap: 14px; overflow: hidden; transition: box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-med) var(--ease-spring); }
+.csgrid__open:hover { transform: translateY(-2px); }
+.csgrid__open:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.csgrid__open-copy { display: flex; flex-direction: column; gap: 6px; }
+.csgrid__open-title { font-size: clamp(18px, 1.3vw, 22px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; color: var(--navy); }
+.csgrid__open .sgrid__case-cta { align-self: flex-start; margin-top: auto; }
+.csgrid__thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.csgrid__thumbs img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #0B1720; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+.csgrid__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.csgrid__privacy { text-align: center; }
+
+/* ---------- The flyer illustration ----------
+   Paper is paper in both themes, so the sheets use fixed colors. */
+.flyer { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.flyer__pair { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: clamp(10px, 1.2vw, 18px); }
+.flyer__col { display: flex; flex-direction: column; gap: 6px; min-width: 0; container-type: inline-size; }
+.flyer__tag { align-self: flex-start; padding: 3px 9px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
+.flyer__tag--after { color: var(--orange-ink); background: rgba(25, 181, 165, 0.12); box-shadow: inset 0 0 0 1px rgba(25, 181, 165, 0.25); }
+.flyer__sheet {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 8.5 / 11;
+  padding: 9%;
+  border-radius: 6px;
+  background: #FFFFFF;
+  color: #1B2328;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 14px 30px -18px rgba(8, 18, 24, 0.45), inset 0 0 0 1px rgba(11, 23, 32, 0.08);
+  overflow: hidden;
+}
+/* Before: small, all caps, one dense block, nothing to scan. */
+.flyer__sheet--before { gap: 6cqi; font-family: 'Times New Roman', Times, serif; box-shadow: 0 14px 30px -18px rgba(8, 18, 24, 0.45), inset 0 0 0 1px rgba(11, 23, 32, 0.08), inset 0 0 0 5px #fff, inset 0 0 0 6px #9AA3A7; }
+.flyer__b-title { font-size: 6cqi; font-weight: 700; text-align: center; letter-spacing: 0.02em; }
+.flyer__b-text { font-size: 3.9cqi; line-height: 1.35; text-align: justify; color: #3A4247; }
+.flyer__b-lines { display: flex; flex-direction: column; gap: 2.4cqi; }
+.flyer__b-lines i { display: block; height: 2.2cqi; background: #D5DADC; }
+.flyer__b-lines i:last-child { width: 60%; }
+.flyer__b-foot { margin-top: auto; font-size: 3.4cqi; text-align: center; color: #6A7377; }
+/* After: one heading, the date large, two short lines. */
+.flyer__sheet--after { gap: 3.6cqi; padding-top: 0; font-family: 'Poppins', system-ui, sans-serif; }
+.flyer__a-band { display: flex; align-items: center; gap: 4cqi; margin: 0 -11% 1cqi; padding: 5cqi 11%; background: #0C6F64; color: #fff; }
+.flyer__a-logo { display: grid; place-items: center; width: 14cqi; height: 14cqi; border-radius: 3cqi; background: rgba(255, 255, 255, 0.18); font-size: 3cqi; font-weight: 600; }
+.flyer__a-clinic { font-size: 5cqi; font-weight: 600; }
+.flyer__a-kicker { font-size: 4cqi; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0C6F64; }
+.flyer__a-title { font-size: 7.6cqi; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.flyer__a-date { display: flex; flex-direction: column; gap: 0.6cqi; padding: 3.4cqi 5cqi; border-radius: 3cqi; background: #E9F6F4; }
+.flyer__a-date b { font-size: 7.4cqi; line-height: 1.1; color: #0B1720; }
+.flyer__a-date span { font-size: 4.6cqi; color: #3A4247; }
+.flyer__a-list { display: flex; flex-direction: column; gap: 1.6cqi; font-size: 4.6cqi; line-height: 1.3; }
+.flyer__a-list span::before { content: ''; display: inline-block; width: 2.4cqi; height: 2.4cqi; margin-right: 2.4cqi; border-radius: 50%; background: #0C6F64; vertical-align: 0.2em; }
+.flyer__a-foot { margin-top: auto; font-size: 4.6cqi; font-weight: 600; color: #0C6F64; }
+.flyer__caption { font-size: 13px; line-height: 1.45; color: var(--muted); }
+@media (max-width: 639px) {
+  .flyer__caption { font-size: 12.5px; }
+  .csgrid__thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .csgrid__thumbs img:nth-child(3) { display: none; }
+}

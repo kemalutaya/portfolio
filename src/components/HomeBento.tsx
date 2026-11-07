@@ -12,7 +12,7 @@ import {
   Stamp,
   Medal,
   Stack,
-  Quotes,
+  Trophy,
   SealCheck,
 } from '@/components/slab'
 import { aiStack, type StackNode } from '@/data/ai-stack'
@@ -50,10 +50,13 @@ const OFFERS = [
   { Icon: Stamp, title: 'Prior Authorization', note: 'Intake, eligibility, CPT entry' },
 ] as const
 
-const CLIENTS = [
-  { name: 'Onshore Team', role: 'Resident Eye Care Associates', work: 'Detail · Speed · Accuracy', logo: undefined as string | undefined },
-  { name: 'Supervisor', role: 'Optum', work: 'Approachable · Proactive · Tidy', logo: undefined as string | undefined },
-  { name: 'Supervisor', role: 'Resident Eye Care Associates', work: 'Workflow · Problem-solving', logo: undefined as string | undefined },
+// Results from past roles, as the About page and /va state them. Self-reported.
+const RECORD = [
+  { name: 'Team ranked 1st of 5', role: 'Optum, a team I coached as subject matter expert', work: 'Coaching · Documentation' },
+  { name: '1st of 5 teams, multiple months', role: 'Teleperformance, and 1st on my own team', work: 'Booking support' },
+  { name: 'Flyer redesign adopted', role: 'Resident Eye Care Associates', work: 'Approved for ongoing use' },
+  { name: 'Facility headings fixed', role: 'Resident Eye Care Associates', work: 'Noticed by my supervisor' },
+  { name: 'About 3 hrs to about 1', role: 'Schedule prep, with three macros', work: 'Estimated' },
 ]
 
 /** The AI systems as a flat list: every leaf of the Projects tree, in order. */
@@ -138,7 +141,7 @@ export default function HomeBento() {
 
       {/* Credentials: the badge that matters, on its plate. */}
       <Link to="/about" className="bento__card bento__card--creds">
-        <CardHead Icon={Medal} title="Credentials" desc="HIPAA Compliance Certified, renewed 2026." />
+        <CardHead Icon={Medal} title="Credentials" desc="HIPAA Certified by Biologix, renewed 2026." />
         <div className="bento__media bento__badge" aria-hidden="true">
           <span className="bento__badge-ring">
             <img src={asset('/hipaa-badge.svg')} alt="" width={72} height={72} />
@@ -171,19 +174,16 @@ export default function HomeBento() {
         </ul>
       </Link>
 
-      {/* Testimonials: client cards drifting up a clipped column. */}
-      <Link to="/testimonials" className="bento__card bento__card--quotes">
-        <CardHead Icon={Quotes} title="Testimonials" desc="What onshore teams and supervisors said." />
+      {/* Track record: result cards drifting up a clipped column. It keeps the
+          old Testimonials slot (and its --quotes layout class). */}
+      <Link to="/about" className="bento__card bento__card--quotes">
+        <CardHead Icon={Trophy} title="Track record" desc="Results from past roles, self-reported." />
         <div className="bento__media bento__reviews" aria-hidden="true">
           <div className="bento__reviews-track">
-            {[...CLIENTS, ...CLIENTS].map((c, i) => (
+            {[...RECORD, ...RECORD].map((c, i) => (
               <span key={i} className="bento__review">
                 <span className="bento__review-top">
-                  {c.logo ? (
-                    <img src={c.logo} alt="" width={18} height={18} />
-                  ) : (
-                    <Quotes size={14} weight="fill" />
-                  )}
+                  <Trophy size={14} weight="fill" />
                   <b>{c.name}</b>
                 </span>
                 <span className="bento__review-role">{c.role}</span>

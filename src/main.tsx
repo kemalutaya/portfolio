@@ -11,7 +11,6 @@ import ROUTE_META from '@/data/routes.json'
 // Every route but Home is its own chunk: the first visit only pays for Home.
 const ProjectsView = lazy(() => import('@/views/ProjectsView'))
 const ServicesView = lazy(() => import('@/views/ServicesView'))
-const TestimonialsGrid = lazy(() => import('@/components/TestimonialsGrid'))
 const AboutGrid = lazy(() => import('@/components/AboutGrid'))
 const ContactGrid = lazy(() => import('@/components/ContactGrid'))
 const Privacy = lazy(() => import('@/components/Privacy'))
@@ -31,7 +30,6 @@ import './styles/home.css'
 import './styles/bento.css'
 import './styles/projects-grid.css'
 import './styles/services-grid.css'
-import './styles/testimonials-grid.css'
 import './styles/about-grid.css'
 import './styles/contact-grid.css'
 import './styles/boot.css'
@@ -54,7 +52,7 @@ function TitleSync() {
   const key = useLocation().pathname.replace(/^\/|\/$/g, '')
   useEffect(() => {
     const meta = (ROUTE_META as Record<string, { title: string }>)[key]
-    document.title = meta?.title ?? 'Page not found | Kem Alutaya'
+    document.title = meta?.title ?? 'Page not found | Nooky Alutaya'
   }, [key])
   return null
 }
@@ -75,7 +73,7 @@ createRoot(container).render(
           <Route path="/services" element={<ServicesView />} />
           {/* The macro story lives on Case Studies only; old Automation links land there. */}
           <Route path="/showcase" element={<Navigate to="/projects" replace />} />
-          <Route path="/testimonials" element={<TestimonialsGrid />} />
+          <Route path="/testimonials" element={<Navigate to="/" replace />} />
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/contact" element={<ContactGrid />} />
           <Route path="/da" element={<RoleView role="da" />} />

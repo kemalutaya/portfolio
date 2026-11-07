@@ -32,14 +32,14 @@ export const automations: CaseItem[] = [
   {
     id: 'schedules',
     title: 'Physician schedules',
-    short: '13 doctors, each assigned 1 to 10 facilities a day. Right doctor, CC and files.',
-    desc: "13 doctors, each assigned 1 to 10 facilities a day. The macro matches the highlighted facility to the right doctor's email, CCs the right staff and attaches the right files, which removes wrong-doctor, wrong-CC and wrong-attachment errors. Daily schedule prep went from about 3 hours to about 1 (estimated, based on the previous manual process).",
+    short: '18 doctors, each assigned 1 to 10 facilities a day. Right doctor, CC and files.',
+    desc: "18 doctors, each assigned 1 to 10 facilities a day. The macro matches the highlighted facility to the right doctor's email, CCs the right staff and attaches the right files, which removes wrong-doctor, wrong-CC and wrong-attachment errors. Daily schedule prep went from about 3 hours to about 1 (estimated, based on the previous manual process).",
   },
   {
     id: 'notifications',
     title: 'Facility notifications',
-    short: '50+ facilities. Sent 25+ notifications a day with no errors.',
-    desc: 'More than 50 facilities, each with its own contact details. The macro drafts each notification with the correct facility email, date, template and attachments. I sent 25+ notifications a day with no errors.',
+    short: '50+ facilities. 25+ notifications a day, at a fast pace with high accuracy.',
+    desc: 'More than 50 facilities, each with its own contact details. The macro drafts each notification with the correct facility email, date, template and attachments, so I could send 25+ a day at a fast pace with high accuracy.',
   },
   {
     id: 'flyers',
@@ -55,7 +55,7 @@ export const improvements: CaseItem[] = [
     title: 'Standardized facility headings in PointClickCare',
     short: 'Added the missing facility headings doctors see on their schedule.',
     desc: 'Each facility needs a heading, the label doctors see on their schedule so they know what to expect on arrival. Some facilities had none, so I added the missing ones for consistency. My supervisor noticed before I mentioned it and called it proactive.',
-    note: 'Noticed and fixed independently',
+    note: 'Noticed by my supervisor',
   },
   {
     id: 'flyer-template',

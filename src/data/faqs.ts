@@ -14,7 +14,7 @@ export const FAQS: QA[] = [
   },
   {
     q: 'Are you HIPAA trained, and will you sign a BAA?',
-    a: 'Yes. I hold a HIPAA Compliance Certification from Biologix (2024, renewed 2026), and I’ll sign a Business Associate Agreement as part of onboarding, alongside any NDA or confidentiality terms your practice requires.',
+    a: 'Yes. I’m HIPAA Certified by Biologix (2024, renewed 2026), and I’ll sign a Business Associate Agreement as part of onboarding, alongside any NDA or confidentiality terms your practice requires.',
   },
   {
     q: 'Do you do clinical work?',
@@ -38,6 +38,6 @@ export const FAQS: QA[] = [
   },
   {
     q: 'When can you start?',
-    a: 'Immediately. I’m looking for a full-time remote role and I’m open to contract work alongside that.',
+    a: 'Immediately. I’m open to full-time or part-time remote roles, and to contract work.',
   },
 ]

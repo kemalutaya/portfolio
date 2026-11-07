@@ -14,7 +14,6 @@
   .sgrid .pgrid__lede { font-size: clamp(13px, 0.9vw, 16px); }
   .sgrid { height: auto; }
   .sgrid__glass { height: auto; grid-template-rows: auto auto auto; }
-  .sgrid__flow-main { height: clamp(380px, 50vh, 540px); }
 }
 /* The bands need more air than the Home sheet's default gap - each one is
    its own object (a dark plate, a card row, a window) and at the default
@@ -337,9 +336,6 @@
 }
 .sgrid__flow-copy { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; }
 .sgrid__flow-main { display: flex; min-height: 0; min-width: 0; }
-.sgrid__flow .autopilot--compact { flex: 1 1 auto; display: flex; flex-direction: column; }
-.sgrid__flow .autopilot--compact .autopilot__caption,
-.sgrid__flow .autopilot--compact .autopilot__tools { display: none; }
 .sgrid__flow-eyebrow {
   font-size: var(--fs-eyebrow);
   font-weight: 600;

@@ -23,8 +23,9 @@ const HeroCanvas = lazy(() => import('@/components/HeroCanvasV2'))
  * renders its view into that panel through the Outlet.
  *
  * Home is the route that shaped the layout: it is sized to the panel box and
- * must not scroll, which is what `data-fixed` switches off. Projects,
- * Testimonials, About and Contact are built to the same budget and join it.
+ * must not scroll, which is what `data-fixed` switches off. About and
+ * Contact are built to the same budget and join it. Case Studies scrolls,
+ * like Services.
  */
 export default function App() {
   useLenis()
@@ -32,7 +33,7 @@ export default function App() {
   // GitHub Pages serves /about as /about/; strip the trailing slash so the
   // route checks below match either form.
   const pathname = useLocation().pathname.replace(/(.)\/+$/, '$1')
-  const FIXED_ROUTES = ['/', '/projects', '/testimonials', '/about', '/contact']
+  const FIXED_ROUTES = ['/', '/about', '/contact']
   const isFixed = FIXED_ROUTES.includes(pathname)
   // Below the shell breakpoint the rail is gone: a bottom tab bar navigates,
   // the theme switch floats top-right on every page but Home (whose profile

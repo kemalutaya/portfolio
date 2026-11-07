@@ -365,7 +365,7 @@
 .bento__card:hover .bento__offer-tile { background: var(--orange); color: var(--white); }
 .bento__card:hover .bento__offer-num { color: var(--orange-ink); }
 
-/* Testimonials: head left, review column drifting up on the right. */
+/* Track record (the old Testimonials slot): head left, result column drifting up on the right. */
 .bento__card--quotes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); column-gap: 14px; }
 .bento__card--quotes .bento__media { margin-top: 0; grid-row: 1; grid-column: 2; }
 .bento__reviews {

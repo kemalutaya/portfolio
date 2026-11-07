@@ -6,8 +6,8 @@
 
    Two kinds of page:
    - Services, /va, /da scroll (.sgrid): body copy goes to 15-16px freely.
-   - Home, Case Studies, Testimonials, About and Contact are fixed to the
-     viewport on desktop (App.tsx FIXED_ROUTES): smaller steps, each checked
+   - Home, About and Contact are fixed to the viewport on desktop
+     (App.tsx FIXED_ROUTES): smaller steps, each checked
      at 1280x720 so nothing is cut off. Home's bento one-liners stay as they
      are; they are labels inside tiles, not reading copy.
    ============================================ */
@@ -15,7 +15,7 @@
 /* ---------- Every page: the lede under the title ---------- */
 .pgrid .pgrid__lede { font-size: clamp(15px, 1.05vw, 18px); }
 
-/* ---------- Scrolling pages: Services, /va, /da ---------- */
+/* ---------- Scrolling pages: Services, Case Studies, /va, /da ---------- */
 .sgrid .pgrid__lede { font-size: clamp(15px, 1.05vw, 18px); }
 .sgrid .bento__desc { font-size: clamp(14.5px, 0.95vw, 16px); line-height: 1.5; }
 .sgrid .sgrid__offers-sub { font-size: clamp(14.5px, 0.95vw, 16px); line-height: 1.5; }
@@ -40,6 +40,3 @@
 .cgrid .cgrid__hint { font-size: 13px; }
 .cgrid .cgrid__label { font-size: 12px; }
 
-/* Case Studies cards */
-.pgrid .bento__build-desc { font-size: clamp(10.5px, 0.8vw, 13px); line-height: 1.4; }
-.bento--projects .bento__desc { font-size: clamp(12.5px, 0.85vw, 14px); }

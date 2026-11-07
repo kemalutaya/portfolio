@@ -18,5 +18,6 @@ pnpm-debug.log*
 !.env.production
 !.env.example
 
-# local design-tool cache
+# local design-tool cache and knowledge-graph output
 .impeccable/
+graphify-out/

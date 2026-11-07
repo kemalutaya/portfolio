@@ -26,15 +26,15 @@ type Role = {
 const EXPERIENCE: Role[] = [
   {
     index: '01',
-    when: 'Nov 2023–Sep 2026',
+    when: 'Nov 2023–Oct 2026',
     title: 'Medical Virtual Administrative Assistant, Resident Eye Care Associates',
-    detail: '50+ charts and 50+ eligibility checks a day across Availity, NJMMIS, Davis Vision and March Vision, for 15 to 25 partner facilities.',
+    detail: '50+ charts and 50+ eligibility checks a day across Availity, NJMMIS, Davis Vision and March Vision, for a network of 50+ facilities.',
   },
   {
     index: '02',
     when: 'Nov 2022–Oct 2023',
     title: 'Subject Matter Expert / Assistant Team Leader, Optum',
-    detail: 'Promoted after two years. Trained and coached 10+ agents across up to 3 teams, and audited 10+ cases a day.',
+    detail: 'Promoted after two years. Trained and coached 10+ agents across up to 3 teams, one of which ranked 1st of 5. Audited 10+ cases a day.',
   },
   {
     index: '03',
@@ -72,8 +72,8 @@ export default function AboutGrid() {
           <p className="agrid__note">
             I verify insurance eligibility, keep patient records accurate, prepare charts and review documentation.
             Most recently at <strong>Resident Eye Care Associates</strong>, working in Compulink and PointClickCare; before that,
-            prior authorization at <strong>Optum</strong>, where I learned why a request gets approved, sent to a nurse
-            or denied.
+            two years in prior authorization at <strong>Optum</strong>, where I learned why a request gets approved, sent
+            to a nurse or denied, then a year as the team&rsquo;s subject matter expert.
           </p>
 
           <p className="agrid__note">
@@ -112,7 +112,7 @@ export default function AboutGrid() {
                 <img src={asset('/hipaa-badge.svg')} alt="" loading="lazy" decoding="async" />
               </span>
               <span className="agrid__cell-copy">
-                <span className="agrid__cell-title">HIPAA Compliance Certification</span>
+                <span className="agrid__cell-title">HIPAA Certified</span>
                 <span className="agrid__cell-meta">Biologix · 2024, renewed 2026</span>
               </span>
             </span>

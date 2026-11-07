@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 const PAGES = [
   { label: 'Case Studies', to: '/projects' },
   { label: 'Services', to: '/services' },
-  { label: 'Testimonials', to: '/testimonials' },
   { label: 'About', to: '/about' },
   { label: 'FAQs / Contact', to: '/contact' },
 ] as const

@@ -274,76 +274,7 @@
   .home__showcase > .bento { height: 100%; }
 }
 
-/* ---------- Autopilot in compact mode ----------
-   The section chrome is Home's job here: no header, no section padding, and
-   the fixed 1000x388 design canvas is transform-scaled into the box rather
-   than given a horizontal scrollbar. Autopilot writes --flow-scale from a
-   ResizeObserver; its cable measuring divides that scale back out. */
-.autopilot--compact {
-  padding: 0;
-  gap: 0;
-  width: 100%;
-  min-height: 0;
-}
-.autopilot--compact .autopilot__window {
-  max-width: none;
-  width: 100%;
-  /* `flex: 1` is load-bearing: without it the window sits at its content
-     height, the board collapses to nothing, and the flow - which is absolutely
-     positioned inside an overflow-hidden box - is clipped out of existence. */
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-.autopilot--compact .autopilot__canvas {
-  flex: 1 1 auto;
-  min-height: 0;
-  gap: clamp(8px, 1.4vh, 20px);
-  padding: clamp(12px, 2vh, 26px) clamp(14px, 2vw, 28px);
-}
-.autopilot--compact .autopilot__caption {
-  font-size: clamp(13px, 1.1vw, 16px);
-  max-width: none;
-}
-.autopilot--compact .autopilot__board {
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  overflow: hidden;
-  padding: 0;
-}
-.autopilot--compact .autopilot__fit {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.autopilot--compact .autopilot__flow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: 0;
-  transform: translate(-50%, -50%) scale(var(--flow-scale, 1));
-  transform-origin: 50% 50%;
-}
-.autopilot--compact .autopilot__tools {
-  flex: 0 0 auto;
-  margin: 0;
-}
-
-/* Below the shell breakpoint the page scrolls again: a 1000px canvas cannot
-   be usefully squeezed onto a phone, so compact reverts to the board's own
-   horizontal scroll and a natural height. */
 @media (max-width: 1099px) {
-  .autopilot--compact .autopilot__board { overflow-x: auto; }
-  .autopilot--compact .autopilot__fit { height: auto; }
-  .autopilot--compact .autopilot__flow {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: 0 auto;
-  }
   .home__headline { flex-direction: column; }
 
   /* The floating pill is fixed at the top of the document down here, so the

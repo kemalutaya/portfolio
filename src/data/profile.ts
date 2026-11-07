@@ -6,7 +6,7 @@ import { asset } from '@/lib/asset'
  * socials, email and the Home headline. All values are real and sourced from
  * the previous static site; figures keep their qualifiers attached.
  *
- * Page-specific copy (projects, services, testimonials, FAQs) lives in the
+ * Page-specific copy (projects, services, FAQs) lives in the
  * other files in src/data/ and at the top of each view component.
  */
 
@@ -45,8 +45,8 @@ export type Profile = {
 }
 
 export const profile: Profile = {
-  name: 'Kem Alutaya',
-  firstName: 'Kem',
+  name: 'Nooky Alutaya',
+  firstName: 'Nooky',
   role: 'Medical Virtual Administrative Assistant',
   avatarSrc: asset('/kem-alutaya.jpg'),
   resumeSrc: asset('/Kem-Alutaya-Resume.pdf'),
@@ -64,7 +64,7 @@ export const profile: Profile = {
   hero: {
     body: 'Insurance verification, EMR support, chart preparation and documentation for U.S. and UK healthcare teams.',
     portraitSrc: asset('/kem-alutaya.jpg'),
-    portraitAlt: 'Kem Alutaya',
+    portraitAlt: 'Nooky Alutaya',
   },
   socials: [
     { label: 'LinkedIn profile', href: 'https://www.linkedin.com/in/kalutaya/', iconPath: asset('/icons/linkedin.svg'), rail: true },

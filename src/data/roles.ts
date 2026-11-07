@@ -5,8 +5,8 @@ import { asset } from '@/lib/asset'
  *
  * Every string is condensed from the old static pages (da/index.html and
  * va/index.html) and the matching résumés. Figures keep their qualifier.
- * The healthcare role names Resident Eye Care Associates, as About, the
- * testimonials and all three résumés already do.
+ * The healthcare role names Resident Eye Care Associates, as About and all
+ * three résumés already do.
  */
 
 export type RoleKey = 'da' | 'va'
@@ -54,7 +54,7 @@ export const roles: Record<RoleKey, Role> = {
     headline: 'I label training data to spec, consistently, at production pace, and I check my own work before it ships.',
     lede: 'Bounding boxes, segmentation, classification and attribute tagging across medical and everyday imagery, plus audio transcription and dataset QA.',
     summary: [
-      "My annotation and transcription work has been with Innodata and TELUS Digital AI, both part-time, across roughly eight months in 2025 and 2026. Before that I spent five years doing high-volume, high-accuracy work inside systems I didn't own: electronic medical records, payer portals and booking platforms.",
+      "My annotation and transcription work has been with Innodata and TELUS Digital AI, both part-time day shifts alongside my main role, which ran on U.S. hours overnight, across roughly eight months in 2025 and 2026. Before that I spent five years doing high-volume, high-accuracy work inside systems I didn't own: electronic medical records, payer portals and booking platforms.",
       "I read the guideline properly before starting, flag the genuinely ambiguous case instead of guessing, and review my own output before submission. I annotate and transcribe to a client's specification; I don't set the labeling schema or decide what the data should mean.",
     ],
     servicesTitle: 'What I do',
@@ -90,7 +90,7 @@ export const roles: Record<RoleKey, Role> = {
       {
         role: 'Analyst Level 2, AI Data Annotation & QA',
         org: 'Innodata',
-        dates: 'Jan–Apr 2026 · Part-time, remote',
+        dates: 'Jan–Apr 2026 · Part-time day shift, remote',
         bullets: [
           'Annotated medical and everyday-object images across bounding box, segmentation, and classification tasks.',
           'Worked to per-task KPI quotas, consistently delivering above the required target.',
@@ -100,7 +100,7 @@ export const roles: Record<RoleKey, Role> = {
       {
         role: 'AI Data Contributor: Training Data & Transcription',
         org: 'TELUS Digital AI',
-        dates: 'Sep–Dec 2025 · Part-time, remote',
+        dates: 'Sep–Dec 2025 · Part-time day shift, remote',
         bullets: [
           'Transcribed audio recordings into structured datasets used for AI model training.',
           'Performed data validation and quality review for consistency across assigned projects.',
@@ -110,7 +110,7 @@ export const roles: Record<RoleKey, Role> = {
       {
         role: 'Medical Virtual Administrative Assistant',
         org: 'Resident Eye Care Associates',
-        dates: 'Nov 2023–Sep 2026 · Remote',
+        dates: 'Nov 2023–Oct 2026 · Remote',
         bullets: [
           'Reviewed roughly 100 patient records a shift and prepared around 50 charts a day, working to next-day deadlines.',
           'Entered ICD-10 and CPT codes, reviewed medication and diagnosis history, and edited physician dictation from voice recordings.',
@@ -119,7 +119,7 @@ export const roles: Record<RoleKey, Role> = {
       },
     ],
     credentials: [
-      { title: 'HIPAA Compliance Certification', meta: 'Biologix · 2024, renewed 2026', kind: 'cert' },
+      { title: 'HIPAA Certified', meta: 'Biologix · 2024, renewed 2026', kind: 'cert' },
       { title: 'AI Training, Claude Academy', meta: 'AI Fluency · AI capabilities and limitations · 2026', kind: 'cert' },
       DEGREE,
     ],
@@ -170,7 +170,7 @@ export const roles: Record<RoleKey, Role> = {
       {
         role: 'Virtual Administrative Assistant (Back-Office)',
         org: 'Resident Eye Care Associates',
-        dates: 'Nov 2023–Sep 2026 · Remote, full-time',
+        dates: 'Nov 2023–Oct 2026 · Remote, full-time',
         bullets: [
           'Reviewed roughly 100 records a shift and prepared around 50 patient charts a day to next-day deadlines.',
           'Ran 50+ data verification checks a day across four portals before records were processed.',
@@ -183,7 +183,7 @@ export const roles: Record<RoleKey, Role> = {
         org: 'Optum',
         dates: 'Nov 2022–Oct 2023 · Hybrid',
         bullets: [
-          'Promoted into a leadership-track role. Trained and coached 10+ agents on documentation accuracy, supporting up to 3 teams.',
+          'Promoted into a leadership-track role. Trained and coached 10+ agents on documentation accuracy, supporting up to 3 teams; one of them ranked 1st of 5.',
           'Built daily and weekly KPI trackers, and reviewed and corrected agent documentation.',
         ],
       },
@@ -202,6 +202,7 @@ export const roles: Record<RoleKey, Role> = {
         bullets: [
           'Handled inbound booking calls for Hotels.com: searching availability, confirming details, and reviewing bookings back to the customer before finalizing.',
           'Reassigned to back-office work on a United Airlines account, using Amadeus to verify and correct booking details and clear a backlog with zero data errors.',
+          'My team placed 1st of 5 on the floor in multiple months, and I placed 1st on my own team.',
         ],
       },
       {

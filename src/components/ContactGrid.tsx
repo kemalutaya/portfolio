@@ -75,7 +75,7 @@ export default function ContactGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">FAQs / Contact</span>
         <h1 className="pgrid__title" id="contact-title">
-          Looking for a full-time healthcare operations role.
+          Looking for a remote healthcare operations role, full-time or part-time.
         </h1>
         <p className="pgrid__lede">
           Insurance verification, EMR support, chart preparation or healthcare documentation, remote, on UK or
